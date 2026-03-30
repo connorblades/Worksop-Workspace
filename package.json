@@ -1,0 +1,8 @@
+{
+  "name": "worksop-workspace",
+  "version": "1.0.0",
+  "description": "Worksop Workspace coworking website",
+  "scripts": {
+    "start": "npx serve ."
+  }
+}
