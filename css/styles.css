@@ -1346,3 +1346,126 @@ footer {
   .stats-grid { grid-template-columns: 1fr 1fr; }
   .header-inner { padding: 0 14px; }
 }
+
+/* ============================================================
+   PHASE ROADMAP
+   ============================================================ */
+.phases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 16px;
+}
+.phase-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  transition: var(--transition);
+}
+.phase-card:hover { background: rgba(255,255,255,0.12); }
+.phase-active {
+  border-color: var(--sage-light);
+  background: rgba(165,175,138,0.12);
+}
+.phase-number {
+  width: 44px;
+  height: 44px;
+  background: rgba(255,255,255,0.15);
+  color: var(--white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 900;
+  margin-bottom: 16px;
+}
+.phase-active .phase-number { background: var(--sage); }
+.phase-status {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 50px;
+  margin-bottom: 12px;
+}
+.phase-status-open {
+  background: rgba(165,175,138,0.30);
+  color: var(--sage-light);
+  border: 1px solid rgba(165,175,138,0.40);
+}
+.phase-status-future {
+  background: rgba(255,255,255,0.08);
+  color: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.15);
+}
+.phase-card h3 { font-size: 1.15rem; font-weight: 800; color: var(--white); margin-bottom: 10px; }
+.phase-card > p { font-size: 0.92rem; color: rgba(255,255,255,0.72); line-height: 1.65; margin-bottom: 16px; }
+.phase-list { list-style: none; padding: 0; margin: 0; }
+.phase-list li {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.60);
+  padding: 5px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.phase-list li:last-child { border-bottom: none; }
+.phase-list li::before { content: "→"; color: rgba(255,255,255,0.30); font-weight: 700; flex-shrink: 0; }
+.phase-active .phase-list li { color: rgba(255,255,255,0.85); }
+.phase-active .phase-list li::before { color: var(--sage-light); }
+
+/* ---- Coming Soon Pricing Card ----------------------------- */
+.pricing-card.phase-coming {
+  opacity: 0.75;
+  border: 2px dashed #d0d0d0;
+}
+.pricing-card.phase-coming:hover { opacity: 0.90; box-shadow: var(--shadow-md); }
+.badge-coming {
+  background: rgba(142,151,117,0.15);
+  color: #5a6645;
+  border: 1px solid rgba(142,151,117,0.30);
+}
+.coming-soon-note {
+  background: rgba(142,151,117,0.08);
+  border-left: 3px solid var(--sage);
+  padding: 10px 14px;
+  font-size: 0.84rem;
+  color: #666;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 20px;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* ---- Phase Notice Bar (studio / meeting room pages) ------- */
+.phase-notice-bar {
+  background: rgba(142,151,117,0.10);
+  border-top: 3px solid var(--sage);
+  border-bottom: 1px solid rgba(142,151,117,0.20);
+  padding: 16px 20px;
+}
+.phase-notice-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+.phase-notice-inner svg { flex-shrink: 0; margin-top: 2px; color: var(--sage); }
+.phase-notice-inner p { font-size: 0.93rem; color: var(--text); line-height: 1.55; margin: 0; }
+.phase-notice-link { color: var(--navy); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.phase-notice-link:hover { color: var(--sage); }
+
+/* ---- Space Badge Phase Variants --------------------------- */
+.badge-phase1 { background: rgba(32,58,91,0.10); color: var(--navy); }
+.badge-phase3 { background: rgba(120,80,180,0.10); color: #6b4fa8; }
+
+@media (max-width: 600px) {
+  .phases-grid { grid-template-columns: 1fr; }
+  .phase-notice-inner { flex-direction: column; gap: 8px; }
+}
