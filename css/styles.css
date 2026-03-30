@@ -329,7 +329,7 @@ ul { list-style: none; }
 .stat-icon {
   display: flex;
   justify-content: center;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   color: var(--sage-light);
 }
 .stat-value {
@@ -356,7 +356,7 @@ ul { list-style: none; }
   font-size: clamp(1.6rem, 3vw, 2.3rem);
   font-weight: 800;
   color: var(--navy);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 .section-subtitle {
   font-size: 1.05rem;
@@ -368,7 +368,7 @@ ul { list-style: none; }
   font-size: clamp(1.6rem, 3vw, 2.3rem);
   font-weight: 800;
   color: var(--white);
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 .section-subtitle-light {
   font-size: 1.05rem;
@@ -461,18 +461,19 @@ ul { list-style: none; }
   justify-content: center;
   gap: 40px;
   flex-wrap: wrap;
-  margin-bottom: 36px;
+  margin-top: 44px;
+  margin-bottom: 40px;
 }
 .gym-pillar {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  gap: 16px;
   color: var(--white);
 }
 .gym-pillar-icon {
-  width: 56px;
-  height: 56px;
+  width: 62px;
+  height: 62px;
   background: rgba(255,255,255,0.10);
   border-radius: 50%;
   display: flex;
@@ -595,7 +596,7 @@ ul { list-style: none; }
   font-size: 0.97rem;
   font-weight: 700;
   color: var(--navy);
-  margin-bottom: 4px;
+  margin-bottom: 7px;
 }
 .feature-card p { font-size: 0.88rem; color: #777; }
 
