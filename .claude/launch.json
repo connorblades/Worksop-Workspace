@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "worksop-workspace",
+      "runtimeExecutable": "perl",
+      "runtimeArgs": ["/tmp/ww_serve.pl"],
+      "port": 3456
+    }
+  ]
+}
