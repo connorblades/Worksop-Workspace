@@ -223,12 +223,12 @@ ul { list-style: none; }
 .hero {
   min-height: 100vh;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   text-align: center;
   position: relative;
   overflow: hidden;
-  padding: 0 20px 100px;
+  padding: 80px 20px;
 }
 .hero-video {
   position: absolute;
