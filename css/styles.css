@@ -230,7 +230,7 @@ ul { list-style: none; }
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-  padding: 60px 20px 100px;
+  padding: 20px 20px 100px;
 }
 .hero-content {
   position: relative;
