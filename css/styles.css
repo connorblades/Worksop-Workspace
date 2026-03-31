@@ -227,14 +227,26 @@ ul { list-style: none; }
   justify-content: center;
   text-align: center;
   position: relative;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
+  overflow: hidden;
   padding: 0 20px 100px;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(32,58,91,0.82), rgba(142,151,117,0.72));
+  z-index: 1;
 }
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 760px;
 }
 .hero-kicker {
