@@ -9,10 +9,13 @@
   <link rel="stylesheet" href="css/styles.css?v=4" />
   <style>
     /* Hero critical — inline to prevent caching issues */
-    .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#203A5B;padding:80px 20px;}
-    .hero-video{position:absolute!important;top:50%;left:50%;transform:translate(-50%,-50%);min-width:100%;min-height:100%;width:auto;height:auto;object-fit:cover;z-index:0;}
+    .hero{position:relative;min-height:75vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#203A5B;padding:60px 20px;}
+    .hero-video{position:absolute!important;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 70%;z-index:0;}
     .hero-overlay{position:absolute!important;inset:0;background:linear-gradient(135deg,rgba(32,58,91,.80),rgba(60,80,60,.65));z-index:1;}
     .hero-content{position:relative;z-index:2;max-width:760px;width:100%;}
+    .hero h1{margin-bottom:14px;}
+    .hero-sub{margin-bottom:20px;}
+    .hero-kicker{margin-bottom:14px;}
   </style>
 </head>
 <body>
@@ -50,12 +53,9 @@
     </video>
     <div class="hero-overlay"></div>
     <div class="hero-content">
-      <div class="hero-icon animate-in d1">
-        <img src="logo-copy.png" alt="Worksop Workspace" />
-      </div>
-      <span class="hero-kicker animate-in d2">Carlton Road, Worksop S80</span>
-      <h1 class="animate-in d3">Worksop's first dedicated coworking space</h1>
-      <p class="hero-sub animate-in d4">Private offices and hot desks for local professionals. Free parking. Free coffee. Opening soon on Carlton Road. Join the waiting list to be first in.</p>
+      <span class="hero-kicker animate-in d1">Carlton Road, Worksop S80</span>
+      <h1 class="animate-in d2">Worksop's first dedicated coworking space</h1>
+      <p class="hero-sub animate-in d3">Private offices and hot desks for local professionals. Free parking. Free coffee. Opening soon on Carlton Road. Join the waiting list to be first in.</p>
       <div class="hero-cta-row animate-in d4">
         <button class="btn btn-white open-modal">Join the Waiting List</button>
         <a href="/space" class="btn btn-outline-white">See the Space</a>
