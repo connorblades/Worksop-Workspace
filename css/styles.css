@@ -564,8 +564,11 @@ ul { list-style: none; }
 /* ---- Features Grid ---------------------------------------- */
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
+}
+@media (max-width: 900px) {
+  .features-grid { grid-template-columns: repeat(2, 1fr); }
 }
 .feature-card {
   background: var(--white);
@@ -1330,8 +1333,9 @@ footer {
   .contact-grid { grid-template-columns: 1fr; }
   .pricing-card.featured { transform: none; }
 
-  .comparison-table .cmp-row { grid-template-columns: 1fr 1fr; }
-  .cmp-row div:last-child { grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.08); }
+  .comparison-table .cmp-row { grid-template-columns: 1fr 1fr 1fr; }
+  .comparison-table .cmp-row div { padding: 10px 8px; font-size: 0.78rem; }
+  .cmp-row div:last-child { grid-column: unset; border-top: none; }
 }
 
 @media (max-width: 600px) {
