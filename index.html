@@ -463,7 +463,7 @@
               ctx.beginPath();
               ctx.moveTo(dots[i].x, dots[i].y);
               ctx.lineTo(dots[j].x, dots[j].y);
-              ctx.strokeStyle = `rgba(255,255,255,${0.15 * (1 - dist / MAX_DIST)})`;
+              ctx.strokeStyle = `rgba(255,255,255,${0.4 * (1 - dist / MAX_DIST)})`;
               ctx.lineWidth = 0.6;
               ctx.stroke();
             }
