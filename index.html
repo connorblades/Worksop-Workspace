@@ -427,7 +427,7 @@
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       let W, H, dots = [];
-      const N = 55, MAX_DIST = 130;
+      const N = 140, MAX_DIST = 160;
 
       function resize() {
         W = canvas.width = canvas.offsetWidth;
@@ -464,7 +464,7 @@
               ctx.moveTo(dots[i].x, dots[i].y);
               ctx.lineTo(dots[j].x, dots[j].y);
               ctx.strokeStyle = `rgba(255,255,255,${0.65 * (1 - dist / MAX_DIST)})`;
-              ctx.lineWidth = 0.6;
+              ctx.lineWidth = 0.8;
               ctx.stroke();
             }
           }
