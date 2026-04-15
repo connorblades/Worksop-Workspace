@@ -2,6 +2,9 @@
    WORKSOP WORKSPACE — SHARED STYLESHEET
    ============================================================ */
 
+/* ---- Google Fonts ----------------------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+
 /* ---- Reset & Variables ------------------------------------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -14,7 +17,8 @@
   --mid-grey:  #CFCFCB;
   --text:      #3B3B3B;
   --white:     #ffffff;
-  --font:      'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font-head: 'Outfit', system-ui, sans-serif;
+  --font:      'DM Sans', system-ui, sans-serif;
   --radius:    10px;
   --shadow:    0 4px 24px rgba(32,58,91,0.10);
   --shadow-md: 0 8px 40px rgba(32,58,91,0.14);
@@ -29,6 +33,11 @@ body {
   background: var(--cream);
   line-height: 1.65;
   font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-head);
+  letter-spacing: -0.01em;
 }
 
 img { max-width: 100%; display: block; }
@@ -114,6 +123,7 @@ ul { list-style: none; }
   gap: 28px;
 }
 .nav-links a {
+  font-family: var(--font-head);
   font-size: 0.92rem;
   font-weight: 500;
   color: var(--text);
@@ -168,8 +178,10 @@ ul { list-style: none; }
   gap: 8px;
   padding: 12px 28px;
   border-radius: var(--radius);
+  font-family: var(--font-head);
   font-weight: 600;
   font-size: 0.95rem;
+  letter-spacing: 0.01em;
   cursor: pointer;
   border: 2px solid transparent;
   transition: var(--transition);
@@ -303,9 +315,10 @@ ul { list-style: none; }
   background: rgba(142,151,117,0.25);
   border: 1px solid rgba(142,151,117,0.5);
   color: var(--sage-light);
+  font-family: var(--font-head);
   font-size: 0.82rem;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   padding: 6px 16px;
   border-radius: 50px;
@@ -394,11 +407,13 @@ ul { list-style: none; }
   color: var(--sage-light);
 }
 .stat-value {
+  font-family: var(--font-head);
   font-size: 1.5rem;
   font-weight: 800;
   color: var(--white);
 }
 .stat-label {
+  font-family: var(--font-head);
   font-size: 0.88rem;
   color: rgba(255,255,255,0.70);
   margin-top: 2px;
