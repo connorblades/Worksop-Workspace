@@ -67,21 +67,20 @@ ul { list-style: none; }
   position: fixed;
   inset: 0;
   z-index: 9999;
-  background: #0d1820;
-  display: flex;
+  background: #F7F6F2;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 28px;
-  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
 }
 
 .loader-ring-wrap {
   position: relative;
   width: 100px;
   height: 100px;
-  opacity: 0;
-  animation: loaderFadeIn 0.4s 0.05s ease forwards;
 }
 
 .loader-ring-wrap svg {
@@ -94,7 +93,7 @@ ul { list-style: none; }
 
 .loader-ring-track {
   fill: none;
-  stroke: rgba(255,255,255,0.07);
+  stroke: rgba(32,58,91,0.1);
   stroke-width: 1.5;
 }
 
@@ -105,7 +104,7 @@ ul { list-style: none; }
   stroke-linecap: round;
   stroke-dasharray: 263.9;
   stroke-dashoffset: 263.9;
-  animation: ringFill 0.85s 0.1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation: ringFill 1.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .loader-icon {
@@ -115,18 +114,15 @@ ul { list-style: none; }
   transform: translate(-50%, -50%);
   width: 54px;
   height: 54px;
-  filter: brightness(0) invert(1);
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .loader-msg {
-  color: rgba(255,255,255,0.4);
+  color: rgba(32,58,91,0.45);
   font-family: 'Outfit', system-ui, sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  opacity: 0;
-  animation: loaderFadeIn 0.4s 0.2s ease forwards;
   transition: opacity 0.25s ease;
 }
 

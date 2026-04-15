@@ -9,20 +9,20 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=11" />
+  <link rel="stylesheet" href="../css/styles.css?v=12" />
 </head>
 <body>
 
   <!-- ===== PAGE LOADER ===== -->
-  <div id="page-loader" style="position:fixed;inset:0;z-index:9999;background:#0d1820;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:28px;transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1);">
+  <div id="page-loader">
     <div class="loader-ring-wrap">
       <svg viewBox="0 0 100 100">
         <circle class="loader-ring-track" cx="50" cy="50" r="42"/>
         <circle class="loader-ring-fill" cx="50" cy="50" r="42"/>
       </svg>
-      <img class="loader-icon" src="../icon.png" alt="" aria-hidden="true" />
+      <img class="loader-icon" src="https://res.cloudinary.com/dvecjaoho/image/upload/v1765128602/Properties_yqp8v5.png" alt="" aria-hidden="true" />
     </div>
-    <div class="loader-msg" id="loader-msg">Preparing your desk...</div>
+    <div class="loader-msg" id="loader-msg"></div>
   </div>
 
   <!-- ===== HEADER ===== -->
@@ -339,7 +339,7 @@
     // ── Premium page loader ───────────────────────────────────
     (function() {
       const loader = document.getElementById("page-loader");
-      const msgEl = document.getElementById("loader-msg");
+      const msgEl  = document.getElementById("loader-msg");
       const messages = [
         "Preparing your desk...",
         "Turning on the lights...",
@@ -348,24 +348,34 @@
         "Pulling up a chair...",
         "Almost ready..."
       ];
-      let msgIndex = 0;
-      const msgTimer = setInterval(function() {
-        msgEl.style.opacity = "0";
-        setTimeout(function() {
-          msgIndex = (msgIndex + 1) % messages.length;
-          msgEl.textContent = messages[msgIndex];
-          msgEl.style.opacity = "1";
-        }, 200);
-      }, 700);
+      let shown = false, msgIndex = 0, msgTimer = null;
+      const showTimer = setTimeout(function() {
+        if (document.readyState === "complete") return;
+        shown = true;
+        loader.style.display = "flex";
+        requestAnimationFrame(function() { requestAnimationFrame(function() { loader.style.opacity = "1"; }); });
+        msgEl.textContent = messages[0];
+        msgEl.style.opacity = "1";
+        msgTimer = setInterval(function() {
+          msgEl.style.opacity = "0";
+          setTimeout(function() {
+            msgIndex = (msgIndex + 1) % messages.length;
+            msgEl.textContent = messages[msgIndex];
+            msgEl.style.opacity = "1";
+          }, 250);
+        }, 1800);
+      }, 400);
       function dismiss() {
+        clearTimeout(showTimer);
+        if (!shown) return;
         clearInterval(msgTimer);
         loader.style.opacity = "0";
         loader.style.pointerEvents = "none";
-        setTimeout(function() { loader.style.display = "none"; }, 750);
+        setTimeout(function() { loader.style.display = "none"; }, 550);
       }
-      if (document.readyState === "complete") { setTimeout(dismiss, 1000); }
-      else { window.addEventListener("load", function() { setTimeout(dismiss, 1000); }); }
-      setTimeout(dismiss, 4000);
+      if (document.readyState === "complete") { dismiss(); }
+      else { window.addEventListener("load", function() { setTimeout(dismiss, 200); }); }
+      setTimeout(dismiss, 5000);
     })();
     const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
