@@ -56,11 +56,10 @@
       <source src="homescreen.mp4" type="video/mp4">
     </video>
     <div class="hero-overlay"></div>
-    <canvas id="hero-particles" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;opacity:0.45;"></canvas>
     <div class="hero-content">
       <span class="hero-kicker animate-in d1">Stop working from the kitchen table.</span>
       <h1 class="animate-in d2">Worksop's first dedicated coworking space</h1>
-      <p class="hero-sub animate-in d3">Private offices and hot desks for local professionals. Free parking. Free coffee. Opening soon on Carlton Road. Join the waiting list to be first in.</p>
+      <p class="hero-sub animate-in d3">Worksop's first dedicated coworking space — somewhere between a coffee shop and a proper office, built for the people who make this town work. Free parking. Free coffee. Opening soon on Carlton Road.</p>
       <div class="hero-cta-row animate-in d4">
         <button class="btn btn-white open-modal">Join the Waiting List</button>
         <a href="/space" class="btn btn-outline-white">See the Space</a>
@@ -103,25 +102,25 @@
     <div class="inner-container">
       <div class="text-center section-header">
         <h2 class="section-title animate-in">Sound familiar?</h2>
-        <p class="section-subtitle animate-in d1">Working from home sounds great. Until it isn't.</p>
+        <p class="section-subtitle animate-in d1">Working from home sounds great. Until it isn't. Whether you're at the kitchen table, doing admin from your van, or buying yet another £5 coffee just to justify the seat — you know exactly what we mean.</p>
       </div>
       <div class="pain-grid">
         <div class="pain-card animate-in d1">
           <div class="pain-icon"><i data-lucide="home" width="22" height="22"></i></div>
           <h3>No quiet space at home</h3>
-          <p>Kids, noise, distractions. Your home wasn't designed as an office.</p>
-          <div class="pain-resolution">Come to Workspace. Leave the chaos at home.</div>
+          <p>Kids, noise, distractions. Your home wasn't designed as an office — and building a shed in the back garden shouldn't be the only answer.</p>
+          <div class="pain-resolution">Come to Worksop Workspace. Leave the chaos at home.</div>
         </div>
         <div class="pain-card animate-in d2">
           <div class="pain-icon"><i data-lucide="coffee" width="22" height="22"></i></div>
-          <h3>The coffee shop trap</h3>
-          <p>Paying £5 per drink, unreliable wifi, someone's Zoom call next to you.</p>
-          <div class="pain-resolution">Free coffee. Fast wifi. Zero background noise.</div>
+          <h3>The coffee shop compromise</h3>
+          <p>Paying £5 a drink just to justify the table. Unreliable WiFi. Someone else's Zoom call blaring next to you.</p>
+          <div class="pain-resolution">Free coffee. Fast WiFi. Quiet when you need it.</div>
         </div>
         <div class="pain-card animate-in d3">
           <div class="pain-icon"><i data-lucide="navigation" width="22" height="22"></i></div>
           <h3>The commute isn't worth it</h3>
-          <p>Fuel, parking, traffic, arriving drained.</p>
+          <p>Fuel, parking, traffic — and you still don't have a proper workspace at the end of it. Five minutes from town changes that.</p>
           <div class="pain-resolution">Work locally. Keep the time and the money.</div>
         </div>
       </div>
@@ -135,7 +134,7 @@
   <div class="gym-band">
     <div class="inner-container">
       <h2 class="animate-in">Think of it like a gym membership. But for your productivity.</h2>
-      <p class="gym-lead animate-in d1">Different people come and go throughout the day. Everyone is here for the same reason: to focus, do the work, and get on with it. No noise, no distractions. Just a clean, quiet, professional space where you sit down and crack on.</p>
+      <p class="gym-lead animate-in d1">Remote workers, tradespeople, freelancers, small business owners — all kinds of people come and go throughout the day. Everyone here for the same reason: to focus, get the work done, and get on with it. No one pitching you. No pressure. No background noise if you don't want it. Just somewhere you can drop your shoulders and crack on.</p>
       <div class="gym-pillars animate-in d2">
         <div class="gym-pillar">
           <div class="gym-pillar-icon"><i data-lucide="volume-x" width="24" height="24"></i></div>
@@ -421,58 +420,6 @@
       observer.observe(el);
     });
 
-    // ── Particle canvas ──────────────────────────────────────
-    (function() {
-      const canvas = document.getElementById('hero-particles');
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      let W, H, dots = [];
-      const N = 140, MAX_DIST = 160;
-
-      function resize() {
-        W = canvas.width = canvas.offsetWidth;
-        H = canvas.height = canvas.offsetHeight;
-      }
-      resize();
-      window.addEventListener('resize', resize);
-
-      for (let i = 0; i < N; i++) {
-        dots.push({
-          x: Math.random() * W, y: Math.random() * H,
-          vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
-          r: Math.random() * 2 + 1
-        });
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, W, H);
-        dots.forEach(d => {
-          d.x += d.vx; d.y += d.vy;
-          if (d.x < 0 || d.x > W) d.vx *= -1;
-          if (d.y < 0 || d.y > H) d.vy *= -1;
-          ctx.beginPath();
-          ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
-          ctx.fillStyle = 'rgba(255,255,255,0.7)';
-          ctx.fill();
-        });
-        for (let i = 0; i < dots.length; i++) {
-          for (let j = i + 1; j < dots.length; j++) {
-            const dx = dots[i].x - dots[j].x, dy = dots[i].y - dots[j].y;
-            const dist = Math.sqrt(dx*dx + dy*dy);
-            if (dist < MAX_DIST) {
-              ctx.beginPath();
-              ctx.moveTo(dots[i].x, dots[i].y);
-              ctx.lineTo(dots[j].x, dots[j].y);
-              ctx.strokeStyle = `rgba(255,255,255,${0.65 * (1 - dist / MAX_DIST)})`;
-              ctx.lineWidth = 0.8;
-              ctx.stroke();
-            }
-          }
-        }
-        requestAnimationFrame(draw);
-      }
-      draw();
-    })();
 
     // ── Stat counters ─────────────────────────────────────────
     const statObserver = new IntersectionObserver((entries) => {
