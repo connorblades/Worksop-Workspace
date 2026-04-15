@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=12" />
+  <link rel="stylesheet" href="css/styles.css?v=13" />
   <style>
     .hero{position:relative;height:75vh;min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#203A5B;padding:60px 20px 80px;}
     @media (max-width:768px){.hero{height:auto;min-height:85vh;padding:80px 20px 70px;}.hero-cta-row{flex-direction:column;align-items:center;}.hero-cta-row .btn,.hero-cta-row a{width:100%;max-width:280px;justify-content:center;}}
@@ -386,11 +386,11 @@
   <script>
     lucide.createIcons();
 
-    // ── Page loader — only shows if load takes > 400ms ───────
+    // ── Page loader — shows instantly if delayed, dismisses instantly on load ──
     (function() {
-      const loader = document.getElementById('page-loader');
-      const msgEl  = document.getElementById('loader-msg');
-      const messages = [
+      var loader = document.getElementById('page-loader');
+      var msgEl  = document.getElementById('loader-msg');
+      var messages = [
         'Preparing your desk...',
         'Turning on the lights...',
         'Brewing the coffee...',
@@ -398,23 +398,14 @@
         'Pulling up a chair...',
         'Almost ready...'
       ];
+      var THRESHOLD = 300; // show if page not loaded within 300ms
+      var shown = false, msgIndex = 0, msgTimer = null;
 
-      let shown = false;
-      let msgIndex = 0;
-      let msgTimer = null;
-
-      // Only show the loader if the page hasn't loaded within 400ms
-      const showTimer = setTimeout(function() {
-        if (document.readyState === 'complete') return;
+      function show() {
+        if (shown) return;
         shown = true;
         loader.style.display = 'flex';
-        // Fade in
-        requestAnimationFrame(function() {
-          requestAnimationFrame(function() {
-            loader.style.opacity = '1';
-          });
-        });
-        // Start cycling messages
+        loader.style.opacity = '1';
         msgEl.textContent = messages[0];
         msgEl.style.opacity = '1';
         msgTimer = setInterval(function() {
@@ -423,26 +414,36 @@
             msgIndex = (msgIndex + 1) % messages.length;
             msgEl.textContent = messages[msgIndex];
             msgEl.style.opacity = '1';
-          }, 250);
+          }, 200);
         }, 1800);
-      }, 400);
+      }
 
       function dismiss() {
         clearTimeout(showTimer);
-        if (!shown) return; // page loaded fast — never show
+        if (!shown) return;
         clearInterval(msgTimer);
         loader.style.opacity = '0';
         loader.style.pointerEvents = 'none';
-        setTimeout(function() { loader.style.display = 'none'; }, 550);
+        setTimeout(function() { loader.style.display = 'none'; }, 400);
+      }
+
+      // Show immediately if still loading after THRESHOLD
+      var showTimer = setTimeout(function() {
+        if (document.readyState !== 'complete') show();
+      }, THRESHOLD);
+
+      // Dismiss the moment the page finishes loading
+      function onLoad() {
+        clearTimeout(showTimer);
+        dismiss();
       }
 
       if (document.readyState === 'complete') {
-        dismiss();
+        onLoad();
       } else {
-        window.addEventListener('load', function() { setTimeout(dismiss, 200); });
+        window.addEventListener('load', onLoad);
       }
-      // Hard cap — never block for more than 5s
-      setTimeout(dismiss, 5000);
+      setTimeout(dismiss, 8000); // absolute safety cap
     })();
 
     // Header scroll shadow
