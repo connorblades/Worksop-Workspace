@@ -83,6 +83,21 @@ ul { list-style: none; }
   height: 100px;
 }
 
+/* White circle fills the inside of the ring so icon edges disappear */
+.loader-ring-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 76px;
+  height: 76px;
+  background: #ffffff;
+  border-radius: 50%;
+  z-index: 0;
+}
+
+
 .loader-ring-wrap svg {
   position: absolute;
   inset: 0;
@@ -116,6 +131,7 @@ ul { list-style: none; }
   height: 48px;
   object-fit: contain;
   opacity: 1;
+  z-index: 1;
 }
 
 .loader-msg {
