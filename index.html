@@ -27,6 +27,14 @@
 </head>
 <body>
 
+  <!-- ===== PAGE LOADER ===== -->
+  <div id="page-loader">
+    <img class="loader-logo" src="https://res.cloudinary.com/dvecjaoho/image/upload/v1765128602/Properties_yqp8v5.png" alt="" aria-hidden="true" />
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+  </div>
+
   <!-- ===== HEADER ===== -->
   <header class="site-header" id="site-header">
     <div class="header-inner">
@@ -373,6 +381,25 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
+
+    // ── Premium page loader ───────────────────────────────────
+    (function() {
+      const loader = document.getElementById('page-loader');
+      function dismiss() {
+        loader.classList.add('loaded');
+      }
+      // Dismiss after bar animation completes (0.4s delay + 0.9s animation = 1.3s)
+      // but also dismiss immediately if page was already loaded (back/forward cache)
+      if (document.readyState === 'complete') {
+        setTimeout(dismiss, 1350);
+      } else {
+        window.addEventListener('load', function() {
+          setTimeout(dismiss, 1350);
+        });
+      }
+      // Safety fallback — never block user for more than 3s
+      setTimeout(dismiss, 3000);
+    })();
 
     // Header scroll shadow
     const header = document.getElementById('site-header');

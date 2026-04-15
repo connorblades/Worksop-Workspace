@@ -9,9 +9,15 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css" />
+  <link rel="stylesheet" href="../css/styles.css?v=8" />
 </head>
 <body>
+
+  <!-- ===== PAGE LOADER ===== -->
+  <div id="page-loader">
+    <img class="loader-logo" src="https://res.cloudinary.com/dvecjaoho/image/upload/v1765128602/Properties_yqp8v5.png" alt="" aria-hidden="true" />
+    <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  </div>
 
   <!-- ===== HEADER ===== -->
   <header class="site-header" id="site-header">
@@ -363,6 +369,15 @@
   <script src="https://unpkg.com/lucide@latest"></script>
   <script>
     lucide.createIcons();
+
+    // ── Premium page loader ───────────────────────────────────
+    (function() {
+      const loader = document.getElementById("page-loader");
+      function dismiss() { loader.classList.add("loaded"); }
+      if (document.readyState === "complete") { setTimeout(dismiss, 1350); }
+      else { window.addEventListener("load", function() { setTimeout(dismiss, 1350); }); }
+      setTimeout(dismiss, 3000);
+    })();
 
     const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
