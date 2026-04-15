@@ -112,8 +112,9 @@ ul { list-style: none; }
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
   opacity: 1;
 }
 
