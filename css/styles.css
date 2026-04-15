@@ -3,7 +3,7 @@
    ============================================================ */
 
 /* ---- Google Fonts ----------------------------------------- */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap');
 
 /* ---- Reset & Variables ------------------------------------ */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -18,7 +18,7 @@
   --text:      #3B3B3B;
   --white:     #ffffff;
   --font-head: 'Outfit', system-ui, sans-serif;
-  --font:      'DM Sans', system-ui, sans-serif;
+  --font:      'Outfit', system-ui, sans-serif;
   --radius:    10px;
   --shadow:    0 4px 24px rgba(32,58,91,0.10);
   --shadow-md: 0 8px 40px rgba(32,58,91,0.14);
@@ -506,18 +506,25 @@ ul { list-style: none; }
   color: #666;
   margin-bottom: 52px;
   max-width: 560px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section-title-light {
   font-size: clamp(1.6rem, 3vw, 2.3rem);
   font-weight: 800;
   color: var(--white);
   margin-bottom: 14px;
+  text-align: center;
 }
 .section-subtitle-light {
   font-size: 1.05rem;
   color: rgba(255,255,255,0.80);
   margin-bottom: 52px;
   max-width: 560px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 }
 .section-header { margin-bottom: 52px; }
 
