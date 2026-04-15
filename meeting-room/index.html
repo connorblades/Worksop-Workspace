@@ -14,9 +14,11 @@
 <body>
 
   <!-- ===== PAGE LOADER ===== -->
-  <div id="page-loader">
-    <img class="loader-logo" src="https://res.cloudinary.com/dvecjaoho/image/upload/v1765128602/Properties_yqp8v5.png" alt="" aria-hidden="true" />
-    <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+  <div id="page-loader" style="position:fixed;inset:0;z-index:9999;background:#0d1820;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:24px;transition:opacity 0.7s cubic-bezier(0.4,0,0.2,1),visibility 0.7s;">
+    <img class="loader-logo" src="../icon.png" alt="" aria-hidden="true" style="width:56px;height:56px;opacity:0;transform:scale(0.85);animation:loaderFadeIn 0.5s 0.1s cubic-bezier(0.4,0,0.2,1) forwards;" />
+    <div class="loader-bar-wrap" style="width:120px;height:2px;background:rgba(255,255,255,0.1);border-radius:2px;overflow:hidden;opacity:0;animation:loaderFadeIn 0.4s 0.3s ease forwards;">
+      <div class="loader-bar" style="height:100%;background:linear-gradient(90deg,#8E9775,#a5af8a);border-radius:2px;animation:loaderProgress 0.9s 0.4s cubic-bezier(0.4,0,0.2,1) forwards;width:0%;"></div>
+    </div>
   </div>
 
   <!-- ===== HEADER ===== -->
@@ -321,7 +323,12 @@
     // ── Premium page loader ───────────────────────────────────
     (function() {
       const loader = document.getElementById("page-loader");
-      function dismiss() { loader.classList.add("loaded"); }
+      function dismiss() {
+        loader.style.opacity = "0";
+        loader.style.visibility = "hidden";
+        loader.style.pointerEvents = "none";
+        setTimeout(function() { loader.style.display = "none"; }, 750);
+      }
       if (document.readyState === "complete") { setTimeout(dismiss, 1350); }
       else { window.addEventListener("load", function() { setTimeout(dismiss, 1350); }); }
       setTimeout(dismiss, 3000);
