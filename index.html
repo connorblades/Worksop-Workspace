@@ -12,11 +12,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=17" />
+  <link rel="stylesheet" href="css/styles.css?v=18" />
   <style>
     .hero{position:relative;height:75vh;min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;background:#203A5B;padding:60px 20px 80px;}
     @media (max-width:768px){.hero{height:auto;min-height:85vh;padding:80px 20px 70px;}.hero-cta-row{flex-direction:column;align-items:center;}.hero-cta-row .btn,.hero-cta-row a{width:100%;max-width:280px;justify-content:center;}}
-    .hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(0,0,0,0.58) 0%,rgba(0,0,0,0.48) 40%,rgba(0,0,0,0.72) 100%);z-index:1;}
+    .hero-overlay{position:absolute;top:0;left:0;right:0;bottom:0;background:linear-gradient(to bottom,rgba(32,58,91,0.72) 0%,rgba(32,58,91,0.50) 40%,rgba(12,26,46,0.85) 100%);z-index:1;}
     .hero-content{position:relative;z-index:3;max-width:760px;width:100%;}
     .hero h1{margin-bottom:14px;}
     .hero-sub{margin-bottom:24px;}
@@ -326,6 +326,66 @@
       </div>
       <div class="text-center mt-32">
         <a href="/membership" class="space-link">See full membership pricing →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FIND US ===== -->
+  <section class="section section-cream">
+    <div class="inner-container">
+      <div class="find-us-grid">
+
+        <div class="find-us-info animate-in">
+          <h2 class="section-title">Find us.</h2>
+          <p class="find-us-lead">Five minutes from Worksop town centre. Free parking right outside. No need to plan around it.</p>
+
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="map-pin" width="20" height="20"></i></div>
+            <div class="info-text">
+              <strong>Address</strong>
+              <p>30 Carlton Road, Worksop</p>
+              <p>Nottinghamshire, S80</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="car" width="20" height="20"></i></div>
+            <div class="info-text">
+              <strong>Parking</strong>
+              <p>Free on-site. Right outside — no meters, no apps, no time limit.</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="clock" width="20" height="20"></i></div>
+            <div class="info-text">
+              <strong>Hours</strong>
+              <p>Monday to Friday, business hours</p>
+              <p>Exact times confirmed at launch</p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon"><i data-lucide="mail" width="20" height="20"></i></div>
+            <div class="info-text">
+              <strong>Get in touch</strong>
+              <a href="mailto:hello@worksopworkspace.co.uk">hello@worksopworkspace.co.uk</a>
+            </div>
+          </div>
+
+          <a href="/contact" class="btn btn-dark" style="margin-top: 8px;">More info &amp; contact</a>
+        </div>
+
+        <div class="find-us-map animate-in d2">
+          <div class="map-embed">
+            <iframe
+              src="https://maps.google.com/maps?q=30+Carlton+Road,+Worksop,+Nottinghamshire&output=embed"
+              title="Worksop Workspace map"
+              allowfullscreen
+              loading="lazy"></iframe>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
