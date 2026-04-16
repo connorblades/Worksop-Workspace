@@ -462,7 +462,8 @@
         'Pulling up a chair...',
         'Almost ready...'
       ];
-      var msgIndex = 0, msgTimer = null;
+      var msgIndex = 0, msgTimer = null, pollTimer = null;
+      var dismissed = false;
 
       function startMessages() {
         msgEl.textContent = messages[0];
@@ -478,7 +479,10 @@
       }
 
       function dismiss(instant) {
+        if (dismissed) return;
+        dismissed = true;
         clearInterval(msgTimer);
+        clearInterval(pollTimer);
         if (instant) {
           loader.style.transition = 'none';
           loader.style.opacity = '0';
@@ -490,21 +494,30 @@
         }
       }
 
-      // If loader was shown by early script, start cycling messages
+      // If early script already showed the loader, start messages after a beat
       if (loader.style.display === 'flex') {
         setTimeout(startMessages, 300);
       }
 
+      // Already loaded by the time this script runs
       if (document.readyState === 'complete') {
         dismiss(true);
-      } else {
-        window.addEventListener('load', function() {
-          // Instant dismiss if page loaded fast (< 500ms), smooth fade if slow
-          dismiss(performance.now() < 500);
-        });
+        return;
       }
 
-      setTimeout(function() { dismiss(false); }, 8000);
+      // Primary: load event
+      window.addEventListener('load', function() {
+        dismiss(performance.now() < 600);
+      });
+
+      // Fallback: poll readyState every 250ms — catches cases where load never fires
+      // (e.g. a third-party iframe that never responds)
+      pollTimer = setInterval(function() {
+        if (document.readyState === 'complete') dismiss(false);
+      }, 250);
+
+      // Hard cap: 6 seconds maximum no matter what
+      setTimeout(function() { dismiss(false); }, 6000);
     })();
 
     // Header scroll shadow
