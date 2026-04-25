@@ -1,13 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://worksopworkspace.com/</loc></url>
-  <url><loc>https://worksopworkspace.com/space</loc></url>
-  <url><loc>https://worksopworkspace.com/membership</loc></url>
-  <url><loc>https://worksopworkspace.com/podcast-studio</loc></url>
-  <url><loc>https://worksopworkspace.com/meeting-room</loc></url>
-  <url><loc>https://worksopworkspace.com/community</loc></url>
-  <url><loc>https://worksopworkspace.com/contact</loc></url>
-  <url><loc>https://worksopworkspace.com/near-retford</loc></url>
-  <url><loc>https://worksopworkspace.com/near-doncaster</loc></url>
-  <url><loc>https://worksopworkspace.com/bassetlaw</loc></url>
+
+  <!-- Core pages -->
+  <url><loc>https://worksopworkspace.com/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://worksopworkspace.com/space</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://worksopworkspace.com/membership</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://worksopworkspace.com/podcast-studio</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/meeting-room</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/community</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://worksopworkspace.com/contact</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/support</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+  <url><loc>https://worksopworkspace.com/privacy-policy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://worksopworkspace.com/terms-of-business</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+
+  <!-- SEO landing pages -->
+  <url><loc>https://worksopworkspace.com/near-retford</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://worksopworkspace.com/near-doncaster</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://worksopworkspace.com/bassetlaw</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+
+  <!-- Blog index -->
+  <url><loc>https://worksopworkspace.com/blog</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+
+  <!-- Blog posts -->
+  <url><loc>https://worksopworkspace.com/blog/working-from-home-vs-coworking</loc><lastmod>2025-04-28</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/hot-desk-vs-private-office</loc><lastmod>2025-05-05</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/cost-of-working-from-a-coffee-shop</loc><lastmod>2025-05-12</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/best-workspaces-for-freelancers-nottinghamshire</loc><lastmod>2025-05-19</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/coworking-vs-office-lease</loc><lastmod>2025-05-26</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/private-office-space-small-business</loc><lastmod>2025-06-02</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/remote-working-worksop</loc><lastmod>2025-06-09</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/setting-up-self-employed-where-to-work</loc><lastmod>2025-06-16</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/flexible-office-space-nottinghamshire</loc><lastmod>2025-06-23</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/why-coworking-worksop-is-growing</loc><lastmod>2025-06-30</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/shared-office-space-worksop</loc><lastmod>2025-07-07</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://worksopworkspace.com/blog/is-coworking-worth-it-cost-breakdown</loc><lastmod>2025-07-14</lastmod><changefreq>yearly</changefreq><priority>0.7</priority></url>
+
 </urlset>
