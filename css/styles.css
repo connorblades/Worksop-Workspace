@@ -1946,3 +1946,168 @@ footer {
   object-fit: cover;
   display: block;
 }
+
+/* ================================================================
+   ENHANCED ANIMATION SYSTEM v2.4
+   ================================================================ */
+
+/* ---- Stagger extensions ---------------------------------------- */
+.d5 { animation-delay: 0.66s; }
+.d6 { animation-delay: 0.80s; }
+.d7 { animation-delay: 0.94s; }
+.d8 { animation-delay: 1.08s; }
+
+/* ---- Directional reveals (transition-based, toggled by JS) ----- */
+.animate-left,
+.animate-right,
+.animate-scale,
+.animate-fade {
+  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.animate-left  { opacity: 0; transform: translateX(-48px); }
+.animate-right { opacity: 0; transform: translateX(48px); }
+.animate-scale { opacity: 0; transform: scale(0.91) translateY(20px); }
+.animate-fade  { opacity: 0; }
+
+.animate-left.is-visible,
+.animate-right.is-visible,
+.animate-scale.is-visible,
+.animate-fade.is-visible  { opacity: 1; transform: none; }
+
+/* Stagger delays for transition-based animations */
+.animate-left.d1,  .animate-right.d1,  .animate-scale.d1  { transition-delay: 0.08s; }
+.animate-left.d2,  .animate-right.d2,  .animate-scale.d2  { transition-delay: 0.18s; }
+.animate-left.d3,  .animate-right.d3,  .animate-scale.d3  { transition-delay: 0.28s; }
+.animate-left.d4,  .animate-right.d4,  .animate-scale.d4  { transition-delay: 0.38s; }
+
+/* ---- Scroll progress bar --------------------------------------- */
+.scroll-progress {
+  position: fixed;
+  top: 0; left: 0;
+  height: 2px;
+  background: var(--clay);
+  width: 0%;
+  z-index: 200;
+  pointer-events: none;
+  transition: width 0.1s linear;
+}
+
+/* ---- Amenities ticker ----------------------------------------- */
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.ticker-strip {
+  background: var(--espresso);
+  padding: 15px 0;
+  overflow: hidden;
+  user-select: none;
+}
+.ticker-track {
+  display: flex;
+  width: max-content;
+  animation: ticker 36s linear infinite;
+}
+.ticker-strip:hover .ticker-track { animation-play-state: paused; }
+.ticker-item {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+  white-space: nowrap;
+  padding: 0 20px;
+}
+.ticker-sep {
+  color: var(--clay);
+  font-size: 1rem;
+  line-height: 1;
+  align-self: center;
+  flex-shrink: 0;
+  padding: 0 4px;
+}
+
+/* ---- Image hover zoom ----------------------------------------- */
+.img-zoom { overflow: hidden; }
+.img-zoom img,
+.img-zoom video {
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform;
+}
+.img-zoom:hover img,
+.img-zoom:hover video { transform: scale(1.06); }
+
+/* ---- Card hover lift ------------------------------------------ */
+.card-lift {
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-lift:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+}
+
+/* ---- Cinematic office reel ------------------------------------ */
+.office-reel {
+  position: relative;
+  height: 75vh;
+  min-height: 440px;
+  overflow: hidden;
+  background: var(--espresso);
+}
+.office-reel-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+.office-reel-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(26,23,20,0.10) 0%,
+    rgba(26,23,20,0.55) 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  padding: 64px 56px;
+}
+.office-reel-text { max-width: 620px; }
+.office-reel-eyebrow {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--oak);
+  margin-bottom: 14px;
+  opacity: 0;
+  animation: fadeInUp 0.8s 0.2s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.office-reel-headline {
+  font-size: clamp(2rem, 5vw, 3.75rem);
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.03em;
+  line-height: 1.08;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: fadeInUp 0.9s 0.35s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+.office-reel-cta {
+  opacity: 0;
+  animation: fadeInUp 0.8s 0.55s cubic-bezier(0.16,1,0.3,1) forwards;
+}
+@media (max-width: 640px) {
+  .office-reel { height: 65vh; min-height: 360px; }
+  .office-reel-overlay { padding: 36px 24px; }
+}
+
+/* ---- Magnetic button ------------------------------------------ */
+.btn-magnetic {
+  transition: transform 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+  will-change: transform;
+}

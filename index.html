@@ -108,6 +108,9 @@
 </head>
 <body>
 
+  <!-- Scroll progress -->
+  <div class="scroll-progress" aria-hidden="true"></div>
+
   <!-- ===== PAGE LOADER ===== -->
   <div id="page-loader">
     <div class="loader-ring-wrap">
@@ -202,19 +205,19 @@
         <p class="section-subtitle animate-in d1">Working from a kitchen table, a coffee shop, or the back of a van. You've found a way. Worksop Workspace is what you've been making do without.</p>
       </div>
       <div class="pain-grid">
-        <div class="pain-card animate-in d1">
+        <div class="pain-card animate-left card-lift">
           <div class="pain-icon"><i data-lucide="home" width="22" height="22"></i></div>
           <h3>Home doesn't work</h3>
           <p>Your home is for living in. The kitchen table, the spare room, the constant interruptions. None of it was built for a full working day. And you feel it.</p>
           <div class="pain-resolution">A dedicated desk that belongs to your work, not your home life.</div>
         </div>
-        <div class="pain-card animate-in d2">
+        <div class="pain-card animate-scale d2 card-lift">
           <div class="pain-icon"><i data-lucide="coffee" width="22" height="22"></i></div>
           <h3>Coffee shops aren't offices</h3>
           <p>£5 a drink just to keep the seat. Unreliable WiFi. Someone's call at full volume two feet away. It was never a real solution.</p>
           <div class="pain-resolution">Unlimited coffee, included. Fast WiFi. Actual quiet.</div>
         </div>
-        <div class="pain-card animate-in d3">
+        <div class="pain-card animate-right card-lift">
           <div class="pain-icon"><i data-lucide="navigation" width="22" height="22"></i></div>
           <h3>The nearest option is 18 miles away</h3>
           <p>Sheffield. Nottingham. Doncaster. The only comparable spaces are in cities, with city-centre parking costs to match. That's not local.</p>
@@ -223,6 +226,20 @@
       </div>
       <div class="text-center">
         <a href="/space" class="btn-outline">See the Space</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OFFICE REEL ===== -->
+  <section class="office-reel">
+    <video class="office-reel-video" autoplay muted loop playsinline preload="none" data-src="office.mp4">
+      <source src="office.mp4" type="video/mp4">
+    </video>
+    <div class="office-reel-overlay">
+      <div class="office-reel-text">
+        <p class="office-reel-eyebrow">The space, in motion</p>
+        <h2 class="office-reel-headline">This is your new office.</h2>
+        <a href="/space" class="btn btn-white office-reel-cta btn-magnetic">Explore the space →</a>
       </div>
     </div>
   </section>
@@ -254,6 +271,33 @@
     </div>
   </div>
 
+  <!-- ===== AMENITIES TICKER ===== -->
+  <div class="ticker-strip" aria-hidden="true">
+    <div class="ticker-track">
+      <span class="ticker-item">Fast Business WiFi</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Free Parking</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Free Coffee &amp; Tea</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Private Offices</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Hot Desks</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">No Long-Term Contracts</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Worksop Town Centre</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Community Events</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Meeting Rooms</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Podcast Studio</span><span class="ticker-sep">·</span>
+      <!-- duplicate for seamless loop -->
+      <span class="ticker-item">Fast Business WiFi</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Free Parking</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Free Coffee &amp; Tea</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Private Offices</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Hot Desks</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">No Long-Term Contracts</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Worksop Town Centre</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Community Events</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Meeting Rooms</span><span class="ticker-sep">·</span>
+      <span class="ticker-item">Podcast Studio</span><span class="ticker-sep">·</span>
+    </div>
+  </div>
+
   <!-- ===== SPACE PREVIEW ===== -->
   <section class="section section-warm">
     <div class="inner-container">
@@ -262,7 +306,7 @@
         <p class="section-subtitle animate-in d1">Designed for focus. Ready when you are.</p>
       </div>
       <div class="space-grid">
-        <a href="/space" class="space-card animate-in d1">
+        <a href="/space" class="space-card animate-left img-zoom card-lift">
           <img class="space-img" src="https://res.cloudinary.com/dvecjaoho/image/upload/v1766155747/Modern_coworking_space_with_wooden_accents_kp8lit.png" alt="Open Workspace" loading="lazy" />
           <div class="space-body">
             <span class="space-badge badge-blue">Hot Desks</span>
@@ -270,7 +314,7 @@
             <p>Hot desks in a calm, focused communal room. Free coffee, free parking, business hours Mon–Fri.</p>
           </div>
         </a>
-        <a href="/space" class="space-card animate-in d2">
+        <a href="/space" class="space-card animate-scale d2 img-zoom card-lift">
           <img class="space-img" src="https://res.cloudinary.com/dvecjaoho/image/upload/v1766155991/Modern_minimalist_coffee_shop_interior_kybdw1.png" alt="Coffee Shop Vibe" loading="lazy" />
           <div class="space-body">
             <span class="space-badge badge-purple">Coming Soon</span>
@@ -278,7 +322,7 @@
             <p>Relaxed basement co-working with ambient music. A second zone opening once the building renovation is complete.</p>
           </div>
         </a>
-        <a href="/space" class="space-card animate-in d3">
+        <a href="/space" class="space-card animate-right img-zoom card-lift">
           <img class="space-img" src="https://res.cloudinary.com/dvecjaoho/image/upload/v1766155807/ChatGPT_Image_Dec_16_2025_03_43_07_PM_gvbm3l.png" alt="Private Offices" loading="lazy" />
           <div class="space-body">
             <span class="space-badge badge-green">Private Offices</span>
@@ -301,42 +345,42 @@
         <p class="section-subtitle animate-in d1">Everything is already here. You just bring the work.</p>
       </div>
       <div class="features-grid">
-        <div class="feature-card animate-in d1">
+        <div class="feature-card animate-left">
           <div class="feature-icon"><i data-lucide="wifi" width="22" height="22"></i></div>
           <div>
             <h4>Fast, reliable WiFi</h4>
             <p>Business-grade broadband throughout. Stable enough for video calls, uploads, anything.</p>
           </div>
         </div>
-        <div class="feature-card animate-in d2">
+        <div class="feature-card animate-scale d1">
           <div class="feature-icon"><i data-lucide="armchair" width="22" height="22"></i></div>
           <div>
             <h4>A proper desk and chair</h4>
             <p>Ergonomic seating and a real workspace. The kind you'd actually choose to sit at all day.</p>
           </div>
         </div>
-        <div class="feature-card animate-in d3">
+        <div class="feature-card animate-right">
           <div class="feature-icon"><i data-lucide="coffee" width="22" height="22"></i></div>
           <div>
             <h4>Unlimited coffee and tea</h4>
             <p>Included with every visit. Help yourself whenever you need it. No tab, no guilt.</p>
           </div>
         </div>
-        <div class="feature-card animate-in d1">
+        <div class="feature-card animate-left d2">
           <div class="feature-icon"><i data-lucide="car" width="22" height="22"></i></div>
           <div>
             <h4>Free on-site parking</h4>
             <p>Right outside the building. No meters, no apps, no time limits.</p>
           </div>
         </div>
-        <div class="feature-card animate-in d2">
+        <div class="feature-card animate-scale d3">
           <div class="feature-icon"><i data-lucide="clock" width="22" height="22"></i></div>
           <div>
             <h4>Open Monday to Friday</h4>
             <p>Staffed business hours from day one. 24/7 access planned as the space grows.</p>
           </div>
         </div>
-        <div class="feature-card animate-in d3">
+        <div class="feature-card animate-right d2">
           <div class="feature-icon"><i data-lucide="calendar-check" width="22" height="22"></i></div>
           <div>
             <h4>No long-term commitment</h4>
@@ -356,7 +400,7 @@
       </div>
       <div class="pricing-grid">
 
-        <div class="pricing-card featured animate-in d1">
+        <div class="pricing-card featured animate-left card-lift">
           <span class="badge">MOST POPULAR</span>
           <h3>Hot Desk</h3>
           <div class="price">£12<span class="price-unit">/day</span></div>
@@ -372,7 +416,7 @@
           <button class="btn btn-full open-modal">Join the waiting list</button>
         </div>
 
-        <div class="pricing-card animate-in d2">
+        <div class="pricing-card animate-scale d2 card-lift">
           <h3>Private Office</h3>
           <div class="price">£125<span class="price-unit">/week</span></div>
           <p class="price-sub">~£542/month</p>
@@ -386,7 +430,7 @@
           <button class="btn btn-outline btn-full open-modal">Enquire</button>
         </div>
 
-        <div class="pricing-card phase-coming animate-in d3">
+        <div class="pricing-card phase-coming animate-right card-lift">
           <span class="badge badge-coming">COMING SOON</span>
           <h3>Dedicated Desk</h3>
           <div class="price">£40<span class="price-unit">/week</span></div>
@@ -414,7 +458,7 @@
     <div class="inner-container">
       <div class="find-us-grid">
 
-        <div class="find-us-info animate-in">
+        <div class="find-us-info animate-left">
           <h2 class="section-title">Find us.</h2>
           <p class="find-us-lead">Five minutes from Worksop town centre. Free parking right outside. No need to plan around it.</p>
 
@@ -455,7 +499,7 @@
           <a href="/contact" class="btn btn-dark" style="margin-top: 8px;">More info &amp; contact</a>
         </div>
 
-        <div class="find-us-map animate-in d2">
+        <div class="find-us-map animate-right d2">
           <div class="map-embed">
             <iframe
               src="https://maps.google.com/maps?q=30+Carlton+Road,+Worksop,+Nottinghamshire&output=embed"
@@ -531,6 +575,7 @@
 
   <!-- ===== SCRIPTS ===== -->
   <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="/js/animations.js" defer></script>
   <script>
     lucide.createIcons();
 
