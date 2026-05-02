@@ -1,5 +1,5 @@
 const http = require('http');
-const fs = require('fs');
+const fs   = require('fs');
 const path = require('path');
 
 const PORT = process.env.PORT || 8765;
@@ -18,14 +18,39 @@ http.createServer((req, res) => {
   else if (!path.extname(urlPath)) urlPath = urlPath.replace(/\/$/, '') + '/index.html';
 
   const filePath = path.join(ROOT, urlPath);
+  const ext = path.extname(filePath);
 
-  fs.readFile(filePath, (err, data) => {
-    if (err) {
-      res.writeHead(404); res.end('Not found');
+  fs.stat(filePath, (err, stat) => {
+    if (err) { res.writeHead(404); res.end('Not found'); return; }
+
+    const mime = MIME[ext] || 'application/octet-stream';
+    const rangeHeader = req.headers.range;
+
+    /* ── Range requests (required for video seeking) ── */
+    if (rangeHeader && ext === '.mp4') {
+      const fileSize = stat.size;
+      const [startStr, endStr] = rangeHeader.replace(/bytes=/, '').split('-');
+      const start = parseInt(startStr, 10);
+      const end   = endStr ? parseInt(endStr, 10) : fileSize - 1;
+      const chunk = end - start + 1;
+
+      res.writeHead(206, {
+        'Content-Range':  `bytes ${start}-${end}/${fileSize}`,
+        'Accept-Ranges':  'bytes',
+        'Content-Length': chunk,
+        'Content-Type':   mime,
+      });
+      fs.createReadStream(filePath, { start, end }).pipe(res);
       return;
     }
-    const ext = path.extname(filePath);
-    res.writeHead(200, { 'Content-Type': MIME[ext] || 'application/octet-stream' });
-    res.end(data);
+
+    /* ── Normal full-file response ── */
+    res.writeHead(200, {
+      'Content-Type':   mime,
+      'Content-Length': stat.size,
+      'Accept-Ranges':  'bytes',
+    });
+    fs.createReadStream(filePath).pipe(res);
   });
+
 }).listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));

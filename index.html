@@ -87,6 +87,93 @@
     /* Nav CTA button */
     .nav-cta { display: inline-flex; }
 
+    /* ── Scroll hero: split layout ─────────────────────────── */
+    /* Override shared full-bleed scroll-stage */
+    .scroll-stage {
+      display: grid !important;
+      grid-template-columns: 42% 58%;
+      background: var(--espresso);
+      overflow: hidden;
+    }
+
+    .scroll-left {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 88px 48px 72px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .scroll-right {
+      position: relative;
+      padding: 16px 16px 16px 0;
+      overflow: hidden;
+    }
+
+    .scroll-right #scroll-video {
+      position: static !important;
+      inset: auto !important;
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover;
+      border-radius: 8px;
+      display: block;
+    }
+
+    /* Text: on dark left panel */
+    .scroll-text {
+      color: var(--white) !important;
+      font-size: clamp(28px, 4.5vw, 60px) !important;
+    }
+
+    /* CTA fades in on last slide */
+    .scroll-cta { opacity: 0; transition: opacity 0.6s ease; }
+    .scroll-cta.visible { opacity: 1; }
+
+    /* Scroll hint bottom-left of left panel */
+    .scroll-hint {
+      position: static !important;
+      right: auto !important;
+      bottom: auto !important;
+      flex-direction: row !important;
+      align-items: center;
+      gap: 12px;
+      margin-top: 40px;
+    }
+
+    .scroll-hint-label {
+      writing-mode: horizontal-tb !important;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .scroll-bar-track {
+      width: 48px !important;
+      height: 1px !important;
+      background: rgba(255,255,255,0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-bar-fill {
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 0% !important;
+      height: 100% !important;
+      background: var(--clay);
+      transition: width 0.12s linear;
+    }
+
+    @media (max-width: 900px) {
+      .scroll-stage { grid-template-columns: 1fr !important; grid-template-rows: auto 55vw; }
+      .scroll-left { padding: 48px 24px 40px; }
+      .scroll-right { padding: 0 16px 16px; }
+      .scroll-right #scroll-video { border-radius: 6px; }
+    }
+
     /* Hero nav — transparent over video */
     .site-header.hero-nav { background: transparent; border-bottom-color: transparent !important; box-shadow: none !important; }
     .site-header.hero-nav .nav-links a { color: rgba(255,255,255,0.75); }
@@ -227,32 +314,36 @@
     <section class="scroll-scene" id="scroll-scene" aria-label="Welcome">
       <div class="scroll-stage">
 
-        <video id="scroll-video" muted playsinline preload="auto" aria-hidden="true">
-          <source src="office.mp4" type="video/mp4">
-        </video>
-
-        <div class="scroll-overlay">
+        <!-- Left: text + CTA -->
+        <div class="scroll-left">
           <div class="scroll-text-wrap">
-            <p class="scroll-text active" id="st-0">A proper place to work.</p>
-            <p class="scroll-text" id="st-1">Finally, in Worksop.</p>
-            <p class="scroll-text" id="st-2">Free parking. Free coffee.<br>No long contracts.</p>
-            <p class="scroll-text" id="st-3">Be first in the door.</p>
+            <p class="scroll-text active">A proper place to work.</p>
+            <p class="scroll-text">Finally, in Worksop.</p>
+            <p class="scroll-text">Free parking. Free coffee.<br>No long contracts.</p>
+            <p class="scroll-text">Be first in the door.</p>
           </div>
 
-          <div class="scroll-cta" id="scroll-cta-block" style="opacity:0;transition:opacity 0.6s ease;">
+          <div class="scroll-cta" id="scroll-cta-block">
             <div class="scroll-cta-buttons">
               <button class="btn btn-magnetic open-modal">Join the waiting list</button>
               <a href="/space" class="btn btn-outline-white">See the space &rarr;</a>
             </div>
             <p class="cta-phone-note">Or call Connor on <a href="tel:07739063734">07739 063734</a></p>
           </div>
+
+          <div class="scroll-hint" aria-hidden="true">
+            <span class="scroll-hint-label">Scroll</span>
+            <div class="scroll-bar-track">
+              <div class="scroll-bar-fill" id="scroll-bar-fill"></div>
+            </div>
+          </div>
         </div>
 
-        <div class="scroll-hint" aria-hidden="true">
-          <span class="scroll-hint-label">Scroll</span>
-          <div class="scroll-bar-track">
-            <div class="scroll-bar-fill" id="scroll-bar-fill"></div>
-          </div>
+        <!-- Right: video window -->
+        <div class="scroll-right">
+          <video id="scroll-video" muted playsinline preload="auto" aria-hidden="true">
+            <source src="office.mp4" type="video/mp4">
+          </video>
         </div>
 
       </div>
@@ -761,6 +852,7 @@
     var barFill  = document.getElementById('scroll-bar-fill');
     var ctaBlock = document.getElementById('scroll-cta-block');
     var texts    = document.querySelectorAll('.scroll-text');
+    var lastProgress = -1;
 
     function setActiveText(idx) {
       texts.forEach(function (el, i) {
@@ -774,31 +866,31 @@
       var scrolled    = Math.max(0, Math.min(-scene.getBoundingClientRect().top, totalScroll));
       var progress    = totalScroll > 0 ? scrolled / totalScroll : 0;
 
-      /* Advance video frames */
-      if (video && video.duration && isFinite(video.duration)) {
+      if (Math.abs(progress - lastProgress) < 0.0015) return;
+      lastProgress = progress;
+
+      /* Advance video frames — only when buffered enough to seek */
+      if (video && video.readyState >= 2 && video.duration && isFinite(video.duration)) {
         video.currentTime = progress * video.duration;
       }
 
-      /* Scroll bar */
-      if (barFill) {
-        barFill.style.height = (progress * 100) + '%';
-      }
+      /* Horizontal progress bar */
+      if (barFill) barFill.style.width = (progress * 100) + '%';
 
       /* Crossfade text */
       var idx = progress < 0.25 ? 0 : progress < 0.50 ? 1 : progress < 0.75 ? 2 : 3;
       setActiveText(idx);
 
       /* Show CTA on final slide */
-      if (ctaBlock) {
-        ctaBlock.style.opacity = progress >= 0.75 ? '1' : '0';
-      }
+      if (ctaBlock) ctaBlock.classList.toggle('visible', progress >= 0.72);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    /* Load video metadata before scrubbing */
+    /* Prime seeking as soon as data is available */
     if (video) {
       video.addEventListener('loadedmetadata', onScroll);
+      video.addEventListener('canplay', onScroll);
       video.load();
     }
 
