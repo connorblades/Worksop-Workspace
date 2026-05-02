@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=30" />
+  <link rel="stylesheet" href="css/styles.css?v=36" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -88,11 +88,10 @@
     .nav-cta { display: inline-flex; }
 
     /* ── Scroll hero: split layout ─────────────────────────── */
-    /* Override shared full-bleed scroll-stage */
     .scroll-stage {
       display: grid !important;
       grid-template-columns: 42% 58%;
-      background: var(--espresso);
+      background: var(--white);
       overflow: hidden;
     }
 
@@ -107,8 +106,9 @@
 
     .scroll-right {
       position: relative;
-      padding: 16px 16px 16px 0;
+      padding: 0;
       overflow: hidden;
+      background: var(--white);
     }
 
     .scroll-right #scroll-video {
@@ -116,20 +116,76 @@
       inset: auto !important;
       width: 100% !important;
       height: 100% !important;
-      object-fit: cover;
-      border-radius: 8px;
+      object-fit: contain;
+      border-radius: 0;
       display: block;
+      transform: scale(0.82);
+      transform-origin: center center;
+      will-change: transform;
     }
 
-    /* Text: on dark left panel */
+    /* Text: on white left panel */
     .scroll-text {
-      color: var(--white) !important;
+      color: var(--espresso) !important;
       font-size: clamp(28px, 4.5vw, 60px) !important;
+    }
+
+    /* Subtitle hint — fades out once scrolling begins */
+    .scroll-subtitle {
+      font-size: 15px;
+      color: rgba(26,23,20,0.42);
+      margin-top: 18px;
+      margin-bottom: 0;
+      opacity: 1;
+      transition: opacity 0.5s ease;
+      line-height: 1.5;
     }
 
     /* CTA fades in on last slide */
     .scroll-cta { opacity: 0; transition: opacity 0.6s ease; }
     .scroll-cta.visible { opacity: 1; }
+
+    /* Override CTA buttons for white background */
+    .scroll-cta .btn-outline-white {
+      border-color: var(--espresso) !important;
+      color: var(--espresso) !important;
+    }
+    .scroll-cta .btn-outline-white:hover {
+      background: var(--espresso) !important;
+      color: var(--white) !important;
+    }
+    .scroll-cta .cta-phone-note { color: rgba(26,23,20,0.45); }
+    .scroll-cta .cta-phone-note a { color: var(--clay); }
+
+    /* Scroll prompt — bottom-centre of hero, fades on scroll */
+    .scroll-prompt {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      opacity: 1;
+      transition: opacity 0.4s ease;
+      pointer-events: none;
+      z-index: 10;
+    }
+    .scroll-prompt-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(26,23,20,0.4);
+    }
+    .scroll-prompt-arrow {
+      animation: scrollBounce 1.4s ease-in-out infinite;
+    }
+    @keyframes scrollBounce {
+      0%, 100% { transform: translateY(0); opacity: 0.4; }
+      50%       { transform: translateY(5px); opacity: 0.9; }
+    }
 
     /* Scroll hint bottom-left of left panel */
     .scroll-hint {
@@ -147,13 +203,13 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.14em;
-      color: rgba(255,255,255,0.35);
+      color: rgba(26,23,20,0.35);
     }
 
     .scroll-bar-track {
       width: 48px !important;
       height: 1px !important;
-      background: rgba(255,255,255,0.15);
+      background: rgba(26,23,20,0.12);
       position: relative;
       overflow: hidden;
     }
@@ -168,19 +224,23 @@
     }
 
     @media (max-width: 900px) {
-      .scroll-stage { grid-template-columns: 1fr !important; grid-template-rows: auto 55vw; }
-      .scroll-left { padding: 48px 24px 40px; }
-      .scroll-right { padding: 0 16px 16px; }
-      .scroll-right #scroll-video { border-radius: 6px; }
+      .scroll-stage { grid-template-columns: 1fr !important; grid-template-rows: 34vh 66vh; }
+      .scroll-left { padding: 96px 28px 16px; justify-content: flex-start; }
+      .scroll-right { padding: 0; }
+      .scroll-text { font-size: clamp(26px, 7.5vw, 42px) !important; }
+      .scroll-cta { margin-top: 20px; }
+      .scroll-hint { display: none; }
+      .scroll-prompt { bottom: 16px; }
     }
 
-    /* Hero nav — transparent over video */
+    /* Hero nav — transparent over white hero */
     .site-header.hero-nav { background: transparent; border-bottom-color: transparent !important; box-shadow: none !important; }
-    .site-header.hero-nav .nav-links a { color: rgba(255,255,255,0.75); }
-    .site-header.hero-nav .nav-links a:hover { color: var(--white); }
-    .site-header.hero-nav .nav-links a::after { background: var(--white); }
-    .site-header.hero-nav .logo img { filter: brightness(0) invert(1); }
-    .site-header.hero-nav .nav-toggle .bar { background: var(--white); }
+    .site-header.hero-nav .nav-links a { color: var(--espresso); }
+    .site-header.hero-nav .nav-links a:hover { color: var(--clay); }
+    .site-header.hero-nav .nav-links a::after { background: var(--espresso); }
+    .site-header.hero-nav .logo img { filter: none; }
+    .site-header.hero-nav .nav-toggle .bar { background: var(--espresso); }
+    .site-header.hero-nav .nav-cta { display: inline-flex; }
 
     /* Blog teaser */
     .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
@@ -196,7 +256,7 @@
     .blog-date { font-size: 12px; color: var(--muted); margin-top: 16px; display: block; }
 
     /* Mobile nav drawer */
-    .mobile-nav { display: none; position: fixed; inset: 0; top: 64px; background: var(--white); z-index: 99; flex-direction: column; padding: 40px var(--px); gap: 8px; border-top: 1px solid var(--line); }
+    .mobile-nav { display: none; position: fixed; inset: 0; top: 80px; background: var(--white); z-index: 99; flex-direction: column; padding: 40px var(--px); gap: 8px; border-top: 1px solid var(--line); }
     .mobile-nav.open { display: flex; }
     .mobile-nav a { font-size: 22px; font-weight: 600; color: var(--espresso); padding: 12px 0; border-bottom: 1px solid var(--line); }
     .mobile-nav .btn { margin-top: 20px; width: 100%; justify-content: center; font-size: 16px; }
@@ -323,6 +383,8 @@
             <p class="scroll-text">Be first in the door.</p>
           </div>
 
+          <p class="scroll-subtitle" id="scroll-subtitle">Scroll down to watch the space come alive.</p>
+
           <div class="scroll-cta" id="scroll-cta-block">
             <div class="scroll-cta-buttons">
               <button class="btn btn-magnetic open-modal">Join the waiting list</button>
@@ -344,6 +406,12 @@
           <video id="scroll-video" muted playsinline preload="auto" aria-hidden="true">
             <source src="office.mp4" type="video/mp4">
           </video>
+        </div>
+
+        <!-- Scroll prompt -->
+        <div class="scroll-prompt" id="scroll-prompt" aria-hidden="true">
+          <span class="scroll-prompt-label">Scroll</span>
+          <svg class="scroll-prompt-arrow" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(26,23,20,0.55)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
 
       </div>
@@ -836,7 +904,7 @@
 
     function updateHeader() {
       var sceneBottom = scene ? scene.getBoundingClientRect().bottom : 0;
-      if (sceneBottom > 64) {
+      if (sceneBottom > 80) {
         header.classList.add('hero-nav');
         header.classList.remove('scrolled');
       } else {
@@ -848,11 +916,15 @@
     updateHeader();
 
     /* ── Scroll-scrub cinematic hero ─────────────────────── */
-    var video    = document.getElementById('scroll-video');
-    var barFill  = document.getElementById('scroll-bar-fill');
-    var ctaBlock = document.getElementById('scroll-cta-block');
+    var video          = document.getElementById('scroll-video');
+    var barFill        = document.getElementById('scroll-bar-fill');
+    var ctaBlock       = document.getElementById('scroll-cta-block');
+    var scrollPrompt   = document.getElementById('scroll-prompt');
+    var scrollSubtitle = document.getElementById('scroll-subtitle');
     var texts    = document.querySelectorAll('.scroll-text');
-    var lastProgress = -1;
+    var rafId    = null;
+    var targetProgress = 0;
+    var lastProgress   = -1;
 
     function setActiveText(idx) {
       texts.forEach(function (el, i) {
@@ -860,37 +932,90 @@
       });
     }
 
-    function onScroll() {
-      if (!scene) return;
-      var totalScroll = scene.offsetHeight - window.innerHeight;
-      var scrolled    = Math.max(0, Math.min(-scene.getBoundingClientRect().top, totalScroll));
-      var progress    = totalScroll > 0 ? scrolled / totalScroll : 0;
-
-      if (Math.abs(progress - lastProgress) < 0.0015) return;
+    function applyProgress(progress) {
+      if (Math.abs(progress - lastProgress) < 0.001) return;
       lastProgress = progress;
 
-      /* Advance video frames — only when buffered enough to seek */
+      /* Advance video — fastSeek where supported (skips to nearest keyframe,
+         much faster than currentTime assignment on most browsers) */
       if (video && video.readyState >= 2 && video.duration && isFinite(video.duration)) {
-        video.currentTime = progress * video.duration;
+        var t = progress * video.duration;
+        if (typeof video.fastSeek === 'function') {
+          video.fastSeek(t);
+        } else {
+          video.currentTime = t;
+        }
       }
 
-      /* Horizontal progress bar */
-      if (barFill) barFill.style.width = (progress * 100) + '%';
+      /* Zoom: scale 0.82 → 1.0 as progress goes 0 → 1 */
+      if (video) {
+        var scale = 0.82 + progress * 0.18;
+        video.style.transform = 'scale(' + scale.toFixed(4) + ')';
+      }
 
-      /* Crossfade text */
+      if (barFill) barFill.style.width = (progress * 100) + '%';
+      var hintVisible = progress > 0.06 ? '0' : '1';
+      if (scrollPrompt)   scrollPrompt.style.opacity   = hintVisible;
+      if (scrollSubtitle) scrollSubtitle.style.opacity = hintVisible;
+
       var idx = progress < 0.25 ? 0 : progress < 0.50 ? 1 : progress < 0.75 ? 2 : 3;
       setActiveText(idx);
 
-      /* Show CTA on final slide */
       if (ctaBlock) ctaBlock.classList.toggle('visible', progress >= 0.72);
+    }
+
+    function rafLoop() {
+      rafId = null;
+      applyProgress(targetProgress);
+    }
+
+    var teaserRunning = false;
+
+    function onScroll() {
+      teaserRunning = false;
+      if (!scene) return;
+      var totalScroll = scene.offsetHeight - window.innerHeight;
+      var scrolled    = Math.max(0, Math.min(-scene.getBoundingClientRect().top, totalScroll));
+      targetProgress  = totalScroll > 0 ? scrolled / totalScroll : 0;
+      if (!rafId) rafId = requestAnimationFrame(rafLoop);
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
 
-    /* Prime seeking as soon as data is available */
+    /* Teaser: after 2s, briefly zoom the room forward then snap back
+       so visitors know scrolling does something */
+    setTimeout(function () {
+      if (window.scrollY > 10) return;
+      teaserRunning = true;
+      var tStart = null;
+      var DURATION = 1600;
+      var PEAK = 0.22;
+      function teaserFrame(ts) {
+        if (!teaserRunning) return;
+        if (!tStart) tStart = ts;
+        var elapsed = ts - tStart;
+        var half = DURATION / 2;
+        var p;
+        if (elapsed < half) {
+          p = (elapsed / half) * PEAK;
+        } else if (elapsed < DURATION) {
+          p = ((DURATION - elapsed) / half) * PEAK;
+        } else {
+          teaserRunning = false;
+          applyProgress(0);
+          return;
+        }
+        applyProgress(p);
+        requestAnimationFrame(teaserFrame);
+      }
+      requestAnimationFrame(teaserFrame);
+    }, 2000);
+
     if (video) {
-      video.addEventListener('loadedmetadata', onScroll);
-      video.addEventListener('canplay', onScroll);
+      /* Decode as many frames as possible up front */
+      video.preload = 'auto';
+      video.addEventListener('loadedmetadata', function () { applyProgress(targetProgress); });
+      video.addEventListener('canplaythrough',  function () { applyProgress(targetProgress); });
       video.load();
     }
 
