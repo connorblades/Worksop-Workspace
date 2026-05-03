@@ -381,6 +381,7 @@ p:last-child { margin-bottom: 0; }
   height: 100vh;
   overflow: hidden;
   background: var(--espresso);
+  z-index: 1;
 }
 
 #scroll-video {

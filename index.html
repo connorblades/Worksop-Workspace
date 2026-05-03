@@ -225,10 +225,11 @@
 
     @media (max-width: 900px) {
       .scroll-stage { grid-template-columns: 1fr !important; grid-template-rows: 34vh 66vh; }
-      .scroll-left { padding: 96px 28px 16px; justify-content: flex-start; }
+      .scroll-left { padding: 88px 28px 12px; justify-content: flex-start; }
       .scroll-right { padding: 0; }
-      .scroll-text { font-size: clamp(26px, 7.5vw, 42px) !important; }
-      .scroll-cta { margin-top: 20px; }
+      .scroll-text { font-size: clamp(24px, 7vw, 40px) !important; top: 0 !important; bottom: auto !important; }
+      .scroll-text-wrap { height: auto !important; margin-bottom: 10px; }
+      .scroll-cta { margin-top: 8px; }
       .scroll-hint { display: none; }
       .scroll-prompt { bottom: 16px; }
     }
