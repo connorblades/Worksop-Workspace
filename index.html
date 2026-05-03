@@ -994,9 +994,11 @@
       if (Math.abs(progress - lastProgress) < 0.001) return;
       lastProgress = progress;
 
-      /* Compute target video time. Power curve front-loads scrub. */
+      /* Compute target video time. Cap at progress=0.75 (end of "Free
+         parking. Free coffee.") so the fully-furnished frame holds steady
+         through the final scroll phase. Power curve front-loads the scrub. */
       if (video && video.duration && isFinite(video.duration)) {
-        videoTargetT = Math.pow(progress, 0.6) * video.duration;
+        videoTargetT = Math.pow(Math.min(progress, 0.75), 0.6) * video.duration;
       }
 
       /* Zoom: scale 0.82 → 1.0 as progress goes 0 → 1 */
