@@ -259,7 +259,8 @@
       .scroll-left { padding: 140px 28px 24px; justify-content: flex-start; position: relative; }
       .scroll-right { padding: 0; }
       .scroll-text { position: relative !important; top: auto !important; bottom: auto !important; font-size: clamp(24px, 7vw, 40px) !important; display: none; }
-      .scroll-text.active, .scroll-text.exiting { display: block; }
+      .scroll-text.active { display: block; }
+      .scroll-text.exiting { display: none !important; }
       .scroll-text-wrap { height: auto !important; position: static !important; margin-bottom: 10px; }
       .scroll-cta { position: absolute !important; bottom: 24px; left: 28px; right: 28px; }
       .scroll-hint { display: none; }
@@ -978,16 +979,11 @@
       if (Math.abs(progress - lastProgress) < 0.001) return;
       lastProgress = progress;
 
-      /* Advance video — fastSeek where supported (skips to nearest keyframe,
-         much faster than currentTime assignment on most browsers).
-         Power curve (0.6) makes furniture appear sooner in the scroll. */
+      /* Advance video. Power curve (0.6) makes furniture appear sooner.
+         Use currentTime directly — fastSeek() freezes on iOS Safari after
+         seeking back to 0 (decoder needs playbackRate=0 to stay active). */
       if (video && video.readyState >= 2 && video.duration && isFinite(video.duration)) {
-        var t = Math.pow(progress, 0.6) * video.duration;
-        if (typeof video.fastSeek === 'function') {
-          video.fastSeek(t);
-        } else {
-          video.currentTime = t;
-        }
+        video.currentTime = Math.pow(progress, 0.6) * video.duration;
       }
 
       /* Zoom: scale 0.82 → 1.0 as progress goes 0 → 1 */
@@ -1055,10 +1051,15 @@
     }, 2000);
 
     if (video) {
-      /* Decode as many frames as possible up front */
+      /* Keep playbackRate=0 so iOS Safari decoder stays active between seeks.
+         Without this, fastSeek/currentTime freezes after returning to frame 0. */
       video.preload = 'auto';
-      video.addEventListener('loadedmetadata', function () { applyProgress(targetProgress); });
-      video.addEventListener('canplaythrough',  function () { applyProgress(targetProgress); });
+      video.playbackRate = 0;
+      video.addEventListener('loadedmetadata', function () {
+        video.play().catch(function () {});
+        applyProgress(targetProgress);
+      });
+      video.addEventListener('canplaythrough', function () { applyProgress(targetProgress); });
       video.load();
     }
 
