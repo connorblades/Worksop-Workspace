@@ -1051,10 +1051,11 @@
     }, 2000);
 
     if (video) {
-      /* Keep playbackRate=0 so iOS Safari decoder stays active between seeks.
-         Without this, fastSeek/currentTime freezes after returning to frame 0. */
+      /* playbackRate=0.00001 keeps iOS Safari's decoder truly active (rate=0
+         is treated as paused and ignores currentTime changes between seeks).
+         At this rate the video self-advances ~0.0001s per second — invisible. */
       video.preload = 'auto';
-      video.playbackRate = 0;
+      video.playbackRate = 0.00001;
       video.addEventListener('loadedmetadata', function () {
         video.play().catch(function () {});
         applyProgress(targetProgress);
