@@ -1618,3 +1618,199 @@ footer,
   .pricing-grid { max-width: none; }
   .gym-pillars { grid-template-columns: 1fr; }
 }
+
+/* ---- FAQ Accordion ---------------------------------------- */
+.faq-list {
+  max-width: 740px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 22px 0;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--espresso);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s;
+}
+
+.faq-q:hover { color: var(--clay); }
+
+.faq-icon {
+  flex-shrink: 0;
+  color: var(--stone);
+  transition: transform 0.3s ease, color 0.2s;
+}
+
+.faq-item.open .faq-icon {
+  transform: rotate(45deg);
+  color: var(--clay);
+}
+
+.faq-a {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.open .faq-a {
+  max-height: 400px;
+}
+
+.faq-a-inner {
+  padding-bottom: 22px;
+  color: var(--stone);
+  line-height: 1.75;
+  font-size: 16px;
+}
+
+/* faq-question/faq-answer variant (meeting-room, podcast-studio) */
+.faq-question {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 22px 0;
+  font-size: 17px;
+  font-weight: 500;
+  color: var(--espresso);
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  text-align: left;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.faq-question:hover { color: var(--clay); }
+
+.faq-question::after {
+  content: '+';
+  font-size: 22px;
+  font-weight: 400;
+  flex-shrink: 0;
+  margin-left: 16px;
+  color: var(--stone);
+  transition: transform 0.3s ease, color 0.2s;
+  display: inline-block;
+}
+
+.faq-item.open .faq-question { color: var(--clay); }
+.faq-item.open .faq-question::after { transform: rotate(45deg); color: var(--clay); }
+
+.faq-answer {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq-item.open .faq-answer { max-height: 400px; }
+
+.faq-answer p {
+  padding: 16px 0 22px;
+  color: var(--stone);
+  line-height: 1.75;
+  font-size: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.faq-item:first-child .faq-question { border-top: 1px solid var(--line); }
+
+/* ---- Comparison Table ------------------------------------- */
+.comparison-table {
+  width: 100%;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--line);
+  margin: 32px 0;
+}
+
+.cmp-row {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 0;
+}
+
+.cmp-row > div {
+  padding: 14px 20px;
+  font-size: 15px;
+  color: var(--stone);
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.cmp-row > div:last-child { border-right: none; }
+
+.cmp-header {
+  background: var(--espresso);
+}
+
+.cmp-header > div {
+  color: var(--white);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border-color: rgba(255,255,255,0.12);
+}
+
+.cmp-row:nth-child(even) > div { background: var(--linen); }
+
+.cmp-total > div {
+  font-weight: 700;
+  color: var(--espresso);
+  background: var(--linen) !important;
+  font-size: 16px;
+  border-bottom: none;
+}
+
+.cmp-total > div:nth-child(3) {
+  color: var(--clay);
+}
+
+.savings-callout {
+  text-align: center;
+  background: var(--clay);
+  color: var(--white);
+  padding: 18px 28px;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: 17px;
+  margin: 16px 0 10px;
+}
+
+.cmp-note {
+  font-size: 12px;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 10px;
+}
+
+@media (max-width: 640px) {
+  .cmp-row { grid-template-columns: 1fr 1fr; }
+  .cmp-row > div:first-child {
+    grid-column: 1 / -1;
+    background: var(--linen);
+    font-weight: 600;
+    color: var(--espresso);
+    font-size: 13px;
+    padding: 10px 16px 4px;
+    border-bottom: none;
+  }
+  .cmp-row > div:not(:first-child) { padding: 8px 16px 14px; border-top: none; }
+  .cmp-header > div:first-child { display: none; }
+  .cmp-header { grid-template-columns: 1fr 1fr; }
+}
