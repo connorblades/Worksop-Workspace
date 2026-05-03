@@ -1014,10 +1014,7 @@
         var drift   = (1 - progress) * 30; /* slides left 30px → 0 */
         video.style.transform = 'scale(' + scale.toFixed(3) + ') translateX(' + drift.toFixed(1) + 'px)';
 
-        /* Greyscale at start, full colour by 60% scroll; subtle brightness lift */
-        var sat = Math.min(progress / 0.6, 1);
-        var bri = 0.78 + 0.22 * Math.min(progress / 0.5, 1);
-        video.style.filter = 'saturate(' + sat.toFixed(3) + ') brightness(' + bri.toFixed(3) + ')';
+        video.style.filter = '';
       }
 
       if (barFill) barFill.style.width = (progress * 100) + '%';
