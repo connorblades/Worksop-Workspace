@@ -256,10 +256,11 @@
 
     @media (max-width: 900px) {
       .scroll-stage { grid-template-columns: 1fr !important; grid-template-rows: 34vh 66vh; }
-      .scroll-left { padding: 88px 28px 12px; justify-content: flex-start; }
+      .scroll-left { padding: 88px 28px 20px; justify-content: flex-end; }
       .scroll-right { padding: 0; }
-      .scroll-text { font-size: clamp(24px, 7vw, 40px) !important; top: 0 !important; bottom: auto !important; }
-      .scroll-text-wrap { height: auto !important; margin-bottom: 10px; }
+      .scroll-text { position: relative !important; top: auto !important; bottom: auto !important; font-size: clamp(24px, 7vw, 40px) !important; display: none; }
+      .scroll-text.active, .scroll-text.exiting { display: block; }
+      .scroll-text-wrap { height: auto !important; position: static !important; margin-bottom: 10px; }
       .scroll-cta { margin-top: 8px; }
       .scroll-hint { display: none; }
       .scroll-prompt { bottom: 16px; }
