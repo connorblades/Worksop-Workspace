@@ -978,7 +978,7 @@
     /* Video scrub loop — runs every RAF so iOS decoder stays flushed.
        Only seeks when time differs by > one frame (~0.04s at 24fps).
        Video stays paused; continuous currentTime writes force frame decode. */
-    var videoTargetT = 0.5;
+    var videoTargetT = 0;
     function videoScrubLoop() {
       if (video && video.readyState >= 2 && video.duration && isFinite(video.duration)) {
         if (Math.abs(video.currentTime - videoTargetT) > 0.04) {
@@ -993,11 +993,9 @@
       if (Math.abs(progress - lastProgress) < 0.001) return;
       lastProgress = progress;
 
-      /* Compute target video time. Start at 0.5s (desk materialising) so
-         progress=0 never shows the empty room. Power curve front-loads scrub. */
+      /* Compute target video time. Power curve front-loads scrub. */
       if (video && video.duration && isFinite(video.duration)) {
-        var startT = 0.5;
-        videoTargetT = startT + Math.pow(progress, 0.6) * Math.max(0, video.duration - startT);
+        videoTargetT = Math.pow(progress, 0.6) * video.duration;
       }
 
       /* Zoom: scale 0.82 → 1.0 as progress goes 0 → 1 */
