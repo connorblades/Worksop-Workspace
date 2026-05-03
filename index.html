@@ -979,9 +979,10 @@
       lastProgress = progress;
 
       /* Advance video — fastSeek where supported (skips to nearest keyframe,
-         much faster than currentTime assignment on most browsers) */
+         much faster than currentTime assignment on most browsers).
+         Power curve (0.6) makes furniture appear sooner in the scroll. */
       if (video && video.readyState >= 2 && video.duration && isFinite(video.duration)) {
-        var t = progress * video.duration;
+        var t = Math.pow(progress, 0.6) * video.duration;
         if (typeof video.fastSeek === 'function') {
           video.fastSeek(t);
         } else {
