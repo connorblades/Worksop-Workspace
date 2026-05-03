@@ -975,16 +975,29 @@
       });
     }
 
+    /* Video scrub loop — runs every RAF so iOS decoder stays flushed.
+       Only seeks when time differs by > one frame (~0.04s at 24fps).
+       Video stays paused; continuous currentTime writes force frame decode. */
+    var videoTargetT = 0.5;
+    function videoScrubLoop() {
+      if (video && video.readyState >= 2 && video.duration && isFinite(video.duration)) {
+        if (Math.abs(video.currentTime - videoTargetT) > 0.04) {
+          video.currentTime = videoTargetT;
+        }
+      }
+      requestAnimationFrame(videoScrubLoop);
+    }
+    requestAnimationFrame(videoScrubLoop);
+
     function applyProgress(progress) {
       if (Math.abs(progress - lastProgress) < 0.001) return;
       lastProgress = progress;
 
-      /* Advance video. Start at 0.5s (desk already materialising) so
-         progress=0 never shows the empty room. Power curve keeps the
-         scrub feeling front-loaded. */
-      if (video && video.readyState >= 2 && video.duration && isFinite(video.duration)) {
+      /* Compute target video time. Start at 0.5s (desk materialising) so
+         progress=0 never shows the empty room. Power curve front-loads scrub. */
+      if (video && video.duration && isFinite(video.duration)) {
         var startT = 0.5;
-        video.currentTime = startT + Math.pow(progress, 0.6) * Math.max(0, video.duration - startT);
+        videoTargetT = startT + Math.pow(progress, 0.6) * Math.max(0, video.duration - startT);
       }
 
       /* Zoom: scale 0.82 → 1.0 as progress goes 0 → 1 */
@@ -1052,16 +1065,9 @@
     }, 2000);
 
     if (video) {
-      /* playbackRate=0.00001 keeps iOS Safari's decoder truly active (rate=0
-         is treated as paused and ignores currentTime changes between seeks).
-         At this rate the video self-advances ~0.0001s per second — invisible. */
       video.preload = 'auto';
-      video.playbackRate = 0.00001;
-      video.addEventListener('loadedmetadata', function () {
-        video.play().catch(function () {});
-        applyProgress(targetProgress);
-      });
-      video.addEventListener('canplaythrough', function () { applyProgress(targetProgress); });
+      video.addEventListener('loadedmetadata', function () { applyProgress(targetProgress); });
+      video.addEventListener('canplaythrough',  function () { applyProgress(targetProgress); });
       video.load();
     }
 
