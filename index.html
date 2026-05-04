@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=39" />
+  <link rel="stylesheet" href="css/styles.css?v=40" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -105,37 +105,58 @@
       overflow: visible;
     }
 
-    /* Gradient bleeds right so text stays readable over the video edge */
+    /* Gradient bleeds right so text stays readable over the video edge.
+       Slow 2D drift in an elliptical path keeps the hero alive without
+       feeling jittery. */
     .scroll-text-wrap {
       padding-right: 56px;
       background: linear-gradient(to right, var(--white) 78%, transparent 100%);
       margin-right: -32px;
-      animation: heroTextDrift 9s ease-in-out infinite alternate;
+      animation: heroTextDrift 11s ease-in-out infinite;
     }
 
     @keyframes heroTextDrift {
-      0%   { transform: translateX(-6px); }
-      50%  { transform: translateX(6px); }
-      100% { transform: translateX(-6px); }
+      0%   { transform: translate(-7px, 0); }
+      25%  { transform: translate(0, -4px); }
+      50%  { transform: translate(7px, 0); }
+      75%  { transform: translate(0, 4px); }
+      100% { transform: translate(-7px, 0); }
     }
 
+    /* Active hero text line: subtle breathe so it feels alive while
+       you're reading it */
+    .scroll-text.active {
+      animation: heroLineBreathe 4.5s ease-in-out infinite;
+    }
+
+    @keyframes heroLineBreathe {
+      0%, 100% { letter-spacing: -0.03em; }
+      50%      { letter-spacing: -0.025em; }
+    }
+
+    /* Video panel — opacity 0 until metadata loads (kills first-load
+       flicker) and translated 72px right so the swoosh-in animates
+       the PARENT, leaving the video free for JS-driven scroll zoom. */
     .scroll-right {
       position: relative;
       padding: 0;
       overflow: hidden;
       background: var(--white);
+      opacity: 0;
+      transform: translateX(72px);
+      will-change: transform, opacity;
+    }
+    .scroll-right.swoosh-in {
+      animation: panelSwoosh 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    @keyframes panelSwoosh {
+      from { opacity: 0; transform: translateX(72px); }
+      to   { opacity: 1; transform: translateX(0); }
     }
 
-    /* Swoosh-in: video panel slides in from the right on first paint */
-    .scroll-right.swoosh-in #scroll-video {
-      animation: videoSwoosh 1.4s cubic-bezier(0.16, 1, 0.3, 1) both;
-    }
-    @keyframes videoSwoosh {
-      0%   { opacity: 0; transform: translateX(72px) scale(0.78); }
-      60%  { opacity: 1; }
-      100% { opacity: 1; transform: translateX(0) scale(0.82); }
-    }
-
+    /* Video itself — JS sets transform on scroll for zoom + drift.
+       Initial scale(0.82) matches the JS scrub starting point so
+       there's no jump when the loop takes over. */
     .scroll-right #scroll-video {
       position: static !important;
       inset: auto !important;
@@ -147,12 +168,6 @@
       transform: scale(0.82);
       transform-origin: center center;
       will-change: transform;
-      /* hide while video metadata loads to avoid first-frame flicker */
-      opacity: 0;
-      transition: opacity 0.5s ease;
-    }
-    .scroll-right.video-ready #scroll-video {
-      opacity: 1;
     }
 
     /* Text: on white left panel */
@@ -182,9 +197,18 @@
       line-height: 1.5;
     }
 
-    /* CTA fades in on last slide */
+    /* CTA fades in on last slide. Once visible, the primary button
+       gets a soft attention pulse drawing the eye to "Join the
+       waiting list" without being shouty. */
     .scroll-cta { opacity: 0; transition: opacity 0.6s ease; }
     .scroll-cta.visible { opacity: 1; }
+    .scroll-cta.visible .btn-magnetic {
+      animation: ctaPulse 2.6s ease-in-out 0.4s infinite;
+    }
+    @keyframes ctaPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(197,123,87,0.35); }
+      50%      { box-shadow: 0 0 0 10px rgba(197,123,87,0); }
+    }
 
     /* Override CTA buttons for white background */
     .scroll-cta .btn-outline-white {
@@ -1134,15 +1158,16 @@
       video.addEventListener('loadedmetadata', function () {
         try { video.currentTime = 0; } catch (e) {}
         videoReady = true;
+        /* Apply the JS-driven scale/drift FIRST so when the parent's
+           swoosh-in fades the panel in, the video is already at its
+           correct scroll-position scale. Prevents the video appearing
+           at the wrong size for one frame. */
+        applyProgress(targetProgress);
         if (videoPanel) {
-          videoPanel.classList.add('video-ready');
-          /* Trigger the swoosh-in only once metadata is in, so the
-             panel arrives mid-animation instead of flickering frames */
           requestAnimationFrame(function () {
             videoPanel.classList.add('swoosh-in');
           });
         }
-        applyProgress(targetProgress);
       });
       video.addEventListener('canplaythrough', function () { applyProgress(targetProgress); });
       video.load();
