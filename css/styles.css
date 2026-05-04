@@ -1832,20 +1832,20 @@ footer,
 
 /* ---- Floor plan on white --------------------------------- */
 .floorplan-wrap {
-  background: var(--white);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  padding: 32px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   text-align: center;
-  box-shadow: 0 24px 60px rgba(26,23,20,0.06);
-  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: none;
 }
-.floorplan-wrap:hover { transform: translateY(-4px); }
 .floorplan-img {
   max-width: 100%;
   height: auto;
   display: block;
   margin: 0 auto;
+  background: transparent;
+  mix-blend-mode: multiply;
 }
 
 /* ---- Horizontal hover-expand gallery (Space page) -------- */
