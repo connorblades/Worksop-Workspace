@@ -1619,6 +1619,383 @@ footer,
   .gym-pillars { grid-template-columns: 1fr; }
 }
 
+/* ---- Bubble cards (homepage problem section) -------------- */
+.bubble-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.bubble-card {
+  position: relative;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 56px 32px 36px;
+  text-align: left;
+  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
+              box-shadow 0.35s cubic-bezier(0.16,1,0.3,1),
+              border-color 0.25s;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.bubble-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  background: radial-gradient(140% 90% at 0% 0%, rgba(201,165,123,0.18), transparent 55%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.bubble-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--oak-soft);
+}
+
+.bubble-card:hover::before { opacity: 1; }
+
+.bubble-number {
+  position: absolute;
+  top: -18px;
+  left: 28px;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clay);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  box-shadow: 0 6px 18px rgba(197,123,87,0.28);
+  animation: bubbleFloat 4s ease-in-out infinite;
+}
+
+.bubble-card:nth-child(2) .bubble-number { animation-delay: 0.6s; background: var(--sage); box-shadow: 0 6px 18px rgba(142,151,117,0.28); }
+.bubble-card:nth-child(3) .bubble-number { animation-delay: 1.2s; background: var(--espresso); box-shadow: 0 6px 18px rgba(26,23,20,0.28); }
+
+@keyframes bubbleFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-4px); }
+}
+
+.bubble-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--espresso);
+}
+
+.bubble-card p {
+  font-size: 15px;
+  color: var(--stone);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.bubble-resolution {
+  font-size: 14px !important;
+  color: var(--sage) !important;
+  font-weight: 500 !important;
+  padding-top: 16px;
+  border-top: 1px solid var(--line);
+  line-height: 1.55;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .bubble-grid { grid-template-columns: 1fr; gap: 28px; }
+  .bubble-card { padding: 48px 28px 32px; }
+}
+
+/* ---- Transport panel (homepage Find us) ------------------- */
+.transport-panel {
+  margin-top: 80px;
+  padding: 56px 48px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+
+.transport-head {
+  max-width: 640px;
+  margin: 0 auto 40px;
+  text-align: center;
+}
+
+.transport-head h3 {
+  font-size: clamp(24px, 3vw, 32px);
+  margin: 12px 0 14px;
+  color: var(--espresso);
+  letter-spacing: -0.02em;
+}
+
+.transport-head p {
+  font-size: 16px;
+  color: var(--stone);
+  line-height: 1.65;
+  margin: 0;
+}
+
+.transport-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.transport-card {
+  padding: 32px 28px;
+  background: var(--linen);
+  border-radius: 8px;
+  border: 1px solid transparent;
+  transition: border-color 0.25s, transform 0.25s;
+}
+
+.transport-card:hover {
+  border-color: var(--oak-soft);
+  transform: translateY(-2px);
+}
+
+.transport-icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: var(--white);
+  color: var(--sage);
+  margin-bottom: 18px;
+}
+
+.transport-card h4 {
+  color: var(--espresso);
+  text-transform: none;
+  letter-spacing: -0.01em;
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.transport-card p {
+  font-size: 14px;
+  color: var(--stone);
+  line-height: 1.6;
+  margin-bottom: 14px;
+}
+
+.transport-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--clay);
+  letter-spacing: 0.01em;
+  transition: color 0.2s;
+}
+.transport-link:hover { color: #b06b48; }
+
+@media (max-width: 900px) {
+  .transport-panel { padding: 36px 24px; }
+  .transport-grid { grid-template-columns: 1fr; gap: 16px; }
+}
+
+/* ---- Footer social icons ---------------------------------- */
+.social-icons {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.social-icon {
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.65);
+  transition: background 0.2s, color 0.2s, transform 0.2s;
+}
+
+.social-icon:hover {
+  background: var(--clay);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ---- Floor plan on white --------------------------------- */
+.floorplan-wrap {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 32px;
+  text-align: center;
+  box-shadow: 0 24px 60px rgba(26,23,20,0.06);
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.floorplan-wrap:hover { transform: translateY(-4px); }
+.floorplan-img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* ---- Horizontal hover-expand gallery (Space page) -------- */
+.expand-gallery {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  height: 520px;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.expand-tile {
+  flex: 1;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: flex-grow 0.7s cubic-bezier(0.16,1,0.3,1),
+              flex 0.7s cubic-bezier(0.16,1,0.3,1),
+              filter 0.5s ease,
+              opacity 0.5s ease;
+  display: flex;
+  align-items: flex-end;
+  padding: 24px;
+  filter: saturate(0.85) brightness(0.92);
+}
+
+.expand-tile::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(26,23,20,0.78), rgba(26,23,20,0.05) 60%);
+  z-index: 1;
+}
+
+.expand-tile-label {
+  position: relative;
+  z-index: 2;
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.expand-gallery:hover .expand-tile {
+  flex: 0.4;
+  filter: saturate(0.6) brightness(0.5);
+}
+
+.expand-gallery .expand-tile:hover {
+  flex: 5;
+  filter: saturate(1.05) brightness(1);
+}
+
+.expand-gallery .expand-tile:hover .expand-tile-label {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 900px) {
+  .expand-gallery {
+    flex-direction: column;
+    height: auto;
+  }
+  .expand-tile {
+    flex: 1 1 220px;
+    min-height: 220px;
+    filter: saturate(1) brightness(1);
+  }
+  .expand-gallery:hover .expand-tile { flex: 1; filter: saturate(1) brightness(1); }
+  .expand-tile-label { opacity: 1; transform: none; }
+}
+
+/* ---- Coming soon hero panel (meeting room) --------------- */
+.coming-soon-hero {
+  background: var(--linen);
+  border: 1px solid var(--oak-soft);
+  border-radius: 12px;
+  padding: 56px 48px;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 820px;
+}
+
+.coming-soon-hero .badge-coming {
+  background: var(--clay);
+  color: var(--white);
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  margin-bottom: 20px;
+}
+
+.coming-soon-hero h2 {
+  font-size: clamp(28px, 4vw, 42px);
+  margin-bottom: 16px;
+}
+
+.coming-soon-hero p {
+  color: var(--stone);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 580px;
+  margin: 0 auto 28px;
+}
+
+@media (max-width: 768px) {
+  .coming-soon-hero { padding: 36px 24px; }
+}
+
+/* ---- Pricing card readability fixes ----------------------- */
+.pricing-card .price-sub {
+  display: block;
+  white-space: normal;
+  line-height: 1.45;
+  max-width: 100%;
+}
+
+.section-navy .pricing-card { background: var(--white); }
+.section-navy .pricing-card h3,
+.section-navy .pricing-card .price { color: var(--espresso); }
+.section-navy .pricing-card .price-detail,
+.section-navy .pricing-card .features-list li { color: var(--stone); }
+
+/* ---- Location band readability fix (espresso → linen) ----- */
+.gym-band {
+  background: var(--linen);
+  color: var(--charcoal);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.gym-band h2 {
+  color: var(--espresso);
+}
+
+.gym-band p {
+  color: var(--stone);
+  font-size: 17px;
+  line-height: 1.7;
+  max-width: 720px;
+  margin: 0 auto;
+}
+
 /* ---- FAQ Accordion ---------------------------------------- */
 .faq-list {
   max-width: 740px;
