@@ -1166,6 +1166,21 @@ footer,
 }
 
 /* ---- Modal (inner-page pattern: .modal-backdrop > .modal) - */
+/* Brand-font lock: forces Outfit on every descendant of any modal,
+   including form inputs/selects/labels/buttons that browsers
+   otherwise render in system UI fonts. */
+.modal-backdrop,
+.modal-backdrop *,
+.modal-backdrop input,
+.modal-backdrop textarea,
+.modal-backdrop select,
+.modal-backdrop button,
+.modal-backdrop label,
+.modal-backdrop option,
+.modal-backdrop input::placeholder {
+  font-family: var(--font), system-ui, -apple-system, sans-serif !important;
+}
+
 .modal-backdrop {
   display: none;
   position: fixed;
@@ -1394,9 +1409,10 @@ footer,
 }
 
 .blog-post-header h1 {
-  font-size: clamp(28px, 4vw, 48px);
-  line-height: 1.1;
+  font-size: clamp(24px, 2.8vw, 34px);
+  line-height: 1.2;
   margin-bottom: 20px;
+  letter-spacing: -0.02em;
 }
 
 .blog-post-meta {
@@ -1422,8 +1438,8 @@ footer,
 }
 
 .blog-post-body { font-size: 17px; line-height: 1.75; color: var(--charcoal); }
-.blog-post-body h2 { font-size: 26px; margin: 48px 0 16px; line-height: 1.2; }
-.blog-post-body h3 { font-size: 20px; margin: 36px 0 12px; }
+.blog-post-body h2 { font-size: 22px; margin: 44px 0 14px; line-height: 1.25; letter-spacing: -0.01em; }
+.blog-post-body h3 { font-size: 18px; margin: 32px 0 10px; letter-spacing: -0.005em; }
 .blog-post-body p  { margin-bottom: 20px; }
 .blog-post-body ul, .blog-post-body ol { padding-left: 24px; margin-bottom: 20px; }
 .blog-post-body li { margin-bottom: 8px; }
@@ -1636,8 +1652,11 @@ footer,
   transition: transform 0.35s cubic-bezier(0.16,1,0.3,1),
               box-shadow 0.35s cubic-bezier(0.16,1,0.3,1),
               border-color 0.25s;
-  overflow: hidden;
   isolation: isolate;
+  /* No overflow:hidden — the .bubble-number hangs off the top edge
+     by 18px and would get clipped. The hover gradient is masked
+     onto the card via mask-image instead so the bubble can escape
+     the bounding box freely. */
 }
 
 .bubble-card::before {
@@ -1649,6 +1668,7 @@ footer,
   transition: opacity 0.4s ease;
   border-radius: inherit;
   z-index: -1;
+  pointer-events: none;
 }
 
 .bubble-card:hover {
