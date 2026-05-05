@@ -1064,6 +1064,17 @@ p:last-child { margin-bottom: 0; }
   letter-spacing: -0.02em;
 }
 
+/* Eyebrow kicker on page banners (Worksop Workspace text above h1).
+   Already used on /meeting-room and now /blog for visual rhythm. */
+.page-banner .hero-kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--oak);
+}
+
 .page-banner .lead,
 .page-banner p.lead {
   color: rgba(255,255,255,0.55);
@@ -1365,14 +1376,21 @@ footer,
 
 .blog-card-body { padding: 24px; }
 
-.blog-card-cat {
+/* Category labels on blog cards — rendered as a sage tag bubble
+   instead of a flat eyebrow line. Matches the brand's pill pattern
+   (cf. cover-bottom .pill in the brand guidelines). */
+.blog-card-cat,
+.blog-card-tag {
+  display: inline-block;
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 600;
+  letter-spacing: 0.10em;
   text-transform: uppercase;
   color: var(--sage);
-  margin-bottom: 10px;
-  display: block;
+  background: rgba(142,151,117,0.12);
+  padding: 5px 12px;
+  border-radius: 100px;
+  margin-bottom: 14px;
 }
 
 .blog-card-body h3 {
