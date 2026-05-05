@@ -1059,8 +1059,9 @@ p:last-child { margin-bottom: 0; }
 
 .page-banner h1 {
   color: var(--white);
-  font-size: clamp(32px, 5vw, 60px);
+  font-size: clamp(28px, 3.6vw, 44px);
   margin-top: 12px;
+  letter-spacing: -0.02em;
 }
 
 .page-banner .lead,
@@ -1408,11 +1409,28 @@ footer,
   display: block;
 }
 
-.blog-post-header h1 {
-  font-size: clamp(24px, 2.8vw, 34px);
-  line-height: 1.2;
-  margin-bottom: 20px;
-  letter-spacing: -0.02em;
+/* Individual blog post title — actual class used is .blog-post-title
+   (not .blog-post-header h1, which targeted nothing). Caps the title
+   at 32px so it doesn't dominate the page. */
+.blog-post-header h1,
+.blog-post-title,
+.blog-post-wrap h1,
+article.blog-post h1 {
+  font-size: clamp(24px, 2.8vw, 32px) !important;
+  line-height: 1.25 !important;
+  margin-bottom: 20px !important;
+  letter-spacing: -0.02em !important;
+  font-weight: 700 !important;
+  color: var(--espresso) !important;
+}
+
+/* Blog card titles (grid on /blog and homepage journal teaser) */
+.blog-card-title,
+.blog-card h3 {
+  font-size: 17px !important;
+  line-height: 1.35 !important;
+  font-weight: 600 !important;
+  letter-spacing: -0.01em !important;
 }
 
 .blog-post-meta {
