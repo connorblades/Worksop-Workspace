@@ -1376,18 +1376,19 @@ footer,
 
 .blog-card-body { padding: 24px; }
 
-/* Category labels on blog cards — rendered as a sage tag bubble
-   instead of a flat eyebrow line. Matches the brand's pill pattern
-   (cf. cover-bottom .pill in the brand guidelines). */
+/* Category labels on blog cards — rendered as a tag bubble instead
+   of a flat eyebrow line. Matches the brand's pill pattern. Espresso
+   text on tinted sage background for readability (sage-on-sage was
+   below WCAG-AA contrast). */
 .blog-card-cat,
 .blog-card-tag {
   display: inline-block;
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: var(--sage);
-  background: rgba(142,151,117,0.12);
+  color: var(--espresso);
+  background: rgba(142,151,117,0.18);
   padding: 5px 12px;
   border-radius: 100px;
   margin-bottom: 14px;
