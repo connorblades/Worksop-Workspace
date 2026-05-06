@@ -84,7 +84,7 @@
 
   /* Dropdown value -> human-readable tag for GHL */
   var INTEREST_TAGS = {
-    'hot-desk':         'Hot Desk',
+    'hot-desk':         'Hot Desk Daily',
     'hot-desk-weekly':  'Hot Desk Weekly',
     'private-office':   'Private Office',
     'not-sure':         'Undecided'
