@@ -2312,9 +2312,13 @@ article.blog-post h1 {
   font-size: 16px;
 }
 
-/* Total row — the hero of the table */
+/* Total row — the hero of the table.
+   Border-top sits on the row container so it draws as one
+   continuous line across all three cells. Putting it on each
+   cell would let the column dividers break it into segments. */
 .cmp-total {
   background: var(--linen);
+  border-top: 2px solid var(--espresso);
 }
 .cmp-total > div {
   font-size: 28px;
@@ -2324,7 +2328,6 @@ article.blog-post h1 {
   padding-top: 24px;
   padding-bottom: 24px;
   border-bottom: none;
-  border-top: 2px solid var(--espresso);
 }
 .cmp-total > div:first-child {
   font-size: 12px;
