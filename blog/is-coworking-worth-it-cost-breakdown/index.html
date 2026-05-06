@@ -7,7 +7,7 @@
   <link rel="canonical" href="https://worksopworkspace.com/blog/is-coworking-worth-it-cost-breakdown" />
   <link rel="icon" type="image/x-icon" href="../../favicon.ico" /><link rel="icon" type="image/png" sizes="32x32" href="../../icon.png" /><link rel="apple-touch-icon" href="../../apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/styles.css?v=47" />
+  <link rel="stylesheet" href="../../css/styles.css?v=48" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Is a Coworking Membership Worth It? A Proper Cost Breakdown","datePublished":"14 April 2026","author":{"@type":"Organization","name":"Worksop Workspace"},"publisher":{"@type":"Organization","name":"Worksop Workspace","url":"https://worksopworkspace.com"}}</script>
 
   <!-- Open Graph / Social sharing -->
@@ -181,22 +181,31 @@
       <h3 id="modal-title">Join the waiting list</h3>
       <p>Be first to hear when we open. Founding members get priority access and early-member rates.</p>
       <form id="waitlist-form" novalidate>
-        <div class="form-group">
-          <label for="wl-name">Full name</label>
-          <input type="text" id="wl-name" name="name" placeholder="Your name" required autocomplete="name" />
+        <div class="form-row">
+          <div class="form-group">
+            <label for="wl-first-name">First name</label>
+            <input type="text" id="wl-first-name" name="first_name" placeholder="First name" required autocomplete="given-name" />
+          </div>
+          <div class="form-group">
+            <label for="wl-last-name">Last name</label>
+            <input type="text" id="wl-last-name" name="last_name" placeholder="Last name" required autocomplete="family-name" />
+          </div>
         </div>
         <div class="form-group">
           <label for="wl-email">Email address</label>
           <input type="email" id="wl-email" name="email" placeholder="you@example.com" required autocomplete="email" />
         </div>
         <div class="form-group">
+          <label for="wl-phone">Mobile number</label>
+          <input type="tel" id="wl-phone" name="phone" placeholder="07700 000000" required autocomplete="tel" />
+        </div>
+        <div class="form-group">
           <label for="wl-type">I'm interested in</label>
           <select id="wl-type" name="type">
             <option value="">-- choose an option --</option>
             <option value="hot-desk">Hot Desk (from &pound;12/day)</option>
-            <option value="dedicated-desk">Dedicated Desk (&pound;50/wk)</option>
+            <option value="hot-desk-weekly">Hot Desk Weekly (&pound;50/wk)</option>
             <option value="private-office">Private Office (from &pound;125/wk)</option>
-            <option value="meeting-room">Meeting Room only</option>
             <option value="not-sure">Not sure yet</option>
           </select>
         </div>
@@ -207,7 +216,7 @@
   </div>
 
   <!-- Scripts -->
-  <script src="../../js/animations.js?v=2"></script>
+  <script src="../../js/animations.js?v=3"></script>
   <script>
   (function () {
     'use strict';

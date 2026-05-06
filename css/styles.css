@@ -1252,6 +1252,23 @@ footer,
 /* ---- Waitlist form fields --------------------------------- */
 .form-group { margin-bottom: 18px; }
 
+/* Two-column row for first name + last name. Stacks on narrow screens. */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-bottom: 18px;
+}
+.form-row .form-group,
+.form-row > div {
+  margin-bottom: 0;
+}
+@media (max-width: 480px) {
+  .form-row { grid-template-columns: 1fr; gap: 0; }
+  .form-row > div,
+  .form-row .form-group { margin-bottom: 18px; }
+}
+
 .form-group label {
   display: block;
   font-size: 12px;
