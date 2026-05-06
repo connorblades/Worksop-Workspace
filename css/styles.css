@@ -1981,6 +1981,7 @@ article.blog-post h1 {
   padding: 0;
   text-align: center;
   box-shadow: none;
+  position: relative;
 }
 .floorplan-img {
   max-width: 100%;
@@ -1989,6 +1990,81 @@ article.blog-post h1 {
   margin: 0 auto;
   background: transparent;
   mix-blend-mode: multiply;
+}
+
+/* Phase markers overlaid on the floor plan.
+   Phase 1 (left, sage) marks what's opening on 1 June.
+   Phase 2 (right, clay "coming soon") marks the basement
+   boardroom + studio. Pinned to top corners of the wrap so
+   they sit on the image without obscuring desks/doors. */
+.floorplan-phase {
+  position: absolute;
+  top: 6%;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  background: var(--white);
+  border-radius: 10px;
+  box-shadow: 0 18px 40px rgba(26,23,20,0.12), 0 1px 0 rgba(26,23,20,0.04);
+  text-align: left;
+  max-width: 230px;
+  z-index: 2;
+}
+.floorplan-phase-1 { left: 2%; }
+.floorplan-phase-2 { right: 2%; }
+
+.floorplan-phase-tag {
+  display: inline-block;
+  align-self: flex-start;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--white);
+  background: var(--sage);
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 4px;
+}
+.floorplan-phase-tag-soon { background: var(--clay); }
+
+.floorplan-phase-headline {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--espresso);
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.floorplan-phase-sub {
+  font-size: 12px;
+  color: var(--stone);
+  line-height: 1.45;
+}
+
+@media (max-width: 900px) {
+  .floorplan-phase {
+    padding: 12px 14px;
+    max-width: 44%;
+    border-radius: 8px;
+  }
+  .floorplan-phase-headline { font-size: 13px; }
+  .floorplan-phase-sub { font-size: 10px; }
+  .floorplan-phase-tag { font-size: 9px; padding: 3px 8px; }
+}
+
+@media (max-width: 560px) {
+  /* On tight phones, stack the phase markers below the image
+     rather than crushing them on top of it */
+  .floorplan-phase {
+    position: static;
+    max-width: none;
+    margin-top: 12px;
+    box-shadow: 0 1px 0 var(--line);
+    border: 1px solid var(--line);
+  }
+  .floorplan-phase-1 { margin-top: 24px; }
 }
 
 /* ---- Horizontal hover-expand gallery (Space page) -------- */
