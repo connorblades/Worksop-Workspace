@@ -129,11 +129,36 @@
     } catch (e) { /* legacy browsers */ }
   }
 
+  /* Single submit handler per form. Capture phase + stopImmediatePropagation
+     stops any per-page bubble-phase handlers from running, so the broken
+     contact-page handler (PLACEHOLDER_WEBHOOK_URL, references to renamed
+     #cf-name) can't error and can't intercept. The button is disabled
+     immediately so a triple-click only fires one webhook + one redirect. */
   function bindLeadForm(id, source) {
     var form = document.getElementById(id);
     if (!form) return;
-    form.addEventListener('submit', function () {
+    var submitting = false;
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      if (submitting) return;
+      submitting = true;
+
+      var btn = form.querySelector('button[type="submit"], .form-submit, .cf-submit');
+      if (btn) {
+        btn.disabled = true;
+        btn.style.opacity = '0.7';
+        btn.textContent = 'Sending…';
+      }
+
       postLead(form, source);
+
+      /* Brief delay so the keepalive POST has a chance to dispatch
+         before we navigate away. With keepalive: true the request
+         continues even after navigation, so 120ms is plenty. */
+      setTimeout(function () {
+        window.location.href = '/thank-you/?source=' + encodeURIComponent(source);
+      }, 120);
     }, { capture: true });
   }
 

@@ -1689,6 +1689,51 @@ article.blog-post h1 {
   .gym-pillars { grid-template-columns: 1fr; }
 }
 
+/* ---- Thank-you page next-steps list ----------------------- */
+.next-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: 48px;
+}
+.next-step {
+  display: grid;
+  grid-template-columns: 56px 1fr;
+  gap: 24px;
+  align-items: flex-start;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--line);
+}
+.next-step:last-child { border-bottom: none; }
+.next-step-num {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--clay);
+  color: var(--white);
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+.next-step:nth-child(2) .next-step-num { background: var(--sage); }
+.next-step:nth-child(3) .next-step-num { background: var(--espresso); }
+.next-step h3 {
+  font-size: 19px;
+  font-weight: 600;
+  margin: 0 0 6px;
+  color: var(--espresso);
+  letter-spacing: -0.01em;
+}
+.next-step p {
+  font-size: 16px;
+  color: var(--stone);
+  margin: 0;
+  line-height: 1.65;
+}
+
 /* ---- Bubble cards (homepage problem section) -------------- */
 .bubble-grid {
   display: grid;

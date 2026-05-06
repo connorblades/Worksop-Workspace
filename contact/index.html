@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=48" />
+  <link rel="stylesheet" href="../css/styles.css?v=49" />
   <style>
     /* Contact-page specific overrides */
     .contact-section { padding: 80px 20px; background: var(--linen); }
@@ -347,57 +347,11 @@
   </div>
 
   <!-- Scripts -->
-  <script src="../js/animations.js?v=5"></script>
+  <script src="../js/animations.js?v=6"></script>
   <script>lucide.createIcons();</script>
-  <script>
-  /* ---- Contact page form ---- */
-  (function () {
-    'use strict';
-    var WEBHOOK_URL = 'PLACEHOLDER_WEBHOOK_URL';
-    var form    = document.getElementById('contact-form');
-    var success = document.getElementById('cf-success');
-    var errBox  = document.getElementById('cf-error');
-    if (!form) return;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      errBox.style.display = 'none';
-      var name  = form.querySelector('#cf-name').value.trim();
-      var email = form.querySelector('#cf-email').value.trim();
-      if (!name || !email) {
-        errBox.textContent = 'Please fill in your name and email address.';
-        errBox.style.display = 'block';
-        return;
-      }
-      var btn = form.querySelector('.cf-submit');
-      btn.textContent = 'Sending…';
-      btn.disabled = true;
-      var payload = {
-        name:    name,
-        email:   email,
-        phone:   form.querySelector('#cf-phone').value.trim(),
-        type:    form.querySelector('#cf-type').value,
-        message: form.querySelector('#cf-message').value.trim(),
-        source:  'contact-page'
-      };
-      fetch(WEBHOOK_URL, {
-        method:  'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body:    JSON.stringify(payload)
-      })
-      .then(function (res) {
-        if (!res.ok) throw new Error('Server error ' + res.status);
-        form.style.display = 'none';
-        success.style.display = 'block';
-      })
-      .catch(function () {
-        errBox.textContent = 'Something went wrong. Please try again or email us directly.';
-        errBox.style.display = 'block';
-        btn.textContent = 'Request my spot';
-        btn.disabled = false;
-      });
-    });
-  }());
-  </script>
+  <!-- Contact form submission is handled centrally by js/animations.js,
+       which fires the GHL webhook then redirects to /thank-you/. -->
+
   <script>
   (function () {
     'use strict';
