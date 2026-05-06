@@ -2430,38 +2430,59 @@ article.blog-post h1 {
 }
 
 /* Static colour legend — sits below the plan, always visible.
-   Doubles as the screen-reader-friendly version of the markers. */
+   Each item is a pill bubble with a coloured dot, name, and
+   short description. Reads as a row of soft chips on desktop
+   and stacks on mobile. */
 .floorplan-legend {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 14px 28px;
-  margin: 32px auto 0;
-  max-width: 880px;
+  gap: 12px;
+  margin: 36px auto 0;
+  max-width: 980px;
   padding: 0 16px;
-  font-size: 13px;
-  color: var(--charcoal);
-  line-height: 1.5;
 }
 
 .floorplan-legend > span {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  padding: 10px 18px 10px 14px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 100px;
+  box-shadow: 0 2px 8px rgba(26,23,20,0.04);
+  font-size: 13px;
+  color: var(--stone);
+  line-height: 1.4;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.floorplan-legend > span:hover {
+  border-color: var(--oak-soft);
+  box-shadow: 0 4px 14px rgba(26,23,20,0.08);
+  transform: translateY(-1px);
 }
 
 .floorplan-legend strong {
   color: var(--espresso);
   font-weight: 600;
+  margin-right: 2px;
+}
+
+.floorplan-legend .zone-dot {
+  width: 11px;
+  height: 11px;
 }
 
 @media (max-width: 700px) {
   .floorplan-legend {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
     margin-top: 24px;
     padding: 0 24px;
+    gap: 8px;
+  }
+  .floorplan-legend > span {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
 
