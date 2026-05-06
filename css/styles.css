@@ -2209,26 +2209,38 @@ article.blog-post h1 {
 }
 
 /* Phase markers overlaid on the floor plan.
-   Phase 1 (left, sage) marks what's opening on 1 June.
-   Phase 2 (right, clay "coming soon") marks the basement
-   boardroom + studio. Pinned to top corners of the wrap so
-   they sit on the image without obscuring desks/doors. */
+   Default state: ONLY the colored pill is visible on top of the
+   image — the floor plan stays fully readable. On hover or focus,
+   a white card materialises around the pill revealing the
+   headline + sub copy. Touch / small screens fall back to fully
+   visible cards stacked below the plan. */
 .floorplan-phase {
   position: absolute;
   top: 6%;
   display: flex;
   flex-direction: column;
   gap: 4px;
-  padding: 16px 20px;
-  background: var(--white);
+  padding: 0;
+  background: transparent;
   border-radius: 10px;
-  box-shadow: 0 18px 40px rgba(26,23,20,0.12), 0 1px 0 rgba(26,23,20,0.04);
+  box-shadow: none;
   text-align: left;
   max-width: 230px;
   z-index: 2;
+  cursor: help;
+  transition: padding 0.28s ease, background-color 0.28s ease,
+              box-shadow 0.28s ease;
 }
 .floorplan-phase-1 { left: 2%; }
 .floorplan-phase-2 { right: 2%; }
+
+/* Hover / focus reveals the white card around the pill */
+.floorplan-phase:hover,
+.floorplan-phase:focus-within {
+  padding: 16px 20px;
+  background: var(--white);
+  box-shadow: 0 18px 40px rgba(26,23,20,0.18), 0 1px 0 rgba(26,23,20,0.04);
+}
 
 .floorplan-phase-tag {
   display: inline-block;
@@ -2239,11 +2251,45 @@ article.blog-post h1 {
   text-transform: uppercase;
   color: var(--white);
   background: var(--sage);
-  padding: 4px 10px;
+  padding: 5px 11px;
   border-radius: 100px;
-  margin-bottom: 4px;
+  margin-bottom: 0;
+  box-shadow: 0 4px 12px rgba(142,151,117,0.35);
+  transition: margin-bottom 0.28s ease, box-shadow 0.28s ease;
 }
-.floorplan-phase-tag-soon { background: var(--clay); }
+.floorplan-phase-tag-soon {
+  background: var(--clay);
+  box-shadow: 0 4px 12px rgba(197,123,87,0.35);
+}
+.floorplan-phase:hover .floorplan-phase-tag,
+.floorplan-phase:focus-within .floorplan-phase-tag {
+  margin-bottom: 4px;
+  box-shadow: 0 2px 6px rgba(142,151,117,0.25);
+}
+.floorplan-phase:hover .floorplan-phase-tag-soon,
+.floorplan-phase:focus-within .floorplan-phase-tag-soon {
+  box-shadow: 0 2px 6px rgba(197,123,87,0.25);
+}
+
+/* Headline + sub start hidden, slide in on hover */
+.floorplan-phase-headline,
+.floorplan-phase-sub {
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: max-height 0.32s ease, opacity 0.22s ease,
+              transform 0.32s ease;
+}
+
+.floorplan-phase:hover .floorplan-phase-headline,
+.floorplan-phase:focus-within .floorplan-phase-headline,
+.floorplan-phase:hover .floorplan-phase-sub,
+.floorplan-phase:focus-within .floorplan-phase-sub {
+  max-height: 80px;
+  opacity: 1;
+  transform: translateY(0);
+}
 
 .floorplan-phase-headline {
   font-size: 16px;
@@ -2260,27 +2306,56 @@ article.blog-post h1 {
 }
 
 @media (max-width: 900px) {
-  .floorplan-phase {
-    padding: 12px 14px;
-    max-width: 44%;
-    border-radius: 8px;
-  }
+  .floorplan-phase { max-width: 44%; }
+  .floorplan-phase:hover,
+  .floorplan-phase:focus-within { padding: 12px 14px; }
+  .floorplan-phase-tag { font-size: 9px; padding: 4px 9px; }
   .floorplan-phase-headline { font-size: 13px; }
   .floorplan-phase-sub { font-size: 10px; }
-  .floorplan-phase-tag { font-size: 9px; padding: 3px 8px; }
 }
 
-@media (max-width: 560px) {
-  /* On tight phones, stack the phase markers below the image
-     rather than crushing them on top of it */
+@media (hover: none) and (max-width: 900px) {
+  /* Touch devices: skip the hover dance entirely. Stack the
+     phase cards below the floor plan as fully visible cards
+     so the info is always reachable without a hover event. */
   .floorplan-phase {
     position: static;
     max-width: none;
     margin-top: 12px;
-    box-shadow: 0 1px 0 var(--line);
+    padding: 16px 20px;
+    background: var(--white);
     border: 1px solid var(--line);
+    box-shadow: 0 1px 0 var(--line);
   }
   .floorplan-phase-1 { margin-top: 24px; }
+  .floorplan-phase-tag { margin-bottom: 4px; }
+  .floorplan-phase-headline,
+  .floorplan-phase-sub {
+    max-height: 200px;
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (max-width: 560px) {
+  /* Same fallback for very small viewports regardless of input */
+  .floorplan-phase {
+    position: static;
+    max-width: none;
+    margin-top: 12px;
+    padding: 16px 20px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    box-shadow: 0 1px 0 var(--line);
+  }
+  .floorplan-phase-1 { margin-top: 24px; }
+  .floorplan-phase-tag { margin-bottom: 4px; }
+  .floorplan-phase-headline,
+  .floorplan-phase-sub {
+    max-height: 200px;
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ---- Horizontal hover-expand gallery (Space page) -------- */
