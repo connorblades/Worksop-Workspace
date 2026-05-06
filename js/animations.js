@@ -72,4 +72,43 @@
     reelObserver.observe(reelVideo);
   }
 
+  /* ── 6. Webhook capture: POST waitlist + contact to Go High Level ────
+     The page's own submit handler still owns the UX (button text +
+     modal close). This listener fires in the capture phase so it
+     runs first, snapshots the form, fires off the webhook POST as
+     fire-and-forget. URL-encoded body avoids a CORS preflight. */
+  var WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/3Ow2c51hQvMKxgtUBSvX/webhook-trigger/17baff3f-5e42-4aed-ab29-d12fa0c12f06';
+
+  function postLead(form, source) {
+    var params = new URLSearchParams();
+    Array.prototype.forEach.call(form.elements, function (el) {
+      if (el.name && el.value && !el.disabled) params.append(el.name, el.value);
+    });
+    params.append('source', source);
+    params.append('page', location.pathname);
+    params.append('referrer', document.referrer || '');
+    params.append('submitted_at', new Date().toISOString());
+
+    try {
+      fetch(WEBHOOK_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params.toString(),
+        mode: 'no-cors',
+        keepalive: true
+      }).catch(function () { /* swallow — UX already optimistic */ });
+    } catch (e) { /* legacy browsers */ }
+  }
+
+  function bindLeadForm(id, source) {
+    var form = document.getElementById(id);
+    if (!form) return;
+    form.addEventListener('submit', function () {
+      postLead(form, source);
+    }, { capture: true });
+  }
+
+  bindLeadForm('waitlist-form', 'waitlist');
+  bindLeadForm('contact-form',  'contact');
+
 }());
