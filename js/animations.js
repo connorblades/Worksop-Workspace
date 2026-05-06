@@ -76,14 +76,43 @@
      The page's own submit handler still owns the UX (button text +
      modal close). This listener fires in the capture phase so it
      runs first, snapshots the form, fires off the webhook POST as
-     fire-and-forget. URL-encoded body avoids a CORS preflight. */
+     fire-and-forget. URL-encoded body avoids a CORS preflight.
+
+     The `tags` field is a comma-separated string GHL can route
+     directly into Contact tags via a webhook-trigger workflow. */
   var WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/3Ow2c51hQvMKxgtUBSvX/webhook-trigger/17baff3f-5e42-4aed-ab29-d12fa0c12f06';
+
+  /* Dropdown value -> human-readable tag for GHL */
+  var INTEREST_TAGS = {
+    'hot-desk':         'Hot Desk',
+    'hot-desk-weekly':  'Hot Desk Weekly',
+    'private-office':   'Private Office',
+    'not-sure':         'Undecided'
+  };
+
+  /* Form source -> tag prefix so you can segment website leads
+     from any other GHL inbound source */
+  var SOURCE_TAGS = {
+    'waitlist': 'Website Waitlist',
+    'contact':  'Website Contact'
+  };
 
   function postLead(form, source) {
     var params = new URLSearchParams();
     Array.prototype.forEach.call(form.elements, function (el) {
       if (el.name && el.value && !el.disabled) params.append(el.name, el.value);
     });
+
+    /* Build tag list: source tag + interest tag (if a dropdown
+       option is selected). GHL accepts a comma-separated string. */
+    var tags = [];
+    if (SOURCE_TAGS[source]) tags.push(SOURCE_TAGS[source]);
+    var typeEl = form.elements['type'];
+    if (typeEl && typeEl.value && INTEREST_TAGS[typeEl.value]) {
+      tags.push(INTEREST_TAGS[typeEl.value]);
+    }
+    if (tags.length) params.append('tags', tags.join(','));
+
     params.append('source', source);
     params.append('page', location.pathname);
     params.append('referrer', document.referrer || '');
