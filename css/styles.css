@@ -2236,11 +2236,28 @@ article.blog-post h1 {
 
 /* Hover / focus reveals the white card around the pill */
 .floorplan-phase:hover,
-.floorplan-phase:focus-within {
+.floorplan-phase:focus-within,
+.floorplan-phase-pinned {
   padding: 16px 20px;
   background: var(--white);
   box-shadow: 0 18px 40px rgba(26,23,20,0.18), 0 1px 0 rgba(26,23,20,0.04);
 }
+
+/* .floorplan-phase-pinned (used on Phase 2) keeps the card open
+   permanently so visitors can see at a glance that a section is
+   coming later, without needing to hover */
+.floorplan-phase-pinned .floorplan-phase-tag,
+.floorplan-phase-pinned .floorplan-phase-tag-soon {
+  margin-bottom: 4px;
+  box-shadow: 0 2px 6px rgba(197,123,87,0.25);
+}
+.floorplan-phase-pinned .floorplan-phase-headline,
+.floorplan-phase-pinned .floorplan-phase-sub {
+  max-height: 80px;
+  opacity: 1;
+  transform: translateY(0);
+}
+.floorplan-phase-pinned { cursor: default; }
 
 .floorplan-phase-tag {
   display: inline-block;
@@ -2355,6 +2372,96 @@ article.blog-post h1 {
     max-height: 200px;
     opacity: 1;
     transform: none;
+  }
+}
+
+/* ---- Floor plan zone markers ----------------------------- */
+/* Small coloured pills positioned over each colour-coded area
+   of the plan (blue desks, green offices, purple coffee, red
+   hourly rooms, orange communal). */
+.floorplan-zone {
+  position: absolute;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 12px 5px 9px;
+  background: rgba(255,255,255,0.94);
+  border-radius: 100px;
+  box-shadow: 0 4px 14px rgba(26,23,20,0.14);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--espresso);
+  white-space: nowrap;
+  z-index: 3;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.zone-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+/* Zone colours — sampled from the floor plan image so the dots
+   read clearly as the same area */
+.floorplan-zone-blue   .zone-dot,  .zone-dot-blue   { background: #5a8edb; }
+.floorplan-zone-green  .zone-dot,  .zone-dot-green  { background: #6fb87a; }
+.floorplan-zone-purple .zone-dot,  .zone-dot-purple { background: #b48bd7; }
+.floorplan-zone-red    .zone-dot,  .zone-dot-red    { background: #e26d6d; }
+.floorplan-zone-orange .zone-dot,  .zone-dot-orange { background: #f0a070; }
+
+@media (max-width: 900px) {
+  .floorplan-zone {
+    font-size: 9px;
+    padding: 4px 10px 4px 7px;
+    gap: 5px;
+  }
+  .floorplan-zone .zone-dot { width: 7px; height: 7px; }
+}
+
+@media (max-width: 700px) {
+  /* On phones the absolute markers crush together; rely on the
+     legend below the plan instead */
+  .floorplan-zone { display: none; }
+}
+
+/* Static colour legend — sits below the plan, always visible.
+   Doubles as the screen-reader-friendly version of the markers. */
+.floorplan-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px 28px;
+  margin: 32px auto 0;
+  max-width: 880px;
+  padding: 0 16px;
+  font-size: 13px;
+  color: var(--charcoal);
+  line-height: 1.5;
+}
+
+.floorplan-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.floorplan-legend strong {
+  color: var(--espresso);
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .floorplan-legend {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-top: 24px;
+    padding: 0 24px;
   }
 }
 

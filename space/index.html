@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=57" />
+  <link rel="stylesheet" href="../css/styles.css?v=58" />
 
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website" />
@@ -92,16 +92,34 @@
       </div>
       <div class="floorplan-wrap animate-fade d2">
         <img src="../isometric-floorplan.jpeg" alt="Worksop Workspace isometric floor plan" class="floorplan-img" loading="lazy" />
+
+        <!-- Phase markers -->
         <div class="floorplan-phase floorplan-phase-1" tabindex="0" role="group" aria-label="Phase 1, opening 1 June: hot desks, dedicated desks and private offices">
           <span class="floorplan-phase-tag">Phase 1</span>
           <span class="floorplan-phase-headline">Opening 1 June</span>
           <span class="floorplan-phase-sub">Hot desks, dedicated desks &amp; private offices</span>
         </div>
-        <div class="floorplan-phase floorplan-phase-2" tabindex="0" role="group" aria-label="Phase 2, coming soon: boardroom, podcast studio and basement zone">
+        <div class="floorplan-phase floorplan-phase-2 floorplan-phase-pinned" role="group" aria-label="Phase 2, coming soon: boardroom, podcast studio and basement zone">
           <span class="floorplan-phase-tag floorplan-phase-tag-soon">Phase 2</span>
           <span class="floorplan-phase-headline">Coming soon</span>
           <span class="floorplan-phase-sub">Boardroom, podcast studio &amp; basement zone</span>
         </div>
+
+        <!-- Zone markers — colour-coded pills over each area of the plan -->
+        <div class="floorplan-zone floorplan-zone-blue"   style="left:25%; top:62%;"  role="img" aria-label="Blue: quiet, focused work area"><span class="zone-dot"></span><span class="zone-label">Quiet work</span></div>
+        <div class="floorplan-zone floorplan-zone-green"  style="left:23%; top:30%;"  role="img" aria-label="Green: rented offices"><span class="zone-dot"></span><span class="zone-label">Private offices</span></div>
+        <div class="floorplan-zone floorplan-zone-purple" style="left:68%; top:54%;"  role="img" aria-label="Purple: coffee shop style work setting"><span class="zone-dot"></span><span class="zone-label">Coffee shop</span></div>
+        <div class="floorplan-zone floorplan-zone-red"    style="left:62%; top:32%;"  role="img" aria-label="Red: rented rooms by the hour"><span class="zone-dot"></span><span class="zone-label">Hourly rooms</span></div>
+        <div class="floorplan-zone floorplan-zone-orange" style="left:86%; top:28%;"  role="img" aria-label="Orange: communal spaces"><span class="zone-dot"></span><span class="zone-label">Communal</span></div>
+      </div>
+
+      <!-- Static colour legend (mobile + screen-reader friendly) -->
+      <div class="floorplan-legend">
+        <span><span class="zone-dot zone-dot-blue"></span> <strong>Quiet work</strong> &mdash; focused desks</span>
+        <span><span class="zone-dot zone-dot-green"></span> <strong>Private offices</strong> &mdash; rented to teams</span>
+        <span><span class="zone-dot zone-dot-purple"></span> <strong>Coffee shop</strong> &mdash; relaxed work setting</span>
+        <span><span class="zone-dot zone-dot-red"></span> <strong>Hourly rooms</strong> &mdash; book by the hour</span>
+        <span><span class="zone-dot zone-dot-orange"></span> <strong>Communal</strong> &mdash; shared social spaces</span>
       </div>
     </div>
   </section>
