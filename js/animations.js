@@ -165,73 +165,222 @@
   bindLeadForm('waitlist-form', 'waitlist');
   bindLeadForm('contact-form',  'contact');
 
-  /* ── 7. Chat widget — floating bottom-right, FAQ-driven ─────────────
-     Injects a chat button + panel into every page. The knowledge base
-     below is keyword-matched against the user's input; the highest
-     scoring entry wins, with a fallback to a "talk to the team" CTA
-     if nothing matches. */
+  /* ── 7. Chat widget — floating bottom-right, content-driven Q&A ─────
+     Knowledge base built from public website content + customer-safe
+     parts of our internal points-of-truth doc. Matching uses tokenised
+     scoring so vague phrases ("what do I do then?", "tell me about
+     this") still resolve to a useful answer.
+
+     SAFETY: SENSITIVE_PATTERNS catches financial / staff / backend
+     questions and refuses politely with a contact route, so this
+     widget can't leak revenue, costs, bank details, internal team
+     names or private docs even if someone asks directly. */
   if (document.querySelector('.ww-chat-toggle')) return;
 
-  var KB = [
-    { keys: ['hello','hi ','hi!','hi.','hey','hiya','good morning','good afternoon','good evening'],
-      a: 'Hi! 👋 Ask me about pricing, opening dates, location, parking, broadband, anything you like.' },
-    { keys: ['price','cost','how much','rate','rates'],
-      a: '<p>Here is what we charge:</p><ul><li><strong>Hot Desk Daily</strong>: £12 per day</li><li><strong>Hot Desk Weekly</strong>: £50 per week</li><li><strong>Private Office</strong>: from £125 per week (size dependent)</li></ul><p>All plans include free parking, 1 Gbps fibre and unlimited filter coffee.</p>' },
-    { keys: ['private office','team office','office for','my office','rent an office','office space'],
-      a: 'Private offices start from <strong>£125 per week</strong>. Lockable, fitted out for teams of 2 to 8 people, with all building amenities included. Want to <a href="/contact">book a viewing</a>?' },
-    { keys: ['hot desk','daily desk','one day','drop in'],
-      a: 'Hot desks are <strong>£12 per day</strong>. Walk in, pick a desk, get to work. No commitment, no membership required.' },
-    { keys: ['weekly','week','5 days','five days','monday to friday'],
-      a: 'The Hot Desk Weekly is <strong>£50 per week</strong>, rolling. No long contract. Same building every weekday — a proper rhythm without committing to a fixed desk.' },
-    { keys: ['meeting room','boardroom','book a room','meeting space'],
-      a: 'The boardroom is part of <strong>Phase 2</strong> and opens later in the year. It seats up to 10, with a whiteboard wall, fast broadband and free parking for all attendees. <strong>From £20 per hour.</strong>' },
-    { keys: ['when','open ','opening','launch','launch date','start date','available from','first of june','1 june'],
-      a: 'We are opening <strong>1 June 2026</strong> on Carlton Road, Worksop. Phase 2 (boardroom, podcast studio, basement zone) follows a few months later.' },
-    { keys: ['where','location','address','find you','directions','postcode','carlton road'],
-      a: '<strong>30 Carlton Road, Worksop, S80 1PH.</strong> Two minutes from the town centre and an 8-minute walk from Worksop train station.' },
-    { keys: ['park','parking','car space','spaces'],
-      a: 'Yes — <strong>free parking on site</strong>. No permits, no meters, no time limit.' },
-    { keys: ['coffee','tea','drink','beverage','filter coffee'],
-      a: 'Yes, <strong>unlimited filter coffee, tea and water</strong> are included with every membership. Help yourself.' },
-    { keys: ['wifi','wi-fi','internet','broadband','fibre','speed','gbps'],
-      a: '<strong>1 Gbps dedicated fibre.</strong> Not shared, not throttled. Roughly 24 times the average Bassetlaw home connection — your video calls will not stutter.' },
-    { keys: ['hour','what time','opening time','open from','closing time','9 to 5','9-5','close','what days'],
-      a: 'Phase 1 is open <strong>Monday to Friday during business hours</strong>. Extended access is planned for a later phase.' },
-    { keys: ['contact','email','phone','call','get in touch','reach you','hello@'],
-      a: 'Email <a href="mailto:hello@worksopworkspace.com">hello@worksopworkspace.com</a> or fill in the form via the "Join the Waiting List" button at the top of the page.' },
-    { keys: ['print','scan','printer'],
-      a: 'Printing is something we are looking at adding once we have been open a little while. Not in the day-one offering.' },
-    { keys: ['member','sign up','register','join','waiting list','founder','founding'],
-      a: 'You can <strong>join the waiting list</strong> using the orange button at the top of any page. Founding members get priority access and locked-in rates.' },
-    { keys: ['food','lunch','eat','restaurant'],
-      a: 'No kitchen on day one, but the town centre is two minutes away with plenty of lunch options. The basement coffee shop zone (Phase 2) will have food.' },
-    { keys: ['tour','visit','look around','view ','see the space','see it'],
-      a: 'Yes, we would love to show you round. <a href="/contact">Get in touch</a> with a couple of times that work for you and we will arrange a walk-around before opening.' },
-    { keys: ['sponsor','partner','who is behind','who runs','founder','funded by','backed by'],
-      a: 'Worksop Workspace is supported by two founding sponsors: <a href="https://www.bullseyeproperties.co.uk/" target="_blank" rel="noopener">Bullseye Properties Ltd</a> and <a href="https://southyorkshirepropertybuyers.com/" target="_blank" rel="noopener">South Yorkshire Property Buyers</a>. <a href="/sponsors">Read more about our sponsors</a>.' },
-    { keys: ['podcast','studio','recording','record'],
-      a: 'A <strong>podcast and recording studio</strong> is coming as part of Phase 2 — acoustically treated for content creators, podcasters and business owners. Around £40 per hour.' },
-    { keys: ['blog','journal','article','read'],
-      a: 'You can read articles for freelancers and remote workers in north Notts on our <a href="/blog">Journal</a> page — pieces on commuting costs, broadband in Bassetlaw villages, hybrid worker maths and more.' },
-    { keys: ['membership','plans','membership options','what membership'],
-      a: 'Three options: <strong>Hot Desk daily</strong> (£12), <strong>Hot Desk weekly</strong> (£50/wk), and <strong>Private Office</strong> (from £125/wk). All include parking, fibre, coffee and meeting room access. <a href="/membership">See full details</a>.' },
-    { keys: ['floor plan','floorplan','layout','how big','square feet','sqft','square metres'],
-      a: 'The building is <strong>4,086 sqft (379.6 m²)</strong> across two floors. <a href="/space">See the floor plan</a> on our Space page — colour-coded so you can see quiet desks, private offices, hourly rooms and communal areas at a glance.' },
-    { keys: ['train','station','rail','sheffield','retford','lincoln'],
-      a: 'Worksop train station is an <strong>8-minute walk</strong>. Direct services to Sheffield (22 min), Retford (12 min) and Lincoln. Carlton Road is on the same side of town as the rail and bus connections.' },
-    { keys: ['bus','public transport','transport'],
-      a: 'Carlton Road bus stop is a <strong>one-minute walk</strong> from the door. Stagecoach and Travel Master routes connect Worksop with Bassetlaw, Doncaster and Sheffield.' },
-    { keys: ['quiet','focus','focused','noisy','noise','can i concentrate'],
-      a: 'Yes — quiet, focused work is the <strong>blue zone</strong> on the floor plan. Plus there is a private room with a door that closes if you need to take a call.' },
-    { keys: ['social','community','people','meet','networking'],
-      a: 'There is a community of locals — freelancers, small teams, remote workers, tradespeople. Read more about <a href="/community">who works here</a>. The orange zone on the floor plan is communal social space.' },
-    { keys: ['discount','deal','offer','founder rate','founding member'],
-      a: 'Founding members get <strong>locked-in rates</strong> and priority access when we open. Get on the waiting list now to secure them.' },
-    { keys: ['thank','thanks','cheers','great','perfect','awesome','ta'],
-      a: 'You are welcome. Anything else I can help with?' },
+  /* Sensitive topics we won't answer here. If the user input matches
+     any of these, we return a calm refusal pointing them to email. */
+  var SENSITIVE_PATTERNS = [
+    /\b(revenue|profit|turnover|earnings|net worth|valuation)\b/,
+    /\b(financial|finances|p&l|p and l|balance sheet|accounts|takings|takings|gross|salary|salaries|wage|wages|pay slip|payslip)\b/,
+    /\bhow much (?:does|do) (?:the |this |you |they |we )?(?:business |company |place |it )?(?:make|earn|take|generate)\b/,
+    /\b(?:director'?s? )?(?:pay|salary|earnings)\b/,
+    /\b(?:bank|banking) (?:details|account|info|information|number)\b/,
+    /\b(?:account number|sort code|iban|swift)\b/,
+    /\b(?:vat number|tax id|tax number|company number|registration number)\b/,
+    /\b(staff|employees) (?:details|info|information|list|names|salaries|pay)\b/,
+    /\bwho works (?:at|for) (?:the |this )?(?:company|business|workspace)?\s*(?:office|hq)?\??$/,
+    /\b(?:home address|director address|registered (?:office )?address)\b/,
+    /\b(?:phone number|mobile number|personal number|direct line)\b/,
+    /\b(?:investor|investment) (?:details|deck|memo)\b/,
+    /\b(supplier|suppliers|landlord|lease cost|rent)\b/,
+    /\b(?:internal|backend|admin) (?:doc|docs|document|documents|details)\b/,
+    /\b(?:lord cnb|cnb accommodation)\b/i,
   ];
 
-  var FALLBACK = 'I do not have an answer for that one off the top of my head. The team can definitely help though — drop us an email at <a href="mailto:hello@worksopworkspace.com">hello@worksopworkspace.com</a> or use the "Join the Waiting List" button to leave your details.';
+  var SENSITIVE_REPLY = 'That is not something I can share through chat — for any business or finance questions, the best route is to email <a href="mailto:hello@worksopworkspace.com">hello@worksopworkspace.com</a> directly and the team will come back to you personally.';
+
+  var KB = [
+    /* Greetings ----------------------------------------------- */
+    { keys: ['hello','hi','hey','hiya','good morning','good afternoon','good evening','howdy','yo'],
+      a: 'Hi! 👋 Ask me about pricing, opening dates, location, parking, broadband, what is included, anything you like.' },
+
+    /* Pricing — general --------------------------------------- */
+    { keys: ['price','prices','cost','costs','how much','rate','rates','pricing','charge','charges'],
+      a: '<p>Here is what we charge:</p><ul><li><strong>Hot Desk Daily</strong>: £12 per day</li><li><strong>Hot Desk Weekly</strong>: £50 per week, rolling</li><li><strong>Private Office</strong>: from £125 per week (size dependent)</li></ul><p>All plans include free parking, 1 Gbps fibre and unlimited filter coffee.</p>' },
+
+    /* Pricing — specific tiers -------------------------------- */
+    { keys: ['private office','team office','office for','rent an office','office space','office cost','office price','my own office','lockable office','dedicated office'],
+      a: 'Private offices start from <strong>£125 per week</strong>. Lockable, fitted out for small teams of 1 to 4 people, with all building amenities included. Want to <a href="/contact">book a viewing</a>?' },
+    { keys: ['hot desk','daily desk','one day','drop in','day pass','day rate','single day'],
+      a: 'Hot desks are <strong>£12 per day</strong>. Walk in, pick a desk, get to work. No commitment, no membership required for the first visit.' },
+    { keys: ['weekly','week rate','5 days','five days','full week','weekly desk','desk for the week','rolling'],
+      a: 'The Hot Desk Weekly is <strong>£50 per week</strong>, rolling weekly. Same building every weekday. About the cost of four day passes for the full week, no long contract.' },
+    { keys: ['dedicated desk','reserved desk','same desk','my desk','permanent desk','fixed desk'],
+      a: 'A dedicated desk is your reserved seat — same desk every visit. Available as part of the weekly subscription. <a href="/membership">See membership</a> for full details.' },
+    { keys: ['meeting room','boardroom','book a room','meeting space','board room','room hire','client meeting'],
+      a: 'The boardroom is part of <strong>Phase 3</strong>. Bookable by the hour, ideal for client meetings, interviews and workshops. <a href="/meeting-room">Read more</a>.' },
+    { keys: ['podcast','studio','recording','record','audio'],
+      a: 'A <strong>podcast and recording studio</strong> is part of Phase 3. Acoustically treated for content creators, podcasters and business owners. <a href="/podcast-studio">Read more</a>.' },
+    { keys: ['hourly','by the hour','per hour','hour rate'],
+      a: 'Hourly hot desk access is available as a pay-as-you-go option. Hourly bookings on the boardroom and podcast studio (Phase 3) will be open to members and visitors.' },
+
+    /* Opening + phases ---------------------------------------- */
+    { keys: ['when','opening','launch','launch date','start date','available from','first of june','1 june','june 1','june','date'],
+      a: 'We are opening <strong>1 June 2026</strong> on Carlton Road, Worksop. Phase 2 (basement extended desk + coffee shop zone) and Phase 3 (boardroom + podcast studio) follow later in the year.' },
+    { keys: ['phase','phase 1','phase 2','phase 3','phases','first phase','second phase','third phase','later'],
+      a: '<p>Three phases:</p><ul><li><strong>Phase 1</strong> — Ground floor, opens 1 June 2026: hot desks, dedicated desks and private offices.</li><li><strong>Phase 2</strong> — Basement: extended desks, coffee shop zone with background music, self-catering kitchen.</li><li><strong>Phase 3</strong> — Upper floor: bookable boardroom and podcast studio plus member credits system.</li></ul>' },
+    { keys: ['progress','build','construction','fit out','fit-out','renovation','update'],
+      a: 'Phase 0 is the current build phase — fit-out is underway and the waiting list is open. We are happy to share progress photos with anyone interested. <a href="/contact">Drop us a message</a>.' },
+
+    /* Location ------------------------------------------------ */
+    { keys: ['where','location','address','find you','find this','directions','postcode','carlton road','near','closest','located'],
+      a: '<strong>Carlton Road, Worksop town centre</strong>. Two minutes from the town centre and an 8-minute walk from Worksop train station. Free parking on site, which is rare in town centre locations.' },
+
+    /* Parking ------------------------------------------------- */
+    { keys: ['park','parking','car space','car spaces','where do i park','car park','drive','vehicle'],
+      a: 'Yes — <strong>free parking on site</strong>. No permits, no meters, no time limit. A rare practical advantage for a town centre workspace.' },
+
+    /* Refreshments -------------------------------------------- */
+    { keys: ['coffee','tea','drinks','drink','beverage','filter coffee','espresso','refreshment','refreshments','water'],
+      a: 'Yes, <strong>unlimited tea, coffee and water</strong> are included with every membership and visit. No buying coffee to justify the seat. Help yourself.' },
+    { keys: ['food','lunch','eat','restaurant','snack','breakfast','meal'],
+      a: 'No formal kitchen in Phase 1, but the town centre is two minutes away with plenty of lunch options. The basement coffee shop zone (Phase 2) will include a self-catering kitchen.' },
+
+    /* Connectivity -------------------------------------------- */
+    { keys: ['wifi','wi-fi','internet','broadband','fibre','fiber','speed','gbps','mbps','connection','bandwidth','network'],
+      a: '<strong>High-speed Wi-Fi throughout the building.</strong> Roughly 24 times the average Bassetlaw home connection — your video calls will not stutter.' },
+
+    /* Hours --------------------------------------------------- */
+    { keys: ['hour','hours','what time','opening time','open from','closing time','9 to 5','9-5','what days','24/7','out of hours','evening','weekend','24 hour'],
+      a: 'Phase 1 is staffed <strong>8am to 5pm Monday to Friday</strong>. From later phases, members will get 24/7 access via a QR code tied to their active membership.' },
+
+    /* Furniture / equipment ----------------------------------- */
+    { keys: ['chair','desk','furniture','ergonomic','monitor','locker','storage','equipment'],
+      a: 'Every desk comes with proper ergonomic furniture (desk and chair) plus access to lockers for personal storage. Designed for full working days, not for ten-minute drop-ins.' },
+
+    /* Contact ------------------------------------------------- */
+    { keys: ['contact','email','phone','call','get in touch','reach you','hello@','message','speak to'],
+      a: 'Email <a href="mailto:hello@worksopworkspace.com">hello@worksopworkspace.com</a> or fill in the form via the "Join the Waiting List" button at the top of the page. Or use the <a href="/contact">contact page</a>.' },
+
+    /* Joining ------------------------------------------------- */
+    { keys: ['member','membership','sign up','register','join','waiting list','founding','enquiry','enquire','enquiry form'],
+      a: 'You can <strong>join the waiting list</strong> using the orange button at the top of any page. Founding members get priority access and introductory rates when we open.' },
+
+    /* Onboarding journey -------------------------------------- */
+    { keys: ['process','onboarding','sign up process','first day','first visit','induction','starting','get started'],
+      a: '<p>The journey is straightforward:</p><ol><li>Initial conversation to understand what you need (private office, dedicated desk, or hot desk).</li><li>Match to the right plan.</li><li>Tour of the space.</li><li>Sign up via Stripe (direct debit for weekly plans, card for day passes).</li></ol><p>No formal induction on day one — you are shown around, given the Wi-Fi, and you sit down and work. That is the entire point.</p>' },
+    { keys: ['app','member app','book a desk','book a session','qr code','check in','occupancy'],
+      a: 'Members get a dedicated app for booking desks and rooms, checking real-time availability, accessing their QR code for entry, raising issues, and managing their membership. Check-in is automatic when the QR is scanned.' },
+    { keys: ['cancel','cancellation','contract','lock in','locked in','tied in','commitment','minimum term','notice period'],
+      a: 'No long contracts and no lock in. Membership rolls weekly and you can cancel directly through the member app — no excessive notice periods. The system is designed to be as flexible as the membership itself.' },
+
+    /* Tour / viewing ------------------------------------------ */
+    { keys: ['tour','visit','look around','view','see the space','see it','viewing','walk around','walk-around','show me','see inside'],
+      a: 'Yes, we would love to show you round. <a href="/contact">Get in touch</a> with a couple of times that work for you and we will arrange a walk-around before opening.' },
+
+    /* What is included --------------------------------------- */
+    { keys: ['included','what do i get','what comes with','amenities','what is included','what features','perks','benefits','what is in','what comes'],
+      a: '<p>Every membership and visit includes:</p><ul><li>Unlimited tea, coffee and water</li><li>High-speed Wi-Fi throughout</li><li>Proper ergonomic desk and chair</li><li>Lockers for personal storage</li><li>Free on-site parking</li><li>Access to meeting rooms (later phases)</li></ul>' },
+
+    /* Print / scan ------------------------------------------- */
+    { keys: ['print','scan','printer','printing','copy'],
+      a: 'Printing is something we are looking at adding once we have been open a little while. Not in the day-one offering.' },
+
+    /* Sponsors ------------------------------------------------ */
+    { keys: ['sponsor','sponsors','partner','partners','funded by','backed by'],
+      a: 'Worksop Workspace is supported by two founding sponsors: <a href="https://www.bullseyeproperties.co.uk/" target="_blank" rel="noopener">Bullseye Properties Ltd</a> and <a href="https://southyorkshirepropertybuyers.com/" target="_blank" rel="noopener">South Yorkshire Property Buyers</a>. <a href="/sponsors">Read more</a>.' },
+
+    /* Resources ----------------------------------------------- */
+    { keys: ['blog','journal','article','articles','read','content','posts','resources'],
+      a: 'You can read articles for freelancers and remote workers in north Notts on our <a href="/blog">Journal</a> page — pieces on commuting costs, broadband in Bassetlaw villages, hybrid worker maths, working alone in Worksop, the cost of working from a coffee shop, and more.' },
+
+    /* Floor plan / size --------------------------------------- */
+    { keys: ['floor plan','floorplan','layout','how big','square feet','sqft','square metres','size','space','spaces','two floors','basement','ground floor'],
+      a: 'The building is <strong>4,086 sqft (379.6 m²)</strong> across two floors. <a href="/space">See the floor plan</a> on our Space page — colour-coded so you can see quiet desks (blue), private offices (green), hourly rooms (red), communal spaces (orange) and the coffee shop zone (purple) at a glance.' },
+
+    /* Transport ----------------------------------------------- */
+    { keys: ['train','station','rail','sheffield','retford','lincoln','train times','platform','railway'],
+      a: 'Worksop train station is an <strong>8-minute walk</strong>. Direct services to Sheffield (22 min), Retford (12 min) and Lincoln. Same side of town as the bus interchange.' },
+    { keys: ['bus','public transport','transport','stagecoach'],
+      a: 'Carlton Road bus stop is a <strong>one-minute walk</strong> from the door. Stagecoach and Travel Master routes connect Worksop with Bassetlaw, Doncaster and Sheffield.' },
+    { keys: ['drive','driving','from doncaster','from retford','from mansfield','from sheffield','distance','how far','commute'],
+      a: 'By car: Retford 15 min, Doncaster 20 min, Mansfield 25 min, Sheffield 25 min. Five minutes from the A57. Free parking on site once you arrive.' },
+
+    /* Atmosphere / fit ---------------------------------------- */
+    { keys: ['quiet','focus','focused','noisy','noise','concentrate','distract','distractions','silent'],
+      a: 'Yes — quiet, focused work is the <strong>blue zone</strong> on the floor plan. There is also a private room with a door that closes if you need to take a call without disturbing anyone.' },
+    { keys: ['social','community','people','meet','networking','who else','who works','clients','customers','others'],
+      a: 'There is a community of locals here for the same reason — freelancers, small teams, remote workers, tradespeople. People who came to do their work, not to be sold to. <a href="/community">Read more about who works here</a>.' },
+    { keys: ['for me','suit me','right for','is this for','should i','my type','my kind','will it work for','work for me'],
+      a: '<p>Most likely yes if any of these apply:</p><ul><li>Remote employees working from a kitchen table surrounded by distractions</li><li>Tradespeople or sole traders doing admin from the van</li><li>Freelancers bouncing between coffee shops</li><li>Small business owners (1 to 4 people) who do not need a full office</li><li>Anyone who works from home and wants more structure to their day</li></ul><p><a href="/community">More on who works here</a>.</p>' },
+    { keys: ['mindset','vibe','culture','atmosphere','feel','feels like'],
+      a: 'A blend between a coffee shop and a business centre. Welcoming, focused, human, local. The feeling we go for: "I can drop my shoulders here. This is a place for me." No pressure, no networking expectations, just somewhere to get on with the work.' },
+
+    /* Brand / what we are not -------------------------------- */
+    { keys: ['networking event','pitch','pitching','sell to','solicit','market to','prospect'],
+      a: 'Worksop Workspace is not a networking hub. People come here to do their work, not to pitch or be pitched at. Members who use the space to solicit other members for business will not be welcomed back. It is a workplace.' },
+    { keys: ['political','politics','party','religious'],
+      a: 'We stay neutral. No political affiliations, commentary or associations. The brand focuses entirely on work, community and the local area.' },
+
+    /* Founder benefits --------------------------------------- */
+    { keys: ['discount','deal','offer','founder rate','founder rates','founding member','early bird','special','introductory'],
+      a: 'Introductory offers are available at launch for founding members — priority access and locked-in rates. Beyond launch, discounting is not the model. The pricing you see is the pricing you get.' },
+    { keys: ['google review','review','testimonial','feedback'],
+      a: 'Members and visitors who leave a Google review get a free day pass as a thank-you. A community gesture, not a transactional exchange.' },
+
+    /* Vague action / next steps ------------------------------ */
+    { keys: ['what do i do','what should i do','what next','what now','what then','next step','next steps','where do i start','how do i start','how do i get','what is the next','where do i go from here','so what','okay what','ok what','how do i','how can i','any tips','help me decide','what would you recommend'],
+      a: '<p>Most people start with one of these:</p><ul><li><strong>Get on the waiting list</strong> — orange button at the top of the page. Founding members get priority access and introductory rates.</li><li><strong>Book a viewing</strong> — <a href="/contact">drop us a message</a> with a couple of times that work for you.</li><li><strong>See the space</strong> — <a href="/space">floor plan and photos</a>.</li><li><strong>Compare options</strong> — <a href="/membership">membership and pricing</a>.</li></ul><p>What sounds best?</p>' },
+
+    /* Existential / about us --------------------------------- */
+    { keys: ['what is this','what is it','what is worksop workspace','what are you','what do you do','tell me about','about you','who are you','about the space','about worksop workspace'],
+      a: '<p>Worksop Workspace is the first dedicated coworking space in Worksop. <em>"A blend between a coffee shop and a business centre."</em> Opening on Carlton Road on 1 June 2026.</p><p>Hot desks, dedicated desks and private offices in Phase 1. A coffee shop zone in Phase 2. Boardroom and podcast studio in Phase 3. Free parking, fast broadband, unlimited tea and coffee included with every plan.</p>' },
+    { keys: ['why does it exist','why are you','why open','why worksop','why now','what gap','market gap'],
+      a: '<p>The nearest coworking spaces are Sheffield, Nottingham and other major cities. Nothing comparable existed in Worksop or the surrounding area until now.</p><p>It is built for the people who have been working from vans, kitchen tables, friends houses and shed-offices because there was no proper local option. Worksop Workspace is the answer to every workaround people have invented to avoid working from their kitchen table.</p>' },
+    { keys: ['gap','first','only','unique','differentiator','what makes you different','competitors','alternatives'],
+      a: '<p>Only space of its kind within a 10-mile radius of Worksop town centre. What sets it apart:</p><ul><li>On-site parking — rare for town centre</li><li>All environment types in one building (quiet focus, social zones, private offices, meeting rooms, podcast studio)</li><li>Flexible pricing — fixed weekly subscriptions plus pay-as-you-go for occasional use</li><li>No pressure to buy anything — coffee included</li><li>Feels like a solution, not a compromise</li></ul>' },
+
+    /* Audience / target -------------------------------------- */
+    { keys: ['target','audience','who is it for','who comes here','demographic','age range','clientele'],
+      a: 'The typical member works from home but finds home unworkable as a working environment. Remote employees, freelancers, sole traders, small business owners (1 to 4 people), tradespeople doing admin, and people who want more community and structure to their day. Mostly within a 10-mile radius of Worksop town centre.' },
+
+    /* Booking & timing --------------------------------------- */
+    { keys: ['can i book','book now','book today','reserve','book ahead'],
+      a: 'You cannot book a desk just yet — we are pre-launch. <strong>Join the waiting list</strong> using the button at the top, and we will be in touch the moment doors open. For meeting room enquiries, <a href="/contact">drop us a message</a>.' },
+
+    /* Safety / compliance ------------------------------------- */
+    { keys: ['safe','safety','fire','emergency','compliance','accessib','disabled','wheelchair','step free','step-free','lift','ramp'],
+      a: 'The building meets all required safety and compliance standards before opening: fire safety assessments, marked escape routes, emergency lighting, ventilation. For specific accessibility needs, <a href="/contact">drop us a message</a> and we will give you a straight answer.' },
+
+    /* Pets / kids -------------------------------------------- */
+    { keys: ['dog','dogs','pet','pets','animal','animals'],
+      a: 'No formal pet policy yet. We are happy to discuss bringing a well-behaved dog in once we have opened — drop us a message and we will work it out together.' },
+    { keys: ['child','children','kids','baby','school holiday','half term'],
+      a: 'The space is set up as a quiet professional working environment, so children would not be the right fit during normal hours. If you need a place to work during school holidays specifically, get in touch and we can talk it through.' },
+
+    /* Stripe / payment --------------------------------------- */
+    { keys: ['payment','pay','stripe','direct debit','card','invoice','billing'],
+      a: 'Payment is via Stripe. Direct debit for weekly rolling subscriptions, card for day passes and hourly bookings. No invoicing or messy paperwork.' },
+
+    /* Thanks / closers --------------------------------------- */
+    { keys: ['thank','thanks','cheers','perfect','awesome','ta','brilliant','helpful'],
+      a: 'You are welcome. Anything else I can help with? You can also use the chips at the bottom of the chat to jump to common topics.' },
+    { keys: ['bye','goodbye','see you','later','catch you','cheerio'],
+      a: 'See you soon! Use the orange "Join the Waiting List" button at the top whenever you are ready, or just close this chat to keep browsing.' },
+  ];
+
+  function fallbackResponse() {
+    return '<p>Not sure I caught that — let me give you the lay of the land. I can answer questions about:</p>'
+      + '<ul>'
+      + '<li><strong>Prices</strong> — hot desk daily/weekly, private office, hourly</li>'
+      + '<li><strong>When and where</strong> — opening date (1 June 2026), location, parking</li>'
+      + '<li><strong>What is included</strong> — broadband, coffee, meeting rooms, lockers</li>'
+      + '<li><strong>Getting started</strong> — joining the waiting list, booking a viewing</li>'
+      + '<li><strong>The space itself</strong> — floor plan, who works here, transport</li>'
+      + '<li><strong>How it works</strong> — onboarding, member app, cancellation</li>'
+      + '</ul>'
+      + '<p>Try asking one of those, or use the chips above. If I still cannot help, drop us an email at <a href="mailto:hello@worksopworkspace.com">hello@worksopworkspace.com</a>.</p>';
+  }
 
   function escapeHtml(s) {
     return String(s || '').replace(/[&<>"']/g, function (c) {
@@ -239,25 +388,60 @@
     });
   }
 
+  /* Tokenise input by stripping punctuation and splitting on whitespace.
+     Used so single-word keys must match as whole words (avoids "office"
+     matching "we offer..."). Multi-word keys still substring-match. */
+  function tokenise(s) {
+    return (s || '').toLowerCase()
+      .replace(/[^\w\s'-]/g, ' ')
+      .split(/\s+/)
+      .filter(function (t) { return t.length > 0; });
+  }
+
+  function isSensitive(input) {
+    for (var i = 0; i < SENSITIVE_PATTERNS.length; i++) {
+      if (SENSITIVE_PATTERNS[i].test(input)) return true;
+    }
+    return false;
+  }
+
+  function scoreEntry(entry, input, tokens) {
+    var score = 0;
+    for (var i = 0; i < entry.keys.length; i++) {
+      var key = entry.keys[i];
+      if (key.indexOf(' ') !== -1) {
+        // Multi-word phrase: substring match, weighted higher
+        if (input.indexOf(key) !== -1) score += key.length * 2;
+      } else {
+        // Single word: must appear as a whole token
+        if (tokens.indexOf(key) !== -1) score += key.length;
+      }
+    }
+    return score;
+  }
+
+  /* Threshold tuned so single common words ("the", "a", "is") don't
+     trigger unrelated answers, but a single meaningful word like
+     "parking" (length 7) clears it comfortably. */
+  var MIN_SCORE = 4;
+
   function findAnswer(text) {
     var input = (text || '').toLowerCase().trim();
     if (!input) return null;
+
+    if (isSensitive(input)) return SENSITIVE_REPLY;
+
+    var tokens = tokenise(input);
     var best = null;
     var bestScore = 0;
     for (var i = 0; i < KB.length; i++) {
-      var entry = KB[i];
-      var score = 0;
-      for (var j = 0; j < entry.keys.length; j++) {
-        if (input.indexOf(entry.keys[j]) !== -1) {
-          score += entry.keys[j].length;
-        }
-      }
-      if (score > bestScore) {
-        bestScore = score;
-        best = entry;
+      var s = scoreEntry(KB[i], input, tokens);
+      if (s > bestScore) {
+        bestScore = s;
+        best = KB[i];
       }
     }
-    return best ? best.a : FALLBACK;
+    return (best && bestScore >= MIN_SCORE) ? best.a : fallbackResponse();
   }
 
   // Inject DOM
@@ -272,11 +456,14 @@
   panel.setAttribute('aria-label', 'Worksop Workspace chat');
   panel.innerHTML =
     '<div class="ww-chat-header">' +
-      '<div>' +
+      '<div class="ww-chat-header-text">' +
         '<div class="ww-chat-header-title">Worksop Workspace</div>' +
         '<div class="ww-chat-header-sub">Ask us anything</div>' +
       '</div>' +
-      '<button class="ww-chat-close" aria-label="Close chat">&times;</button>' +
+      '<button class="ww-chat-close" aria-label="Close chat and return to website">' +
+        '<svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>' +
+        '<span class="ww-chat-close-label">Back to site</span>' +
+      '</button>' +
     '</div>' +
     '<div class="ww-chat-messages"></div>' +
     '<div class="ww-chat-quick">' +

@@ -1821,16 +1821,35 @@ article.blog-post h1 {
   margin-top: 2px;
 }
 .ww-chat-close {
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.18);
+  color: var(--white);
   cursor: pointer;
-  padding: 4px 8px;
-  font-size: 22px;
+  padding: 7px 12px 7px 9px;
+  border-radius: 100px;
   line-height: 1;
   font-family: inherit;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: background 0.2s, border-color 0.2s;
 }
-.ww-chat-close:hover { color: var(--white); }
+.ww-chat-close:hover {
+  background: rgba(255,255,255,0.18);
+  border-color: rgba(255,255,255,0.28);
+}
+.ww-chat-close svg { stroke: currentColor; flex-shrink: 0; }
+.ww-chat-close-label { display: none; }
+
+/* On mobile show the "Back to site" label so the close affordance
+   is unmistakeable when the panel goes full-screen */
+@media (max-width: 600px) {
+  .ww-chat-close-label { display: inline; }
+  .ww-chat-close { padding: 8px 14px 8px 10px; }
+}
 
 .ww-chat-messages {
   flex: 1;
