@@ -281,7 +281,7 @@
 
     /* Connectivity -------------------------------------------- */
     { keys: ['wifi','wi-fi','internet','broadband','fibre','fiber','speed','gbps','mbps','connection','bandwidth','network'],
-      a: '<strong>1 Gbps fibre Wi-Fi.</strong> Roughly 24x the average Bassetlaw home. Video calls won't stutter.' },
+      a: "<strong>1 Gbps fibre Wi-Fi.</strong> Roughly 24x the average Bassetlaw home. Video calls will not stutter." },
 
     /* Hours --------------------------------------------------- */
     { keys: ['hour','hours','what time','opening time','open from','closing time','9 to 5','9-5','what days','24/7','out of hours','evening','weekend','24 hour'],
