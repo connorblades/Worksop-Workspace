@@ -207,38 +207,38 @@
     /* Pricing. general — leads with a qualifier question so we can
        point them at the right tier rather than dumping everything */
     { keys: ['price','prices','cost','costs','how much','rate','rates','pricing','charge','charges'],
-      a: "<p>Good question. Honestly, it depends on what you are after. Roughly which one fits you best?</p>",
+      a: "<p>Depends what you are after. Which sounds most like you?</p>",
       qr: ['Drop in occasionally','A permanent base for the week','A private office for a team','Show me everything'] },
 
     /* Qualifier-response routes ------------------------------- */
     { keys: ['drop in occasionally','occasional','occasionally','some days','a few days','now and then','sometimes','flexible','as needed','when i need'],
-      a: "<p>Sounds like a <strong>Hot Desk Daily</strong> at £12 a day is your best bet. Walk in any weekday, plug in, get on with it. No commitment, no contract. Properly low friction.</p><p>The £12 covers free parking, proper coffee and 1 Gbps fibre. If you start coming three or four days a week, the weekly might work out cheaper.</p>",
+      a: "<p><strong>Hot Desk Daily, £12 a day.</strong> Walk in, plug in, no commitment. Includes parking, coffee and 1 Gbps fibre. If you end up coming 3+ days a week, the weekly works out cheaper.</p>",
       qr: ['Weekly desk details','Join the waiting list','Where are you?'] },
     { keys: ['permanent base','my base','full week','every day','every weekday','my regular','consistent','rhythm','same place every day'],
-      a: "<p>That is the <strong>Hot Desk Weekly</strong>, £50 a week, rolling weekly. Same building, every weekday. Roughly the cost of four day passes for the full week, no long contract.</p><p>Most weekly members tell us the consistency is what changes their week. You build a rhythm. Includes free parking, coffee and fibre, of course.</p>",
+      a: "<p><strong>Hot Desk Weekly, £50 a week.</strong> Rolling weekly, no long contract. Same building every day, builds a proper rhythm. Parking, coffee and fibre all included.</p>",
       qr: ['Dedicated desk details','Cancellation policy','Join the waiting list'] },
     { keys: ['office for team','for my team','small team','team of','my company','my business','a few of us'],
-      a: "<p>That points to a <strong>Private Office</strong>. From £125 a week, with the exact rate depending on the size of the room. Lockable, fits 1 to 4 people, all building amenities included.</p><p>Best move from here is to come and have a look so we can match a room to your team size.</p>",
+      a: "<p><strong>Private Office, from £125 a week.</strong> Lockable, fits 1-4 people, exact rate depends on the room size. Best to come for a viewing so we match the right room to your team.</p>",
       qr: ['What is included?','Book a viewing','Join the waiting list'] },
     { keys: ['show me everything','show me all','all prices','all the prices','all options','full pricing','everything','give me everything','full breakdown','show all'],
-      a: "<p>Here you go, the full lot:</p><ul><li><strong>Hot Desk Daily</strong>: £12 a day, walk in whenever</li><li><strong>Hot Desk Weekly</strong>: £50 a week, rolling</li><li><strong>Private Office</strong>: from £125 a week, size dependent</li></ul><p>All of those come with free parking, proper coffee and 1 Gbps fibre included. We are not VAT registered yet, so the price you see is the price you pay.</p>",
+      a: "<ul><li><strong>Hot Desk Daily</strong>: £12/day</li><li><strong>Hot Desk Weekly</strong>: £50/week, rolling</li><li><strong>Private Office</strong>: from £125/week</li></ul><p>All include parking, coffee and 1 Gbps fibre. No VAT.</p>",
       qr: ['What is included?','When are you opening?','Join the waiting list'] },
     { keys: ['not sure yet','not sure which','no idea','i dunno','undecided','help me pick','help me choose','which one','which is best'],
-      a: "<p>No stress, that is what we are here for. Roughly how often would you use it?</p>",
+      a: "<p>No stress. Roughly how often would you use it?</p>",
       qr: ['One or two days a week','Most days of the week','Every working day','It would be a small team'] },
 
     /* Frequency-response routes for the "not sure" branch ---- */
     { keys: ['one or two days','one or two days a week','occasional days','couple of days','few days a week'],
-      a: "<p>For one or two days a week, the <strong>Hot Desk Daily</strong> at £12 a day is your friend. No commitment, just walk in when you need a focused day.</p><p>If you find yourself coming three or more days, the weekly works out cheaper. We will keep an eye on that for you.</p>",
+      a: "<p><strong>Hot Desk Daily at £12</strong> is the one. No commitment, walk in when you need a focused day.</p>",
       qr: ['Join the waiting list','Where are you?','What is included?'] },
     { keys: ['most days','most of the week','three or four days','four days'],
-      a: "<p>That is squarely the <strong>Hot Desk Weekly</strong> at £50 a week, rolling. Same building every weekday, build a routine, no long contract. Properly the sweet spot for hybrid workers.</p>",
+      a: "<p><strong>Hot Desk Weekly, £50 a week.</strong> Rolling, no long contract. Sweet spot for hybrid workers.</p>",
       qr: ['Dedicated desk details','Cancellation policy','Join the waiting list'] },
     { keys: ['every working day','every day','5 days a week','five days a week','full time'],
-      a: "<p>Sounds like you want a <strong>dedicated desk</strong> as part of the weekly subscription. Your own reserved seat, every day. Or, if you want a door that closes, a <strong>private office</strong> from £125 a week.</p>",
+      a: "<p>You want a <strong>dedicated desk</strong> on the weekly plan, or a <strong>private office</strong> from £125 a week if you want a door that closes.</p>",
       qr: ['Private office details','Dedicated desk details','Join the waiting list'] },
     { keys: ['small team','its a team','team of two','team of three','team of four','few of us would come'],
-      a: "<p>For a small team you really want a <strong>Private Office</strong>. From £125 a week, lockable, fitted out for 1 to 4 people. The exact rate depends on which room.</p>",
+      a: "<p>That points to a <strong>Private Office</strong>. From £125/week, lockable, 1-4 people, rate depends on room size.</p>",
       qr: ['Book a viewing','What is included?','Join the waiting list'] },
 
     /* Pricing. specific tiers -------------------------------- */
@@ -259,33 +259,33 @@
 
     /* Opening + phases ---------------------------------------- */
     { keys: ['when','opening','launch','launch date','start date','available from','first of june','1 june','june 1','june','date'],
-      a: "We open the doors on <strong>1 June 2026</strong>. Carlton Road, Worksop. Phase 2 (basement coffee shop zone) and Phase 3 (boardroom and podcast studio) land later in the year. Get on the waiting list (orange button at the top) and you will be among the first through the door, with founding rates locked in." },
+      a: "We open <strong>1 June 2026</strong> on Carlton Road. Phase 2 (basement coffee shop) and Phase 3 (boardroom + podcast studio) follow later in the year." },
     { keys: ['phase','phase 1','phase 2','phase 3','phases','first phase','second phase','third phase','later'],
-      a: '<p>Three phases:</p><ul><li><strong>Phase 1</strong>: Ground floor, opens 1 June 2026: hot desks, dedicated desks and private offices.</li><li><strong>Phase 2</strong>: Basement, extended desks, coffee shop zone with background music, self catering kitchen.</li><li><strong>Phase 3</strong>: Upper floor, bookable boardroom and podcast studio plus member credits system.</li></ul>' },
+      a: '<ul><li><strong>Phase 1</strong> (1 June): hot desks, dedicated desks, private offices</li><li><strong>Phase 2</strong>: basement coffee shop zone, kitchen</li><li><strong>Phase 3</strong>: boardroom, podcast studio</li></ul>' },
     { keys: ['progress','build','construction','fit out','fit-out','renovation','update'],
       a: 'Phase 0 is the current build phase. Fit out is underway and the waiting list is open. We are happy to share progress photos with anyone interested. <a href="/contact">Drop us a message</a>.' },
 
     /* Location ------------------------------------------------ */
     { keys: ['where','location','address','find you','find this','directions','postcode','carlton road','near','closest','located'],
-      a: "We are on <strong>Carlton Road, in Worksop town centre</strong>. Two minutes walk from the high street, eight minutes from the train station, and free parking right outside. Easy to find. Got your name on the waiting list yet?" },
+      a: "<strong>Carlton Road, Worksop town centre.</strong> Two minutes from the high street, eight from the train station. Free parking outside." },
 
     /* Parking ------------------------------------------------- */
     { keys: ['park','parking','car space','car spaces','where do i park','car park','drive','vehicle'],
-      a: "Yes, <strong>free parking on site</strong>. No permits, no meters, no time limit, no scramble for a space. Rare for a town centre spot, and one of our favourite things to point out." },
+      a: "Yes, <strong>free parking on site</strong>. No permits, no meters, no time limit." },
 
     /* Refreshments -------------------------------------------- */
     { keys: ['coffee','tea','drinks','drink','beverage','filter coffee','espresso','refreshment','refreshments','water'],
-      a: "Absolutely. <strong>Unlimited tea, coffee and water</strong> with every membership or visit. No buying a flat white to justify the seat. Help yourself, top up the kettle, get on with your work." },
+      a: "Yes, <strong>unlimited tea, coffee and water</strong> are included. No buying coffee to justify the seat." },
     { keys: ['food','lunch','eat','restaurant','snack','breakfast','meal'],
       a: 'No formal kitchen in Phase 1, but the town centre is two minutes away with plenty of lunch options. The basement coffee shop zone (Phase 2) will include a self catering kitchen.' },
 
     /* Connectivity -------------------------------------------- */
     { keys: ['wifi','wi-fi','internet','broadband','fibre','fiber','speed','gbps','mbps','connection','bandwidth','network'],
-      a: '<strong>High-speed Wi-Fi throughout the building.</strong> Roughly 24 times the average Bassetlaw home connection, so your video calls will not stutter.' },
+      a: '<strong>1 Gbps fibre Wi-Fi.</strong> Roughly 24x the average Bassetlaw home. Video calls won't stutter.' },
 
     /* Hours --------------------------------------------------- */
     { keys: ['hour','hours','what time','opening time','open from','closing time','9 to 5','9-5','what days','24/7','out of hours','evening','weekend','24 hour'],
-      a: 'Phase 1 is staffed <strong>8am to 5pm Monday to Friday</strong>. From later phases, members will get 24/7 access via a QR code tied to their active membership.' },
+      a: '<strong>8am to 5pm Monday to Friday</strong> in Phase 1. Later phases bring 24/7 QR access for members.' },
 
     /* Furniture / equipment ----------------------------------- */
     { keys: ['chair','desk','furniture','ergonomic','monitor','locker','storage','equipment'],
@@ -297,7 +297,7 @@
 
     /* Joining ------------------------------------------------- */
     { keys: ['member','membership','sign up','register','join','waiting list','founding','enquiry','enquire','enquiry form'],
-      a: "Yes please! Use the orange <strong>Join the Waiting List</strong> button at the top of any page. Takes about 30 seconds. Founders get first dibs the day we open and the introductory rate locked in for as long as you stay. We would love to have you." },
+      a: "Yes please! Hit the orange <strong>Join the Waiting List</strong> button at the top. 30 seconds. Founders get first dibs and the founder rate locked in." },
 
     /* Onboarding journey -------------------------------------- */
     { keys: ['process','onboarding','sign up process','first day','first visit','induction','starting','get started'],
@@ -309,7 +309,7 @@
 
     /* Tour / viewing ------------------------------------------ */
     { keys: ['tour','visit','look around','view','see the space','see it','viewing','walk around','walk around','show me','see inside'],
-      a: "Yes, we would love to have you round! Honestly, the best way to know if it is right for you is to come and see it. <a href=\"/contact\">Drop us a message</a> with a couple of times that work and we will arrange a walk around. No pitch, no pressure, just a proper look at the building." },
+      a: "Yes, we'd love to have you round. <a href=\"/contact\">Drop us a message</a> with a couple of times that work. No pitch, no pressure." },
 
     /* What is included --------------------------------------- */
     { keys: ['included','what do i get','what comes with','amenities','what is included','what features','perks','benefits','what is in','what comes'],
@@ -345,7 +345,7 @@
     { keys: ['social','community','people','meet','networking','who else','who works','clients','customers','others'],
       a: 'There is a community of locals here for the same reason: freelancers, small teams, remote workers, tradespeople. People who came to do their work, not to be sold to. <a href="/community">Read more about who works here</a>.' },
     { keys: ['for me','suit me','right for','is this for','should i','my type','my kind','will it work for','work for me'],
-      a: "<p>Honestly, probably yes if any of these sound familiar:</p><ul><li>Remote employee working from a kitchen table with the kids in the background</li><li>Tradesperson doing admin from the van between jobs</li><li>Freelancer bouncing between coffee shops looking for focus</li><li>Small business owner who needs an office without the overhead of a full lease</li><li>Anyone working from home who fancies a bit more structure to their day</li></ul><p>If that sounds like you, get your name on the list. And <a href=\"/community\">have a read about who else is here</a>.</p>",
+      a: "<p>Probably yes if any of these sound like you:</p><ul><li>Remote employee at a kitchen table</li><li>Tradesperson doing admin from the van</li><li>Freelancer bouncing between coffee shops</li><li>Small business that doesn't need a full lease</li><li>Home worker who wants more structure</li></ul>",
       qr: ['How much is it?','Book a viewing','Join the waiting list'] },
     { keys: ['mindset','vibe','culture','atmosphere','feel','feels like'],
       a: "A blend between a coffee shop and a business centre. Welcoming, focused, human, local. The feeling we go for is: <em>\"I can drop my shoulders here. This is a place for me.\"</em> No pressure, no networking expectations, no hard sell. Somewhere proper to get on with the work and feel at home doing it." },
@@ -364,11 +364,11 @@
 
     /* Vague action / next steps ------------------------------ */
     { keys: ['what do i do','what should i do','what next','what now','what then','next step','next steps','where do i start','how do i start','how do i get','what is the next','where do i go from here','so what','okay what','ok what','how do i','how can i','any tips','help me decide','what would you recommend'],
-      a: "<p>Good question. Honestly, the simplest thing right now is to <strong>get on the waiting list</strong>. The orange button at the top of the page takes about thirty seconds. You will get founder access the day we open and the introductory rate locked in.</p><p>Beyond that, here are the other doors you can knock on:</p><ul><li><a href=\"/contact\">Book a walk around</a>. Drop us a couple of times that work and we will show you the building before opening.</li><li><a href=\"/space\">See the space</a>. Floor plan and photos.</li><li><a href=\"/membership\">Compare the plans</a>. Hot desk daily, weekly, or private office.</li></ul><p>What sounds best to you?</p>" },
+      a: "<p>Simplest move: <strong>join the waiting list</strong> via the orange button at the top.</p><p>Or have a look at <a href=\"/space\">the space</a>, <a href=\"/membership\">the plans</a>, or <a href=\"/contact\">book a viewing</a>.</p>" },
 
     /* Existential / about us --------------------------------- */
     { keys: ['what is this','what is it','what is worksop workspace','what are you','what do you do','tell me about','about you','who are you','about the space','about worksop workspace'],
-      a: "<p>So, Worksop Workspace is the first proper coworking space in Worksop. We describe it as <em>\"a blend between a coffee shop and a business centre\"</em>, and that is honestly the easiest way to picture it.</p><p>The plan is hot desks, dedicated desks and private offices in Phase 1 (opening 1 June). Then a coffee shop zone in Phase 2, and a bookable boardroom and podcast studio in Phase 3. Free parking, fast broadband, proper coffee, all included.</p><p>It is built for the people we kept noticing around town: builders working from their van, parents on Zoom calls in the kitchen, freelancers bouncing between coffee shops. We thought there ought to be somewhere proper to go. So, here we are.</p>",
+      a: "<p>The first proper coworking space in Worksop. <em>\"A blend between a coffee shop and a business centre.\"</em></p><p>Hot desks, dedicated desks and private offices opening 1 June. Coffee shop zone, boardroom and podcast studio coming later. Parking, broadband and proper coffee included.</p>",
       qr: ['How much is it?','When are you opening?','Is it for me?','Join the waiting list'] },
     { keys: ['why does it exist','why are you','why open','why worksop','why now','what gap','market gap'],
       a: '<p>The nearest coworking spaces are Sheffield, Nottingham and other major cities. Nothing comparable existed in Worksop or the surrounding area until now.</p><p>It is built for the people who have been working from vans, kitchen tables, friends houses and shed-offices because there was no proper local option. Worksop Workspace is the answer to every workaround people have invented to avoid working from their kitchen table.</p>' },
@@ -401,17 +401,17 @@
        great, mirror the energy and gently nudge them toward the
        waiting list. */
     { keys: ['wow','amazing','incredible','fantastic','love this','love it','looks amazing','looks great','looking good','this is great','this is brilliant','this looks brilliant','sounds great','sounds brilliant','sounds amazing','exciting','can not wait','cant wait','looking forward'],
-      a: "Aw, thank you, that means a lot. We have been working on this for a while and we are properly excited to open the doors. Have you grabbed your spot on the waiting list yet? It is the orange button at the top of the page. Founders get priority access and the introductory rate locked in, and we would love to have you in." },
+      a: "Aw, thank you! That means a lot. We are properly excited. Got your name on the waiting list yet? Founders get priority access and the founder rate locked in." },
 
     /* Thanks / closers --------------------------------------- */
     { keys: ['thank','thanks','cheers','ta','brilliant','helpful','perfect','great help','good help'],
-      a: "You are very welcome, glad it was useful! Have you joined the waiting list yet? Easiest way to make sure we keep you in the loop and you get a founder rate when we open. Orange button at the top of any page." },
+      a: "You're very welcome! Joined the waiting list yet? Orange button at the top, takes 30 seconds." },
     { keys: ['bye','goodbye','see you','later','catch you','cheerio'],
-      a: "Take care! Hope to see you in the building soon. The orange button at the top puts your name on the waiting list whenever you are ready, no rush." },
+      a: "Take care! Orange button at the top whenever you are ready, no rush." },
 
     /* Already joined the list -------------------------------- */
     { keys: ['already joined','already on the list','already signed up','signed up already','filled in the form','already filled','already enquired'],
-      a: "Brilliant, thank you! That is everything you need to do for now. We will be in touch personally as we get closer to opening. Anything else you would like to know in the meantime?" },
+      a: "Brilliant, thank you! That is everything you need to do. We will be in touch as we get closer to opening. Anything else you want to know?" },
 
     /* Practical / facilities ---------------------------------- */
     { keys: ['phone call','take a call','phone calls','take calls','quiet call','private call','call from','privacy for calls'],
@@ -601,13 +601,6 @@
       '</button>' +
     '</div>' +
     '<div class="ww-chat-messages"></div>' +
-    '<div class="ww-chat-quick">' +
-      '<button class="ww-chat-chip">How much is it?</button>' +
-      '<button class="ww-chat-chip">When are you opening?</button>' +
-      '<button class="ww-chat-chip">Where are you?</button>' +
-      '<button class="ww-chat-chip">Is parking included?</button>' +
-      '<button class="ww-chat-chip">Is coffee included?</button>' +
-    '</div>' +
     '<form class="ww-chat-input-row">' +
       '<input type="text" class="ww-chat-input" placeholder="Ask anything…" autocomplete="off" />' +
       '<button type="submit" class="ww-chat-send" aria-label="Send"><svg viewBox="0 0 24 24" width="18" height="18"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>' +
@@ -619,7 +612,6 @@
   var messagesEl = panel.querySelector('.ww-chat-messages');
   var formEl     = panel.querySelector('.ww-chat-input-row');
   var inputEl    = panel.querySelector('.ww-chat-input');
-  var quickEl    = panel.querySelector('.ww-chat-quick');
   var greeted    = false;
 
   function append(html, who) {
@@ -686,7 +678,7 @@
     if (!greeted) {
       greeted = true;
       botSay({
-        a: "Hey! 👋 Lovely to have you. I can help with anything you fancy asking about the space. Where would you like to start?",
+        a: "Hey! 👋 What can I help you with?",
         qr: ['How much is it?','When are you opening?','Where are you?','What is included?']
       });
     }
@@ -703,11 +695,6 @@
     e.preventDefault();
     var v = inputEl.value.trim();
     if (v) userAsks(v);
-  });
-  quickEl.addEventListener('click', function (e) {
-    if (e.target.classList && e.target.classList.contains('ww-chat-chip')) {
-      userAsks(e.target.textContent);
-    }
   });
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape' && panel.classList.contains('is-open')) closeChat();
