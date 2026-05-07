@@ -204,9 +204,22 @@
     { keys: ['hello','hi','hey','hiya','good morning','good afternoon','good evening','howdy','yo'],
       a: "Hey! 👋 Lovely to have you. Ask me anything about Worksop Workspace. Pricing, opening dates, what is in the building, who works here, all sorts. What can I help with?" },
 
-    /* Pricing. general --------------------------------------- */
+    /* Pricing. general — leads with a qualifier question so we can
+       point them at the right tier rather than dumping everything */
     { keys: ['price','prices','cost','costs','how much','rate','rates','pricing','charge','charges'],
-      a: "<p>Sure thing, here is what we charge:</p><ul><li><strong>Hot Desk Daily</strong>: £12 a day, walk in whenever</li><li><strong>Hot Desk Weekly</strong>: £50 a week, rolling</li><li><strong>Private Office</strong>: from £125 a week, depending on the size of the room</li></ul><p>All of those come with free parking, proper coffee, and 1 Gbps fibre included. Anything else you want to dig into? If you have not already, you can grab a founding spot via the orange button at the top.</p>" },
+      a: "<p>Good question. Honestly, it depends on what you are after. Roughly which one fits you best?</p><ul><li><strong>Drop in occasionally</strong> for a focused day or two when you need it</li><li><strong>A permanent base for the working week</strong>, same place every weekday</li><li><strong>A private office</strong> for you or a small team</li><li><strong>Not sure yet</strong>, just want to see the prices</li></ul><p>Tell me which sounds closest and I will give you the right price and what is included. Or if you want them all in one go, just say \"show me everything\".</p>" },
+
+    /* Qualifier-response routes ------------------------------- */
+    { keys: ['drop in occasionally','occasional','occasionally','some days','a few days','now and then','sometimes','flexible','as needed','when i need'],
+      a: "<p>Sounds like a <strong>Hot Desk Daily</strong> at £12 a day is your best bet. Walk in any weekday, plug in, get on with it. No commitment, no contract. Properly low friction.</p><p>The £12 covers free parking, proper coffee and 1 Gbps fibre. If you start coming three or four days a week, the weekly might work out cheaper. Want me to compare?</p>" },
+    { keys: ['permanent base','my base','full week','every day','every weekday','my regular','consistent','rhythm','same place every day'],
+      a: "<p>That is the <strong>Hot Desk Weekly</strong>, £50 a week, rolling weekly. Same building, every weekday. Roughly the cost of four day passes for the full week, no long contract.</p><p>Most weekly members tell us the consistency is what changes their week. You build a rhythm. Includes free parking, coffee and fibre, of course.</p><p>If you want to be even more consistent, you can have a dedicated desk (your own reserved seat) as part of the weekly subscription. Want me to walk you through that?</p>" },
+    { keys: ['office for team','for my team','small team','team of','my company','my business','a few of us'],
+      a: "<p>That points to a <strong>Private Office</strong>. From £125 a week, with the exact rate depending on the size of the room. Lockable, fits 1 to 4 people, all building amenities included.</p><p>Best move from here is to come and have a look so we can match a room to your team size. <a href=\"/contact\">Drop us a message</a> with a couple of times that work, or get on the waiting list at the top so we can keep you posted.</p>" },
+    { keys: ['show me everything','show me all','all prices','all the prices','all options','full pricing','everything','give me everything','full breakdown','show all'],
+      a: "<p>Here you go, the full lot:</p><ul><li><strong>Hot Desk Daily</strong>: £12 a day, walk in whenever</li><li><strong>Hot Desk Weekly</strong>: £50 a week, rolling</li><li><strong>Private Office</strong>: from £125 a week, size dependent</li></ul><p>All of those come with free parking, proper coffee and 1 Gbps fibre included. We are not VAT registered yet, so the price you see is the price you pay. Anything you want me to dig into?</p>" },
+    { keys: ['not sure yet','not sure which','no idea','i dunno','undecided','help me pick','help me choose','which one','which is best'],
+      a: "<p>No stress, that is what we are here for. Let me ask a couple of things:</p><ol><li>How often do you think you would actually use it. <em>One or two days, most of the week, or every working day?</em></li><li>Is it just you, or are there a couple of others who would come too?</li><li>Do you need privacy (calls with clients, sensitive stuff) or are you happy in a shared room?</li></ol><p>Tell me roughly and I will point you at the right tier. Or if you want, just have a look at <a href=\"/membership\">the membership page</a> and pick from there.</p>" },
 
     /* Pricing. specific tiers -------------------------------- */
     { keys: ['private office','team office','office for','rent an office','office space','office cost','office price','my own office','lockable office','dedicated office'],
@@ -256,7 +269,7 @@
 
     /* Furniture / equipment ----------------------------------- */
     { keys: ['chair','desk','furniture','ergonomic','monitor','locker','storage','equipment'],
-      a: 'Every desk comes with proper ergonomic furniture (desk and chair) plus access to lockers for personal storage. Designed for full working days, not for ten-minute drop ins.' },
+      a: "Every dedicated desk has drawers for your stuff. They are not lockable in Phase 1, but they will be in later phases. If you are hot desking, just take your bag with you when you leave for lunch. Comfortable ergonomic chairs and full-size desks throughout." },
 
     /* Contact ------------------------------------------------- */
     { keys: ['contact','email','phone','call','get in touch','reach you','hello@','message','speak to'],
@@ -354,7 +367,7 @@
 
     /* Pets / kids -------------------------------------------- */
     { keys: ['dog','dogs','pet','pets','animal','animals'],
-      a: 'No formal pet policy yet. We are happy to discuss bringing a well-behaved dog in once we have opened. Drop us a message and we will work it out together.' },
+      a: "No pets in Phase 1, sorry. The first phase is set up for properly quiet focused work, with zero distractions. Some people have allergies, and dogs are a big focus-breaker. We are open to it later in Phase 2 (the more relaxed coffee shop area downstairs), but not at the moment." },
     { keys: ['child','children','kids','baby','school holiday','half term'],
       a: 'The space is set up as a quiet professional working environment, so children would not be the right fit during normal hours. If you need a place to work during school holidays specifically, get in touch and we can talk it through.' },
 
@@ -381,18 +394,18 @@
     /* Practical / facilities ---------------------------------- */
     { keys: ['phone call','take a call','phone calls','take calls','quiet call','private call','call from','privacy for calls'],
       a: 'Yes. The blue zone on the floor plan keeps things quiet for focused work, and there is a private room with a door that closes for client calls or sensitive conversations. From Phase 3, the boardroom is also bookable by the hour for longer calls.' },
-    { keys: ['phone booth','call booth','meeting pod','soundproof'],
-      a: 'There is a private room with a closing door for calls in Phase 1. Phase 3 adds a bookable boardroom for longer or more formal calls. Soundproof booths are something we are looking at depending on member demand.' },
+    { keys: ['phone booth','call booth','meeting pod','soundproof','signal','phone signal','reception','5g','4g'],
+      a: "Phone signal is good in Phase 1 (it is the ground floor). Phase 2 is the basement, so for calls down there you will use Wi-Fi calling. There is also a quiet spot outside if you want fresh air for a call, and a dedicated phone-call room is on the way so calls do not distract anyone else. Phase 3 boardroom for longer or more formal calls." },
     { keys: ['visitor','visitors','guest','guests','bring a friend','bring someone'],
       a: 'Members can bring a guest in for short visits (a coffee chat, a quick handover). Day passes are open to anyone if a guest wants to work alongside you for the day. Get in touch with anything more specific.' },
     { keys: ['standing desk','sit stand','adjustable desk'],
-      a: 'Standard ergonomic seated desks at launch. Standing desks are on the wishlist for later phases. If it is essential for your work, mention it when you join the waiting list and we will track demand.' },
+      a: "Not at launch, but they are on the plan for later phases. The first phase is properly fitted ergonomic seated desks. If standing desks are essential for you, mention it when you join the waiting list and we will keep you in the loop as we add them." },
     { keys: ['monitor','external monitor','second screen','dual screen','display'],
       a: 'You bring your own laptop and any preferred monitor. We are looking at adding shared screens for hot desks once we have been open a while. Dedicated desk and private office members can leave their own kit in place between visits.' },
     { keys: ['plug socket','power','outlet','plug point','charging','charger','usb'],
       a: 'Plenty of plug sockets at every desk. Bring your usual laptop charger. USB-C and USB-A charging at the meeting room.' },
     { keys: ['ethernet','wired','cable','lan','rj45'],
-      a: 'Wired ethernet is available on request for members who need it (handy for video editors, large file transfers). Standard Wi-Fi covers most use cases without issue.' },
+      a: "It is Wi-Fi throughout, no wired ethernet. The fibre handles video calls, file transfers and the rest comfortably. Roughly 24x what most homes have." },
     { keys: ['wifi password','wifi name','network name','ssid','connect to wifi'],
       a: 'You will get the Wi-Fi credentials when you join. They are also displayed inside the building for guests on day passes.' },
 
@@ -408,17 +421,17 @@
     { keys: ['decaf','decaffeinated','green tea','herbal tea','no caffeine','caffeine free'],
       a: 'Tea, coffee and water are included. Standard caffeinated and decaf options at launch. If there is a specific drink you cannot live without, drop us a message and we will see what we can do.' },
     { keys: ['milk','dairy free','oat milk','soya','soy milk','almond milk','plant milk','vegan'],
-      a: 'Dairy and a plant milk option are available. We will expand based on what members actually want.' },
+      a: "Dairy is the standard. Plant milk options are available on request, just ask. Tell us what you drink and we will get it in." },
 
     /* Bike / EV ----------------------------------------------- */
     { keys: ['bike','cycle','bicycle','bike rack','cycle rack','bike storage'],
-      a: 'Sheltered bike parking is available outside the building. Bring a lock. Phase 1 has space for around 6 bikes.' },
+      a: "Yes, there is a spot outside where you can lock up. Not sheltered, just an open lock-up area. Bring your own lock." },
     { keys: ['electric car','ev charger','ev charge','car charging','tesla','charging point'],
-      a: 'No EV charger on site at launch. The closest public chargers are in the town centre car parks, a couple of minutes walk away. EV charging is on the longer term wishlist.' },
+      a: "No EV charging on site, just standard free parking. The closest public chargers are in the town centre car parks, a couple of minutes walk away. Could change down the line, but no concrete plans right now." },
 
     /* Showers / facilities ----------------------------------- */
     { keys: ['shower','showers','changing room','run to work','cycle to work','sweat'],
-      a: 'No showers in Phase 1. If shower facilities matter to you (cycling commute, lunchtime gym), let us know via the waiting list and we will track interest for Phase 2 fit-out decisions.' },
+      a: "No showers, sorry. Not in the current plan. If you cycle in, the bike racks are right outside but you will need to freshen up some other way." },
     { keys: ['toilet','toilets','loo','bathroom','wc','restroom'],
       a: 'Yes, accessible toilets on every floor. Standard, nothing exciting, but properly looked after.' },
 
@@ -426,7 +439,7 @@
     { keys: ['pause','freeze','holiday','break','suspend membership','take a break','pause membership'],
       a: 'Members can pause or cancel directly through the member app. Useful if you are travelling or taking a longer break. The system is designed to be as flexible as the membership itself.' },
     { keys: ['vat','receipt','invoice','tax','expenses','business expense','business pays'],
-      a: 'Yes, businesses can pay for memberships via Stripe. Receipts and invoices are issued automatically and are VAT compliant. Many of our members claim their membership as a business expense.' },
+      a: "Yes, businesses can pay via Stripe and you will get a receipt automatically. Worth flagging though, we are not VAT registered yet, so there is no VAT to add on or claim back. Many members still claim their membership as a business expense." },
     { keys: ['lost qr','forgot phone','forgot my qr','no phone','locked out','cant get in'],
       a: 'During staffed hours (Phase 1) just speak to whoever is on the desk. Out of hours, the member app supports a backup login if you have lost your phone. If all else fails, email hello@worksopworkspace.com.' },
     { keys: ['complaint','complain','issue','problem','feedback'],
