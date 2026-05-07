@@ -202,19 +202,19 @@
   var KB = [
     /* Greetings ----------------------------------------------- */
     { keys: ['hello','hi','hey','hiya','good morning','good afternoon','good evening','howdy','yo'],
-      a: 'Hi! 👋 Ask me about pricing, opening dates, location, parking, broadband, what is included, anything you like.' },
+      a: "Hey! 👋 Lovely to have you. Ask me anything about Worksop Workspace. Pricing, opening dates, what is in the building, who works here, all sorts. What can I help with?" },
 
     /* Pricing. general --------------------------------------- */
     { keys: ['price','prices','cost','costs','how much','rate','rates','pricing','charge','charges'],
-      a: '<p>Here is what we charge:</p><ul><li><strong>Hot Desk Daily</strong>: £12 per day</li><li><strong>Hot Desk Weekly</strong>: £50 per week, rolling</li><li><strong>Private Office</strong>: from £125 per week (size dependent)</li></ul><p>All plans include free parking, 1 Gbps fibre and unlimited filter coffee.</p>' },
+      a: "<p>Sure thing, here is what we charge:</p><ul><li><strong>Hot Desk Daily</strong>: £12 a day, walk in whenever</li><li><strong>Hot Desk Weekly</strong>: £50 a week, rolling</li><li><strong>Private Office</strong>: from £125 a week, depending on the size of the room</li></ul><p>All of those come with free parking, proper coffee, and 1 Gbps fibre included. Anything else you want to dig into? If you have not already, you can grab a founding spot via the orange button at the top.</p>" },
 
     /* Pricing. specific tiers -------------------------------- */
     { keys: ['private office','team office','office for','rent an office','office space','office cost','office price','my own office','lockable office','dedicated office'],
-      a: 'Private offices start from <strong>£125 per week</strong>. Lockable, fitted out for small teams of 1 to 4 people, with all building amenities included. Want to <a href="/contact">book a viewing</a>?' },
+      a: 'Private offices start at <strong>£125 a week</strong>. Lockable rooms for small teams of 1 to 4 people, with all the building amenities included. The exact rate depends on the size of the office. Want to <a href="/contact">come and have a look around</a>? Or get on the waiting list at the top of the page and we will be in touch.' },
     { keys: ['hot desk','daily desk','one day','drop in','day pass','day rate','single day'],
-      a: 'Hot desks are <strong>£12 per day</strong>. Walk in, pick a desk, get to work. No commitment, no membership required for the first visit.' },
+      a: "Hot desks are <strong>£12 a day</strong>. Walk in, pick any free desk, plug in and get on with it. No commitment, no contract. Properly low-friction. If it suits you, the orange button at the top puts your name on the list for founding rates." },
     { keys: ['weekly','week rate','5 days','five days','full week','weekly desk','desk for the week','rolling'],
-      a: 'The Hot Desk Weekly is <strong>£50 per week</strong>, rolling weekly. Same building every weekday. About the cost of four day passes for the full week, no long contract.' },
+      a: "The Hot Desk Weekly is <strong>£50 a week</strong>, rolling weekly. Same building every weekday so you build a proper rhythm. Works out at roughly the cost of four day passes for the full week, with no long contract. Most weekly members tell us it is the consistency of one place to work that changes their week." },
     { keys: ['dedicated desk','reserved desk','same desk','my desk','permanent desk','fixed desk'],
       a: 'A dedicated desk is your reserved seat. same desk every visit. Available as part of the weekly subscription. <a href="/membership">See membership</a> for full details.' },
     { keys: ['meeting room','boardroom','book a room','meeting space','board room','room hire','client meeting'],
@@ -226,7 +226,7 @@
 
     /* Opening + phases ---------------------------------------- */
     { keys: ['when','opening','launch','launch date','start date','available from','first of june','1 june','june 1','june','date'],
-      a: 'We are opening <strong>1 June 2026</strong> on Carlton Road, Worksop. Phase 2 (basement extended desk + coffee shop zone) and Phase 3 (boardroom + podcast studio) follow later in the year.' },
+      a: "We open the doors on <strong>1 June 2026</strong>. Carlton Road, Worksop. Phase 2 (basement coffee shop zone) and Phase 3 (boardroom and podcast studio) land later in the year. Get on the waiting list (orange button at the top) and you will be among the first through the door, with founding rates locked in." },
     { keys: ['phase','phase 1','phase 2','phase 3','phases','first phase','second phase','third phase','later'],
       a: '<p>Three phases:</p><ul><li><strong>Phase 1</strong>: Ground floor, opens 1 June 2026: hot desks, dedicated desks and private offices.</li><li><strong>Phase 2</strong>: Basement, extended desks, coffee shop zone with background music, self catering kitchen.</li><li><strong>Phase 3</strong>: Upper floor, bookable boardroom and podcast studio plus member credits system.</li></ul>' },
     { keys: ['progress','build','construction','fit out','fit-out','renovation','update'],
@@ -234,15 +234,15 @@
 
     /* Location ------------------------------------------------ */
     { keys: ['where','location','address','find you','find this','directions','postcode','carlton road','near','closest','located'],
-      a: '<strong>Carlton Road, Worksop town centre</strong>. Two minutes from the town centre and an 8-minute walk from Worksop train station. Free parking on site, which is rare in town centre locations.' },
+      a: "We are on <strong>Carlton Road, in Worksop town centre</strong>. Two minutes walk from the high street, eight minutes from the train station, and free parking right outside. Easy to find. Got your name on the waiting list yet?" },
 
     /* Parking ------------------------------------------------- */
     { keys: ['park','parking','car space','car spaces','where do i park','car park','drive','vehicle'],
-      a: 'Yes, <strong>free parking on site</strong>. No permits, no meters, no time limit. A rare practical advantage for a town centre workspace.' },
+      a: "Yes, <strong>free parking on site</strong>. No permits, no meters, no time limit, no scramble for a space. Rare for a town centre spot, and one of our favourite things to point out." },
 
     /* Refreshments -------------------------------------------- */
     { keys: ['coffee','tea','drinks','drink','beverage','filter coffee','espresso','refreshment','refreshments','water'],
-      a: 'Yes, <strong>unlimited tea, coffee and water</strong> are included with every membership and visit. No buying coffee to justify the seat. Help yourself.' },
+      a: "Absolutely. <strong>Unlimited tea, coffee and water</strong> with every membership or visit. No buying a flat white to justify the seat. Help yourself, top up the kettle, get on with your work." },
     { keys: ['food','lunch','eat','restaurant','snack','breakfast','meal'],
       a: 'No formal kitchen in Phase 1, but the town centre is two minutes away with plenty of lunch options. The basement coffee shop zone (Phase 2) will include a self catering kitchen.' },
 
@@ -264,7 +264,7 @@
 
     /* Joining ------------------------------------------------- */
     { keys: ['member','membership','sign up','register','join','waiting list','founding','enquiry','enquire','enquiry form'],
-      a: 'You can <strong>join the waiting list</strong> using the orange button at the top of any page. Founding members get priority access and introductory rates when we open.' },
+      a: "Yes please! Use the orange <strong>Join the Waiting List</strong> button at the top of any page. Takes about 30 seconds. Founders get first dibs the day we open and the introductory rate locked in for as long as you stay. We would love to have you." },
 
     /* Onboarding journey -------------------------------------- */
     { keys: ['process','onboarding','sign up process','first day','first visit','induction','starting','get started'],
@@ -276,7 +276,7 @@
 
     /* Tour / viewing ------------------------------------------ */
     { keys: ['tour','visit','look around','view','see the space','see it','viewing','walk around','walk around','show me','see inside'],
-      a: 'Yes, we would love to show you round. <a href="/contact">Get in touch</a> with a couple of times that work for you and we will arrange a walk around before opening.' },
+      a: "Yes, we would love to have you round! Honestly, the best way to know if it is right for you is to come and see it. <a href=\"/contact\">Drop us a message</a> with a couple of times that work and we will arrange a walk around. No pitch, no pressure, just a proper look at the building." },
 
     /* What is included --------------------------------------- */
     { keys: ['included','what do i get','what comes with','amenities','what is included','what features','perks','benefits','what is in','what comes'],
@@ -312,9 +312,9 @@
     { keys: ['social','community','people','meet','networking','who else','who works','clients','customers','others'],
       a: 'There is a community of locals here for the same reason: freelancers, small teams, remote workers, tradespeople. People who came to do their work, not to be sold to. <a href="/community">Read more about who works here</a>.' },
     { keys: ['for me','suit me','right for','is this for','should i','my type','my kind','will it work for','work for me'],
-      a: '<p>Most likely yes if any of these apply:</p><ul><li>Remote employees working from a kitchen table surrounded by distractions</li><li>Tradespeople or sole traders doing admin from the van</li><li>Freelancers bouncing between coffee shops</li><li>Small business owners (1 to 4 people) who do not need a full office</li><li>Anyone who works from home and wants more structure to their day</li></ul><p><a href="/community">More on who works here</a>.</p>' },
+      a: "<p>Honestly, probably yes if any of these sound familiar:</p><ul><li>Remote employee working from a kitchen table with the kids in the background</li><li>Tradesperson doing admin from the van between jobs</li><li>Freelancer bouncing between coffee shops looking for focus</li><li>Small business owner who needs an office without the overhead of a full lease</li><li>Anyone working from home who fancies a bit more structure to their day</li></ul><p>If that sounds like you, get your name on the list (orange button at the top). And <a href=\"/community\">have a read about who else is here</a>.</p>" },
     { keys: ['mindset','vibe','culture','atmosphere','feel','feels like'],
-      a: 'A blend between a coffee shop and a business centre. Welcoming, focused, human, local. The feeling we go for: "I can drop my shoulders here. This is a place for me." No pressure, no networking expectations, just somewhere to get on with the work.' },
+      a: "A blend between a coffee shop and a business centre. Welcoming, focused, human, local. The feeling we go for is: <em>\"I can drop my shoulders here. This is a place for me.\"</em> No pressure, no networking expectations, no hard sell. Somewhere proper to get on with the work and feel at home doing it." },
 
     /* Brand / what we are not -------------------------------- */
     { keys: ['networking event','pitch','pitching','sell to','solicit','market to','prospect'],
@@ -330,11 +330,11 @@
 
     /* Vague action / next steps ------------------------------ */
     { keys: ['what do i do','what should i do','what next','what now','what then','next step','next steps','where do i start','how do i start','how do i get','what is the next','where do i go from here','so what','okay what','ok what','how do i','how can i','any tips','help me decide','what would you recommend'],
-      a: '<p>Most people start with one of these:</p><ul><li><strong>Get on the waiting list</strong>: orange button at the top of the page. Founding members get priority access and introductory rates.</li><li><strong>Book a viewing</strong>: <a href="/contact">drop us a message</a> with a couple of times that work for you.</li><li><strong>See the space</strong>: <a href="/space">floor plan and photos</a>.</li><li><strong>Compare options</strong>: <a href="/membership">membership and pricing</a>.</li></ul><p>What sounds best?</p>' },
+      a: "<p>Good question. Honestly, the simplest thing right now is to <strong>get on the waiting list</strong>. The orange button at the top of the page takes about thirty seconds. You will get founder access the day we open and the introductory rate locked in.</p><p>Beyond that, here are the other doors you can knock on:</p><ul><li><a href=\"/contact\">Book a walk around</a>. Drop us a couple of times that work and we will show you the building before opening.</li><li><a href=\"/space\">See the space</a>. Floor plan and photos.</li><li><a href=\"/membership\">Compare the plans</a>. Hot desk daily, weekly, or private office.</li></ul><p>What sounds best to you?</p>" },
 
     /* Existential / about us --------------------------------- */
     { keys: ['what is this','what is it','what is worksop workspace','what are you','what do you do','tell me about','about you','who are you','about the space','about worksop workspace'],
-      a: '<p>Worksop Workspace is the first dedicated coworking space in Worksop. <em>"A blend between a coffee shop and a business centre."</em> Opening on Carlton Road on 1 June 2026.</p><p>Hot desks, dedicated desks and private offices in Phase 1. A coffee shop zone in Phase 2. Boardroom and podcast studio in Phase 3. Free parking, fast broadband, unlimited tea and coffee included with every plan.</p>' },
+      a: "<p>So, Worksop Workspace is the first proper coworking space in Worksop. We describe it as <em>\"a blend between a coffee shop and a business centre\"</em>, and that is honestly the easiest way to picture it.</p><p>The plan is hot desks, dedicated desks and private offices in Phase 1 (opening 1 June). Then a coffee shop zone in Phase 2, and a bookable boardroom and podcast studio in Phase 3. Free parking, fast broadband, proper coffee, all included.</p><p>It is built for the people we kept noticing around town: builders working from their van, parents on Zoom calls in the kitchen, freelancers bouncing between coffee shops. We thought there ought to be somewhere proper to go. So, here we are.</p>" },
     { keys: ['why does it exist','why are you','why open','why worksop','why now','what gap','market gap'],
       a: '<p>The nearest coworking spaces are Sheffield, Nottingham and other major cities. Nothing comparable existed in Worksop or the surrounding area until now.</p><p>It is built for the people who have been working from vans, kitchen tables, friends houses and shed-offices because there was no proper local option. Worksop Workspace is the answer to every workaround people have invented to avoid working from their kitchen table.</p>' },
     { keys: ['gap','first','only','unique','differentiator','what makes you different','competitors','alternatives'],
@@ -362,11 +362,21 @@
     { keys: ['payment','pay','stripe','direct debit','card','invoice','billing'],
       a: 'Payment is via Stripe. Direct debit for weekly rolling subscriptions, card for day passes and hourly bookings. No invoicing or messy paperwork.' },
 
+    /* Reciprocal warmth — when someone says wow / love it / this looks
+       great, mirror the energy and gently nudge them toward the
+       waiting list. */
+    { keys: ['wow','amazing','incredible','fantastic','love this','love it','looks amazing','looks great','looking good','this is great','this is brilliant','this looks brilliant','sounds great','sounds brilliant','sounds amazing','exciting','can not wait','cant wait','looking forward'],
+      a: "Aw, thank you, that means a lot. We have been working on this for a while and we are properly excited to open the doors. Have you grabbed your spot on the waiting list yet? It is the orange button at the top of the page. Founders get priority access and the introductory rate locked in, and we would love to have you in." },
+
     /* Thanks / closers --------------------------------------- */
-    { keys: ['thank','thanks','cheers','perfect','awesome','ta','brilliant','helpful'],
-      a: 'You are welcome. Anything else I can help with? You can also use the chips at the bottom of the chat to jump to common topics.' },
+    { keys: ['thank','thanks','cheers','ta','brilliant','helpful','perfect','great help','good help'],
+      a: "You are very welcome, glad it was useful! Have you joined the waiting list yet? Easiest way to make sure we keep you in the loop and you get a founder rate when we open. Orange button at the top of any page." },
     { keys: ['bye','goodbye','see you','later','catch you','cheerio'],
-      a: 'See you soon! Use the orange "Join the Waiting List" button at the top whenever you are ready, or just close this chat to keep browsing.' },
+      a: "Take care! Hope to see you in the building soon. The orange button at the top puts your name on the waiting list whenever you are ready, no rush." },
+
+    /* Already joined the list -------------------------------- */
+    { keys: ['already joined','already on the list','already signed up','signed up already','filled in the form','already filled','already enquired'],
+      a: "Brilliant, thank you! That is everything you need to do for now. We will be in touch personally as we get closer to opening. Anything else you would like to know in the meantime?" },
 
     /* Practical / facilities ---------------------------------- */
     { keys: ['phone call','take a call','phone calls','take calls','quiet call','private call','call from','privacy for calls'],
@@ -603,7 +613,7 @@
     panel.classList.add('is-open');
     if (!greeted) {
       greeted = true;
-      botSay('Hi! 👋 I can help with pricing, opening dates, location, parking, broadband, all the usual. What would you like to know?');
+      botSay("Hey! 👋 Lovely to have you. Ask me anything about the space. Pricing, opening date, what is in the building, anything you can think of. What can I help you with?");
     }
     setTimeout(function () { inputEl.focus(); }, 250);
   }
