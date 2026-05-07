@@ -207,28 +207,48 @@
     /* Pricing. general — leads with a qualifier question so we can
        point them at the right tier rather than dumping everything */
     { keys: ['price','prices','cost','costs','how much','rate','rates','pricing','charge','charges'],
-      a: "<p>Good question. Honestly, it depends on what you are after. Roughly which one fits you best?</p><ul><li><strong>Drop in occasionally</strong> for a focused day or two when you need it</li><li><strong>A permanent base for the working week</strong>, same place every weekday</li><li><strong>A private office</strong> for you or a small team</li><li><strong>Not sure yet</strong>, just want to see the prices</li></ul><p>Tell me which sounds closest and I will give you the right price and what is included. Or if you want them all in one go, just say \"show me everything\".</p>" },
+      a: "<p>Good question. Honestly, it depends on what you are after. Roughly which one fits you best?</p>",
+      qr: ['Drop in occasionally','A permanent base for the week','A private office for a team','Show me everything'] },
 
     /* Qualifier-response routes ------------------------------- */
     { keys: ['drop in occasionally','occasional','occasionally','some days','a few days','now and then','sometimes','flexible','as needed','when i need'],
-      a: "<p>Sounds like a <strong>Hot Desk Daily</strong> at £12 a day is your best bet. Walk in any weekday, plug in, get on with it. No commitment, no contract. Properly low friction.</p><p>The £12 covers free parking, proper coffee and 1 Gbps fibre. If you start coming three or four days a week, the weekly might work out cheaper. Want me to compare?</p>" },
+      a: "<p>Sounds like a <strong>Hot Desk Daily</strong> at £12 a day is your best bet. Walk in any weekday, plug in, get on with it. No commitment, no contract. Properly low friction.</p><p>The £12 covers free parking, proper coffee and 1 Gbps fibre. If you start coming three or four days a week, the weekly might work out cheaper.</p>",
+      qr: ['Weekly desk details','Join the waiting list','Where are you?'] },
     { keys: ['permanent base','my base','full week','every day','every weekday','my regular','consistent','rhythm','same place every day'],
-      a: "<p>That is the <strong>Hot Desk Weekly</strong>, £50 a week, rolling weekly. Same building, every weekday. Roughly the cost of four day passes for the full week, no long contract.</p><p>Most weekly members tell us the consistency is what changes their week. You build a rhythm. Includes free parking, coffee and fibre, of course.</p><p>If you want to be even more consistent, you can have a dedicated desk (your own reserved seat) as part of the weekly subscription. Want me to walk you through that?</p>" },
+      a: "<p>That is the <strong>Hot Desk Weekly</strong>, £50 a week, rolling weekly. Same building, every weekday. Roughly the cost of four day passes for the full week, no long contract.</p><p>Most weekly members tell us the consistency is what changes their week. You build a rhythm. Includes free parking, coffee and fibre, of course.</p>",
+      qr: ['Dedicated desk details','Cancellation policy','Join the waiting list'] },
     { keys: ['office for team','for my team','small team','team of','my company','my business','a few of us'],
-      a: "<p>That points to a <strong>Private Office</strong>. From £125 a week, with the exact rate depending on the size of the room. Lockable, fits 1 to 4 people, all building amenities included.</p><p>Best move from here is to come and have a look so we can match a room to your team size. <a href=\"/contact\">Drop us a message</a> with a couple of times that work, or get on the waiting list at the top so we can keep you posted.</p>" },
+      a: "<p>That points to a <strong>Private Office</strong>. From £125 a week, with the exact rate depending on the size of the room. Lockable, fits 1 to 4 people, all building amenities included.</p><p>Best move from here is to come and have a look so we can match a room to your team size.</p>",
+      qr: ['What is included?','Book a viewing','Join the waiting list'] },
     { keys: ['show me everything','show me all','all prices','all the prices','all options','full pricing','everything','give me everything','full breakdown','show all'],
-      a: "<p>Here you go, the full lot:</p><ul><li><strong>Hot Desk Daily</strong>: £12 a day, walk in whenever</li><li><strong>Hot Desk Weekly</strong>: £50 a week, rolling</li><li><strong>Private Office</strong>: from £125 a week, size dependent</li></ul><p>All of those come with free parking, proper coffee and 1 Gbps fibre included. We are not VAT registered yet, so the price you see is the price you pay. Anything you want me to dig into?</p>" },
+      a: "<p>Here you go, the full lot:</p><ul><li><strong>Hot Desk Daily</strong>: £12 a day, walk in whenever</li><li><strong>Hot Desk Weekly</strong>: £50 a week, rolling</li><li><strong>Private Office</strong>: from £125 a week, size dependent</li></ul><p>All of those come with free parking, proper coffee and 1 Gbps fibre included. We are not VAT registered yet, so the price you see is the price you pay.</p>",
+      qr: ['What is included?','When are you opening?','Join the waiting list'] },
     { keys: ['not sure yet','not sure which','no idea','i dunno','undecided','help me pick','help me choose','which one','which is best'],
-      a: "<p>No stress, that is what we are here for. Let me ask a couple of things:</p><ol><li>How often do you think you would actually use it. <em>One or two days, most of the week, or every working day?</em></li><li>Is it just you, or are there a couple of others who would come too?</li><li>Do you need privacy (calls with clients, sensitive stuff) or are you happy in a shared room?</li></ol><p>Tell me roughly and I will point you at the right tier. Or if you want, just have a look at <a href=\"/membership\">the membership page</a> and pick from there.</p>" },
+      a: "<p>No stress, that is what we are here for. Roughly how often would you use it?</p>",
+      qr: ['One or two days a week','Most days of the week','Every working day','It would be a small team'] },
+
+    /* Frequency-response routes for the "not sure" branch ---- */
+    { keys: ['one or two days','one or two days a week','occasional days','couple of days','few days a week'],
+      a: "<p>For one or two days a week, the <strong>Hot Desk Daily</strong> at £12 a day is your friend. No commitment, just walk in when you need a focused day.</p><p>If you find yourself coming three or more days, the weekly works out cheaper. We will keep an eye on that for you.</p>",
+      qr: ['Join the waiting list','Where are you?','What is included?'] },
+    { keys: ['most days','most of the week','three or four days','four days'],
+      a: "<p>That is squarely the <strong>Hot Desk Weekly</strong> at £50 a week, rolling. Same building every weekday, build a routine, no long contract. Properly the sweet spot for hybrid workers.</p>",
+      qr: ['Dedicated desk details','Cancellation policy','Join the waiting list'] },
+    { keys: ['every working day','every day','5 days a week','five days a week','full time'],
+      a: "<p>Sounds like you want a <strong>dedicated desk</strong> as part of the weekly subscription. Your own reserved seat, every day. Or, if you want a door that closes, a <strong>private office</strong> from £125 a week.</p>",
+      qr: ['Private office details','Dedicated desk details','Join the waiting list'] },
+    { keys: ['small team','its a team','team of two','team of three','team of four','few of us would come'],
+      a: "<p>For a small team you really want a <strong>Private Office</strong>. From £125 a week, lockable, fitted out for 1 to 4 people. The exact rate depends on which room.</p>",
+      qr: ['Book a viewing','What is included?','Join the waiting list'] },
 
     /* Pricing. specific tiers -------------------------------- */
-    { keys: ['private office','team office','office for','rent an office','office space','office cost','office price','my own office','lockable office','dedicated office'],
+    { keys: ['private office','team office','office for','rent an office','office space','office cost','office price','my own office','lockable office','dedicated office','private office details'],
       a: 'Private offices start at <strong>£125 a week</strong>. Lockable rooms for small teams of 1 to 4 people, with all the building amenities included. The exact rate depends on the size of the office. Want to <a href="/contact">come and have a look around</a>? Or get on the waiting list at the top of the page and we will be in touch.' },
     { keys: ['hot desk','daily desk','one day','drop in','day pass','day rate','single day'],
       a: "Hot desks are <strong>£12 a day</strong>. Walk in, pick any free desk, plug in and get on with it. No commitment, no contract. Properly low-friction. If it suits you, the orange button at the top puts your name on the list for founding rates." },
-    { keys: ['weekly','week rate','5 days','five days','full week','weekly desk','desk for the week','rolling'],
+    { keys: ['weekly','week rate','5 days','five days','full week','weekly desk','desk for the week','rolling','weekly desk details','about the weekly'],
       a: "The Hot Desk Weekly is <strong>£50 a week</strong>, rolling weekly. Same building every weekday so you build a proper rhythm. Works out at roughly the cost of four day passes for the full week, with no long contract. Most weekly members tell us it is the consistency of one place to work that changes their week." },
-    { keys: ['dedicated desk','reserved desk','same desk','my desk','permanent desk','fixed desk'],
+    { keys: ['dedicated desk','reserved desk','same desk','my desk','permanent desk','fixed desk','dedicated desk details'],
       a: 'A dedicated desk is your reserved seat. same desk every visit. Available as part of the weekly subscription. <a href="/membership">See membership</a> for full details.' },
     { keys: ['meeting room','boardroom','book a room','meeting space','board room','room hire','client meeting'],
       a: 'The boardroom is part of <strong>Phase 3</strong>, bookable by the hour, ideal for client meetings, interviews and workshops. <a href="/meeting-room">Read more</a>.' },
@@ -284,7 +304,7 @@
       a: '<p>The journey is straightforward:</p><ol><li>Initial conversation to understand what you need (private office, dedicated desk, or hot desk).</li><li>Match to the right plan.</li><li>Tour of the space.</li><li>Sign up via Stripe (direct debit for weekly plans, card for day passes).</li></ol><p>No formal induction on day one. You are shown around, given the Wi-Fi, and you sit down and work. That is the entire point.</p>' },
     { keys: ['app','member app','book a desk','book a session','qr code','check in','occupancy'],
       a: 'Members get a dedicated app for booking desks and rooms, checking real-time availability, accessing their QR code for entry, raising issues, and managing their membership. Check-in is automatic when the QR is scanned.' },
-    { keys: ['cancel','cancellation','contract','lock in','locked in','tied in','commitment','minimum term','notice period'],
+    { keys: ['cancel','cancellation','contract','lock in','locked in','tied in','commitment','minimum term','notice period','cancellation policy'],
       a: 'No long contracts and no lock in. Membership rolls weekly and you can cancel directly through the member app. no excessive notice periods. The system is designed to be as flexible as the membership itself.' },
 
     /* Tour / viewing ------------------------------------------ */
@@ -325,7 +345,8 @@
     { keys: ['social','community','people','meet','networking','who else','who works','clients','customers','others'],
       a: 'There is a community of locals here for the same reason: freelancers, small teams, remote workers, tradespeople. People who came to do their work, not to be sold to. <a href="/community">Read more about who works here</a>.' },
     { keys: ['for me','suit me','right for','is this for','should i','my type','my kind','will it work for','work for me'],
-      a: "<p>Honestly, probably yes if any of these sound familiar:</p><ul><li>Remote employee working from a kitchen table with the kids in the background</li><li>Tradesperson doing admin from the van between jobs</li><li>Freelancer bouncing between coffee shops looking for focus</li><li>Small business owner who needs an office without the overhead of a full lease</li><li>Anyone working from home who fancies a bit more structure to their day</li></ul><p>If that sounds like you, get your name on the list (orange button at the top). And <a href=\"/community\">have a read about who else is here</a>.</p>" },
+      a: "<p>Honestly, probably yes if any of these sound familiar:</p><ul><li>Remote employee working from a kitchen table with the kids in the background</li><li>Tradesperson doing admin from the van between jobs</li><li>Freelancer bouncing between coffee shops looking for focus</li><li>Small business owner who needs an office without the overhead of a full lease</li><li>Anyone working from home who fancies a bit more structure to their day</li></ul><p>If that sounds like you, get your name on the list. And <a href=\"/community\">have a read about who else is here</a>.</p>",
+      qr: ['How much is it?','Book a viewing','Join the waiting list'] },
     { keys: ['mindset','vibe','culture','atmosphere','feel','feels like'],
       a: "A blend between a coffee shop and a business centre. Welcoming, focused, human, local. The feeling we go for is: <em>\"I can drop my shoulders here. This is a place for me.\"</em> No pressure, no networking expectations, no hard sell. Somewhere proper to get on with the work and feel at home doing it." },
 
@@ -347,7 +368,8 @@
 
     /* Existential / about us --------------------------------- */
     { keys: ['what is this','what is it','what is worksop workspace','what are you','what do you do','tell me about','about you','who are you','about the space','about worksop workspace'],
-      a: "<p>So, Worksop Workspace is the first proper coworking space in Worksop. We describe it as <em>\"a blend between a coffee shop and a business centre\"</em>, and that is honestly the easiest way to picture it.</p><p>The plan is hot desks, dedicated desks and private offices in Phase 1 (opening 1 June). Then a coffee shop zone in Phase 2, and a bookable boardroom and podcast studio in Phase 3. Free parking, fast broadband, proper coffee, all included.</p><p>It is built for the people we kept noticing around town: builders working from their van, parents on Zoom calls in the kitchen, freelancers bouncing between coffee shops. We thought there ought to be somewhere proper to go. So, here we are.</p>" },
+      a: "<p>So, Worksop Workspace is the first proper coworking space in Worksop. We describe it as <em>\"a blend between a coffee shop and a business centre\"</em>, and that is honestly the easiest way to picture it.</p><p>The plan is hot desks, dedicated desks and private offices in Phase 1 (opening 1 June). Then a coffee shop zone in Phase 2, and a bookable boardroom and podcast studio in Phase 3. Free parking, fast broadband, proper coffee, all included.</p><p>It is built for the people we kept noticing around town: builders working from their van, parents on Zoom calls in the kitchen, freelancers bouncing between coffee shops. We thought there ought to be somewhere proper to go. So, here we are.</p>",
+      qr: ['How much is it?','When are you opening?','Is it for me?','Join the waiting list'] },
     { keys: ['why does it exist','why are you','why open','why worksop','why now','what gap','market gap'],
       a: '<p>The nearest coworking spaces are Sheffield, Nottingham and other major cities. Nothing comparable existed in Worksop or the surrounding area until now.</p><p>It is built for the people who have been working from vans, kitchen tables, friends houses and shed-offices because there was no proper local option. Worksop Workspace is the answer to every workaround people have invented to avoid working from their kitchen table.</p>' },
     { keys: ['gap','first','only','unique','differentiator','what makes you different','competitors','alternatives'],
@@ -530,11 +552,13 @@
      "parking" (length 7) clears it comfortably. */
   var MIN_SCORE = 4;
 
+  /* Returns { a: html, qr: [labels] } so the renderer can offer
+     clickable quick-reply pills under multi-choice answers. */
   function findAnswer(text) {
     var input = (text || '').toLowerCase().trim();
     if (!input) return null;
 
-    if (isSensitive(input)) return SENSITIVE_REPLY;
+    if (isSensitive(input)) return { a: SENSITIVE_REPLY, qr: null };
 
     var tokens = tokenise(input);
     var best = null;
@@ -546,7 +570,10 @@
         best = KB[i];
       }
     }
-    return (best && bestScore >= MIN_SCORE) ? best.a : fallbackResponse();
+    if (best && bestScore >= MIN_SCORE) {
+      return { a: best.a, qr: best.qr || null };
+    }
+    return { a: fallbackResponse(), qr: ['Show me prices','When are you opening?','Where are you?','How do I join?'] };
   }
 
   // Inject DOM
@@ -603,7 +630,38 @@
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
-  function botSay(html) {
+  function renderQuickReplies(labels) {
+    if (!labels || !labels.length) return;
+    /* Disable any previous QR row (so stale buttons can't be
+       re-clicked once a newer message appears). */
+    var prev = messagesEl.querySelectorAll('.ww-chat-qr-row');
+    prev.forEach(function (row) {
+      row.querySelectorAll('button').forEach(function (b) { b.disabled = true; });
+    });
+
+    var row = document.createElement('div');
+    row.className = 'ww-chat-qr-row';
+    labels.forEach(function (label) {
+      var b = document.createElement('button');
+      b.className = 'ww-chat-qr';
+      b.type = 'button';
+      b.textContent = label;
+      b.addEventListener('click', function () {
+        if (b.disabled) return;
+        userAsks(label);
+      });
+      row.appendChild(b);
+    });
+    messagesEl.appendChild(row);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function botSay(payload) {
+    /* Accepts either a string (legacy: just message) or
+       { a: html, qr: [labels] } from findAnswer. */
+    var html = (typeof payload === 'string') ? payload : payload.a;
+    var qr   = (typeof payload === 'string') ? null     : payload.qr;
+
     var typing = document.createElement('div');
     typing.className = 'ww-chat-typing';
     typing.innerHTML = '<span></span><span></span><span></span>';
@@ -612,6 +670,7 @@
     setTimeout(function () {
       typing.remove();
       append(html, 'bot');
+      renderQuickReplies(qr);
     }, 550 + Math.random() * 350);
   }
 
@@ -626,7 +685,10 @@
     panel.classList.add('is-open');
     if (!greeted) {
       greeted = true;
-      botSay("Hey! 👋 Lovely to have you. Ask me anything about the space. Pricing, opening date, what is in the building, anything you can think of. What can I help you with?");
+      botSay({
+        a: "Hey! 👋 Lovely to have you. I can help with anything you fancy asking about the space. Where would you like to start?",
+        qr: ['How much is it?','When are you opening?','Where are you?','What is included?']
+      });
     }
     setTimeout(function () { inputEl.focus(); }, 250);
   }

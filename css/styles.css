@@ -1952,6 +1952,43 @@ article.blog-post h1 {
   40%           { opacity: 1;   transform: translateY(-3px); }
 }
 
+/* Quick-reply pill buttons rendered inline after a bot message
+   (in addition to the always-visible chips at the bottom of the
+   panel). Each is clickable and submits its label as the user's
+   next message. */
+.ww-chat-qr-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-self: flex-start;
+  max-width: 92%;
+  margin: -4px 0 6px 0;
+}
+.ww-chat-qr {
+  font-size: 13px;
+  padding: 8px 14px;
+  background: var(--white);
+  border: 1.5px solid var(--clay);
+  color: var(--clay);
+  border-radius: 100px;
+  cursor: pointer;
+  font-family: var(--font);
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s, transform 0.15s;
+  text-align: left;
+  line-height: 1.3;
+}
+.ww-chat-qr:hover {
+  background: var(--clay);
+  color: var(--white);
+  transform: translateY(-1px);
+}
+.ww-chat-qr:disabled {
+  opacity: 0.4;
+  cursor: default;
+  transform: none;
+}
+
 .ww-chat-quick {
   padding: 10px 16px;
   background: var(--white);
