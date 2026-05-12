@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=63" />
+  <link rel="stylesheet" href="css/styles.css?v=64" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -405,7 +405,7 @@
       .find-us-grid { grid-template-columns: 1fr; gap: 48px; }
       .blog-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 36px; }
-      .nav-links, .nav-cta { display: none; }
+      .nav-links { display: none; }
       .nav-toggle { display: flex; }
       .scroll-text-wrap { height: 100px; }
     }
@@ -439,7 +439,7 @@
           <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
-      <a href="#" class="btn btn-sm nav-cta open-modal">Join the Waiting List</a>
+      <a href="#" class="btn btn-sm nav-cta open-modal"><span class="nav-cta-full">Join the Waiting List</span><span class="nav-cta-short">Join Waitlist</span></a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -1051,11 +1051,18 @@
           <label for="wl-type">I&rsquo;m interested in</label>
           <select id="wl-type" name="type">
             <option value="">Choose an option</option>
-            <option value="hot-desk">Hot Desk (from £12/day)</option>
-            <option value="hot-desk-weekly">Hot Desk Weekly (£50/wk)</option>
-            <option value="private-office">Private Office (from £125/wk)</option>
+            <option value="day-pass">Day Pass (&pound;12/day)</option>
+            <option value="weekly-pass">Weekly Pass (&pound;30/wk)</option>
+            <option value="private-office">Private Office (from &pound;125/wk)</option>
+            <option value="meeting-room">Meeting Room (hourly)</option>
+            <option value="something-else">Something else &mdash; tell us</option>
             <option value="not-sure">Not sure yet</option>
           </select>
+        </div>
+        <div class="form-group" id="wl-other-group" hidden>
+          <label for="wl-other">What are you looking for?</label>
+          <input type="text" id="wl-other" name="other" placeholder="e.g. dedicated desk, meeting room, podcast studio&hellip;" autocomplete="off" />
+          <p class="form-note" style="text-align:left; margin-top:8px;">We&rsquo;re shaping later phases around what people actually need.</p>
         </div>
         <button type="submit" class="btn btn-full form-submit">Request my spot</button>
         <p class="form-note">No spam. Just one email when we open the doors.</p>
@@ -1272,19 +1279,9 @@
       if (e.key === 'Escape' && modal.classList.contains('open')) closeModal();
     });
 
-    /* ── Waitlist form ───────────────────────────────────── */
-    var form = document.getElementById('waitlist-form');
-    if (form) {
-      form.addEventListener('submit', function (e) {
-        e.preventDefault();
-        var btn = form.querySelector('.form-submit');
-        btn.textContent = 'You\'re on the list!';
-        btn.disabled = true;
-        btn.style.background = 'var(--sage)';
-        btn.style.borderColor = 'var(--sage)';
-        setTimeout(closeModal, 2000);
-      });
-    }
+    /* Waitlist form submission + the "Something else" reveal toggle
+       both live in js/animations.js (capture-phase listener POSTs to
+       GHL + handles the reveal across all pages). Nothing to wire here. */
 
     /* ── Header scrolled state ───────────────────────────── */
     window.addEventListener('scroll', function () {

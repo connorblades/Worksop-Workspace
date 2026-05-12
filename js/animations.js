@@ -84,9 +84,11 @@
 
   /* Dropdown value -> human-readable tag for GHL */
   var INTEREST_TAGS = {
-    'hot-desk':         'Hot Desk Daily',
-    'hot-desk-weekly':  'Hot Desk Weekly',
+    'day-pass':         'Day Pass',
+    'weekly-pass':      'Weekly Pass',
     'private-office':   'Private Office',
+    'meeting-room':     'Meeting Room',
+    'something-else':   'Something Else',
     'not-sure':         'Undecided'
   };
 
@@ -164,6 +166,25 @@
 
   bindLeadForm('waitlist-form', 'waitlist');
   bindLeadForm('contact-form',  'contact');
+
+  /* Reveal the "tell us what you're looking for" comment field when
+     someone picks "Something else". The text input has name="other"
+     so postLead() picks it up automatically and forwards it to GHL
+     as a comment in the internal notification. */
+  (function wireOtherReveal() {
+    var typeSelect = document.getElementById('wl-type');
+    var otherGroup = document.getElementById('wl-other-group');
+    var otherInput = document.getElementById('wl-other');
+    if (!typeSelect || !otherGroup) return;
+
+    typeSelect.addEventListener('change', function () {
+      var show = typeSelect.value === 'something-else';
+      otherGroup.hidden = !show;
+      if (show && otherInput) {
+        setTimeout(function () { otherInput.focus(); }, 0);
+      }
+    });
+  })();
 
   /* ── 7. Chat widget. floating bottom-right, content-driven Q&A ─────
      Knowledge base built from public website content + customer-safe

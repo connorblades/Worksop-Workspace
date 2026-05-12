@@ -7,7 +7,7 @@
   <link rel="canonical" href="https://worksopworkspace.com/blog/working-alone-in-worksop-isolation" />
   <link rel="icon" type="image/x-icon" href="../../favicon.ico" /><link rel="icon" type="image/png" sizes="32x32" href="../../icon.png" /><link rel="apple-touch-icon" href="../../apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../../css/styles.css?v=63" />
+  <link rel="stylesheet" href="../../css/styles.css?v=64" />
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Working Alone in Worksop: It's Not Just You","datePublished":"5 May 2026","author":{"@type":"Organization","name":"Worksop Workspace"},"publisher":{"@type":"Organization","name":"Worksop Workspace","url":"https://worksopworkspace.com"}}</script>
 
   <!-- Open Graph / Social sharing -->
@@ -41,7 +41,7 @@
           <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
-      <a href="#" class="btn btn-sm nav-cta open-modal">Join the Waiting List</a>
+      <a href="#" class="btn btn-sm nav-cta open-modal"><span class="nav-cta-full">Join the Waiting List</span><span class="nav-cta-short">Join Waitlist</span></a>
       <button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
         <span class="bar"></span>
         <span class="bar"></span>
@@ -224,11 +224,18 @@
           <label for="wl-type">I'm interested in</label>
           <select id="wl-type" name="type">
             <option value="">-- choose an option --</option>
-            <option value="hot-desk">Hot Desk (from &pound;12/day)</option>
-            <option value="hot-desk-weekly">Hot Desk Weekly (&pound;50/wk)</option>
+            <option value="day-pass">Day Pass (&pound;12/day)</option>
+            <option value="weekly-pass">Weekly Pass (&pound;30/wk)</option>
             <option value="private-office">Private Office (from &pound;125/wk)</option>
+            <option value="meeting-room">Meeting Room (hourly)</option>
+            <option value="something-else">Something else &mdash; tell us</option>
             <option value="not-sure">Not sure yet</option>
           </select>
+        </div>
+        <div class="form-group" id="wl-other-group" hidden>
+          <label for="wl-other">What are you looking for? Or got a suggestion?</label>
+          <input type="text" id="wl-other" name="other" placeholder="e.g. dedicated desk, podcast studio, an event idea&hellip;" autocomplete="off" />
+          <p class="form-note" style="text-align:left; margin-top:8px;">We&rsquo;re shaping later phases around what people actually want.</p>
         </div>
         <button type="submit" class="btn btn-full form-submit">Request my spot</button>
         <p class="form-note">No spam. Just one email when we open the doors.</p>
