@@ -164,6 +164,29 @@ Use `YYYY-MM-DD-` only when:
 
 Don't date-stamp **living documents** like `brand-guidelines.md` or `points-of-truth.md` — those are continuously updated in place.
 
+### Numbered prefixes — when and how
+
+Use numbers when **sequence matters** and you want files / folders to sort intentionally. Single rule across all numbered patterns: **leading zero, hyphen separator**.
+
+| Pattern | When to use | Example |
+|---|---|---|
+| `NN-<topic>/` (folder) | The order between folders matters and you want it locked | `01-brand/`, `02-operations/` |
+| `NN-<topic>.md` (file in a folder) | Docs in a folder are meant to be read in sequence (e.g. onboarding) | `01-onboarding-day-one.md`, `02-onboarding-week-one.md` |
+| `sop-NNN-<topic>.md` | Standard Operating Procedures — gives SOPs their own numbering namespace and `sop-` prefix makes them easy to grep | `sop-001-opening-the-space.md`, `sop-002-locking-up.md` |
+| `YYYY-MM-DD-<topic>.md` | Date-stamped docs (chronological order) — see above | `2026-05-12-launch-checklist.md` |
+
+### Don't number these
+
+Living reference docs that are read independently — not in sequence — and continuously updated in place:
+
+- `brand-guidelines.md`
+- `points-of-truth.md`
+- `competitor-analysis.md`
+- `email-templates.md`
+- `ghl-webhook-reference.md`
+
+Numbering them locks an order that doesn't exist and creates renaming pain later.
+
 ### Anti-patterns to avoid
 
 - ❌ `Bullseye-logo.png` (capital letter) → ✅ `bullseye-logo.png`
