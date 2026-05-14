@@ -133,6 +133,45 @@ When asking Claude to work on a specific area, name the folder up front so it do
 | Social media assets | "Work in `social-media/`" |
 | Adding a new image to the site | "Add to `assets/img/` and update HTML references" |
 
+## Naming conventions
+
+**One rule, enforced everywhere:** `lowercase-kebab-case` for every file and folder. No exceptions.
+
+- All lowercase. No `CamelCase`, no `PascalCase`, no `SHOUTING`.
+- Words separated by a single hyphen. No underscores. No spaces.
+- No special characters: `()`, `&`, `$`, `?`, `!`, `'`, etc.
+- Concise but descriptive. Use full words. Abbreviate only when the abbreviation is universally understood (`html`, `css`, `js`, `url`, `seo`, `pdf`, `sypb`).
+- File extensions are always lowercase: `.md`, `.html`, `.png`, `.mp4`, never `.MD` or `.PNG`.
+
+### Patterns by file type
+
+| Type | Pattern | Example |
+|---|---|---|
+| HTML page folder | `<topic>/` containing `index.html` | `meeting-room/` |
+| Blog post folder | `<descriptive-slug>/` | `why-coworking-worksop-is-growing/` |
+| Knowledge base doc | `<topic>.md` | `brand-guidelines.md` |
+| Image asset | `<descriptive-name>.<ext>` | `bullseye-logo.png` |
+| Video asset | `<name-or-context>.<ext>` | `office-walkthrough.mp4` |
+| Date-stamped doc (when chronology matters) | `YYYY-MM-DD-<name>.md` | `2026-05-12-launch-checklist.md` |
+| Social media asset | `<channel>/<date-or-campaign>-<slug>.<ext>` | `instagram/2026-06-01-launch-reveal.jpg` |
+
+### When to use date-prefixed names
+
+Use `YYYY-MM-DD-` only when:
+
+- The file is **time-sensitive** and order matters when listed alphabetically (launch checklists, incident reports, monthly market updates).
+- You'll have **multiple versions over time** that you want to keep separate.
+
+Don't date-stamp **living documents** like `brand-guidelines.md` or `points-of-truth.md` — those are continuously updated in place.
+
+### Anti-patterns to avoid
+
+- ❌ `Bullseye-logo.png` (capital letter) → ✅ `bullseye-logo.png`
+- ❌ `Worksop Workspace Social/` (spaces, capitals) → ✅ `social-media/`
+- ❌ `office_main_backup.mp4` (underscores) → ✅ `office-backup.mp4`
+- ❌ `meetingRoomFAQ.md` (camelCase, abbreviation) → ✅ `meeting-room-faq.md`
+- ❌ `2026 Sponsor Pack (Final v2).pdf` → ✅ `2026-sponsor-pack.pdf`
+
 ## Cache-busting reminder
 
 Two files are loaded everywhere with a `?v=N` cache buster:
