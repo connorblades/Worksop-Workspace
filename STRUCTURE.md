@@ -67,10 +67,14 @@ worksop-workspace/
 └── knowledge-base/
     ├── README.md                   # Index of what's in here
     ├── points-of-truth.md          # Canonical brand/company facts
-    ├── brand/                      # Voice, identity, visual rules, tone
-    ├── operations/                 # SOPs, day-to-day procedures
-    ├── legal/                      # Terms, contracts, internal policies
-    └── strategy/                   # Plans, positioning, roadmaps
+    ├── brand/
+    │   └── brand-guidelines.md     # Visual + verbal system, voice rules
+    ├── operations/
+    │   ├── email-templates.md      # Customer auto-reply drafts per GHL tag
+    │   └── ghl-webhook-reference.md # Webhook fields, tag map, merge tags
+    ├── legal/                      # Terms drafts, internal policies (empty)
+    └── strategy/
+        └── competitor-analysis.md  # Local Worksop competitor research + gaps
 │
 └── ── SOCIAL MEDIA (private — not deployed) ───────────────────
     └── social-media/               # Content assets for social channels
