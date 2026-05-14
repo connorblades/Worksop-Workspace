@@ -31,7 +31,7 @@ The procedure for closing Worksop Workspace at the end of each day. Quick-refere
 8. Push any moved tables back into place.
 9. Tidy stray items (water bottles, headphones, pens) into the lost & found bin at reception.
 10. Take dedicated-desk-area items only if a member has clearly forgotten them — otherwise leave their setup as-is.
-11. Reset the boardroom/podcast room to its booking-ready state if used today.
+11. Reset the meeting/podcast room to its booking-ready state if used today.
 
 ---
 
@@ -60,7 +60,7 @@ See `../training/coffee-and-refreshments.md` for the full refreshments shutdown.
 ## 5. Technology and equipment
 
 22. Shut down any communal computers or printers.
-23. Power off the boardroom/podcast room equipment (TVs, mics, lighting).
+23. Power off the meeting/podcast room equipment (TVs, mics, lighting).
 24. Leave the Wi-Fi router and core network kit powered on — these never get switched off.
 25. Make sure no laptops, phones, or chargers have been left out unattended. Anything that looks forgotten goes into the lost & found at reception.
 

@@ -14,7 +14,7 @@ The master overview of how Worksop Workspace runs. Read this once. Defer to the 
 
 A focused, professional, welcoming coworking space for people who are serious about their work but don't want the formality or cost of a conventional office. We sit between a coffee shop and a business centre. We are not a networking hub. We are not a youth club. We are a place to work.
 
-See `../essentials/points-of-truth.md` for the full positioning, `../brand/brand-guidelines.md` for how we sound, and `../members/house-rules.md` for what is and isn't allowed in the space.
+See `./points-of-truth.md` for the full positioning, `../marketing/brand/brand-guidelines.md` for how we sound, and `../marketing/members/house-rules.md` for what is and isn't allowed in the space.
 
 ---
 
@@ -36,9 +36,9 @@ The space is opening floor by floor.
 | Phase | Status | What's included |
 |---|---|---|
 | **Phase 0** | Current | Fit-out in progress. Waiting list open. |
-| **Phase 1 — Ground Floor** | Launching 1 June 2026 | Hot desks, dedicated desks, private serviced offices |
-| **Phase 2 — Basement** | Future | Extended desk area, coffee-shop atmosphere, self-catering kitchen, unlimited refreshments hub |
-| **Phase 3 — Upper Space** | Future | Podcast studio + meeting room, hourly bookings, member credits |
+| **Phase 1 — Ground Floor** | Launching 1 June 2026 | Hot desks (day + weekly), private serviced offices, meeting room |
+| **Phase 2 — Basement** | Future | Dedicated desks, extended hot desk area, coffee-shop atmosphere, self-catering kitchen, unlimited refreshments hub |
+| **Phase 3 — Upper Space** | Future | Podcast studio (hourly), member credits |
 
 ---
 
@@ -67,17 +67,17 @@ When the door is open, a member of staff is on site. There is no self-service ac
 
 Fixed, transparent, gym-style. No long contracts. Cancel any time. No commitment discounts.
 
-| Access type | How it works |
-|---|---|
-| **Private Office** | Weekly rolling subscription, locked office |
-| **Dedicated Desk** | Weekly rolling subscription, same desk reserved |
-| **Hot Desk Membership** | Weekly rolling subscription, any available seat |
-| **Day Pass** | Pay-as-you-go, single day access |
-| **Hourly Hot Desk** | Pay-as-you-go (e.g. £5/hour) |
-| **Podcast Room / Boardroom** | Hourly booking, open to members and visitors (Phase 3) |
-| **Member Credits** | Pre-allocated credits for hourly spaces (Phase 3) |
+| Access type | Phase | Price | How it works |
+|---|---|---|---|
+| **Day Pass** | 1 | £12/day | Pay-as-you-go, single day access |
+| **Hot Desk Weekly** | 1 | £30/week | Rolling weekly subscription, any available seat |
+| **Private Office** | 1 | from £125/week | Weekly rolling subscription, locked office |
+| **Meeting Room** | 1 | £30/hour | Hourly booking, members and visitors |
+| **Dedicated Desk** | 2 | £50/week | Weekly rolling subscription, same desk reserved |
+| **Podcast Room** | 3 | £40/hour | Hourly booking, members and visitors |
+| **Member Credits** | 3 | TBC | Pre-allocated credits for hourly spaces |
 
-Pricing live on the website at `worksopworkspace.com/membership`. Pricing changes are logged in Drive's `09-finance/pricing-history.md`.
+Full product detail in `../sales/product-offerings.md`. Pricing live on the website at `worksopworkspace.com/membership`. Pricing changes logged in Drive's `04-finance/pricing-history.md`.
 
 Discounting beyond launch intro offers is not standard practice. The only exception is a free day pass for a Google review.
 
@@ -85,7 +85,7 @@ Discounting beyond launch intro offers is not standard practice. The only except
 
 ## 7. Member onboarding flow
 
-Full SOP at `sops/sop-003-member-onboarding-tour.md` and tour script at `training/tour-script.md`. Headline version:
+Full SOP at `sops/sop-003-member-onboarding-tour.md` and tour script at `../sales/conversion/tour-script.md`. Headline version:
 
 1. Initial conversation — understand what they need (private office / dedicated desk / hot desk / day pass)
 2. Match to the right plan based on their working style and budget
@@ -132,7 +132,7 @@ When the first staff member is brought on, this section gets fleshed out into a 
 
 ## 11. What we will never be
 
-(From `../brand/brand-guidelines.md` and `../essentials/points-of-truth.md`.)
+(From `../marketing/brand/brand-guidelines.md` and `./points-of-truth.md`.)
 
 - **Not a networking hub.** Members who use the space to pitch or prospect other members will not be welcomed back.
 - **Not political.** No affiliations, commentary, or associations.

@@ -66,25 +66,38 @@ worksop-workspace/
 ├── ── KNOWLEDGE BASE (non-sensitive only — repo is public) ────
 └── knowledge-base/
     ├── README.md                   # Index of what's in here
-    ├── essentials/
-    │   └── points-of-truth.md      # Canonical brand/company facts
-    ├── brand/
-    │   └── brand-guidelines.md     # Visual + verbal system, voice rules
+    ├── sales/
+    │   ├── product-offerings.md    # Every product, price, sales talk track
+    │   ├── communications/email-templates.md
+    │   ├── conversion/tour-script.md
+    │   ├── conversion/phone-and-enquiry-handling.md
+    │   └── crm/ghl-webhook-reference.md
     ├── operations/
+    │   ├── points-of-truth.md      # Canonical brand/company facts
     │   ├── operating-manual.md     # How the space runs day to day
-    │   ├── email-templates.md      # Customer auto-reply drafts per GHL tag
-    │   ├── ghl-webhook-reference.md # Webhook fields, tag map, merge tags
-    │   ├── sops/                   # Numbered standard operating procedures
+    │   ├── sops/                   # Standard operating procedures
     │   ├── checklists/             # Tick-list versions of SOPs
-    │   └── training/               # Staff how-to docs
-    ├── members/                    # Member-facing: house rules, welcome pack, FAQs
-    ├── legal/                      # Sensitive legal docs live in Drive only
-    └── strategy/
-        └── competitor-analysis.md  # Local Worksop competitor research + gaps
+    │   ├── training/               # Staff how-to docs
+    │   ├── legal-and-compliance/   # Terms of business etc.
+    │   └── strategy/               # Roadmap, phase plans (future)
+    ├── marketing/
+    │   ├── brand/brand-guidelines.md
+    │   ├── members/                # House rules, welcome pack, FAQs
+    │   ├── events-and-community/   # Future
+    │   ├── content/                # Future
+    │   ├── partnerships/           # Future
+    │   └── competitor-analysis.md
+    ├── finance/                    # Mostly Drive-only — public repo holds non-sensitive only
+    └── ideas/
+        └── ideas-log.md            # Future possibilities — nothing committed
 
-Sensitive operational data (facilities, finance, technology refs, fire-risk
-specifics, GDPR processor details) lives only in the private Google Drive
-at "Worksop Workspace HQ" — not in this public repo.
+Drive mirror at "Worksop Workspace HQ" uses numbered prefixes (00-essentials,
+01-sales, 02-operations, 03-marketing, 04-finance, 05-ideas, 99-archive).
+Repo intentionally doesn't — README.md sits at root and serves as the index.
+
+Sensitive operational data (facilities, finance specifics, technology refs,
+fire-risk specifics, GDPR processor details) lives only in the private Drive
+— not in this public repo.
 │
 └── ── SOCIAL MEDIA (private — not deployed) ───────────────────
     └── social-media/               # Content assets for social channels

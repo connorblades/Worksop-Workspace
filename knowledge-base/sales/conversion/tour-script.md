@@ -57,7 +57,7 @@ This is the magic question. Their answer tells you exactly which plan to lead wi
 - "Kids at home" → hot desk or weekly pass; the quiet zone matters
 - "Calls from the van" → weekly pass or private office if they need privacy regularly
 - "Spending a fortune in coffee shops" → weekly pass — show them the maths
-- "Trying to look professional for clients" → private office or boardroom-by-the-hour (Phase 3)
+- "Trying to look professional for clients" → private office or meeting room (Phase 3)
 - "Just want somewhere I'm not at home" → day pass first, let the space do the selling
 
 > "And roughly how often do you reckon you'd use a space like this?"
@@ -134,7 +134,7 @@ Don't push. Just plant the seed.
 
 Back at reception:
 
-> "Two things I'll set you up with — the Wi-Fi and the member app. Wi-Fi password is on the card here, you can scan in for the day, scan out when you leave. Takes a second. The app is also how you'd book anything — desks, podcast room, boardroom — later down the line."
+> "Two things I'll set you up with — the Wi-Fi and the member app. Wi-Fi password is on the card here, you can scan in for the day, scan out when you leave. Takes a second. The app is also how you'd book anything — desks, meeting room, podcast room — later down the line."
 
 Help them download the app. Show their QR code.
 

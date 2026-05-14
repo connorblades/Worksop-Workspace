@@ -38,7 +38,7 @@ The procedure for opening Worksop Workspace each morning. Follow this every week
 8. Check the Wi-Fi router is on and broadcasting (visible LEDs). If not, follow the Wi-Fi troubleshooting in Drive's `08-technology-and-it/wifi-and-network.md`.
 9. Open a laptop and confirm a member-facing Wi-Fi network is connecting at full speed.
 10. Power up the printer if used.
-11. Power up the boardroom/podcast studio TVs and equipment if any bookings are scheduled today (check the member app for the day's bookings).
+11. Power up the podcast studio TVs and equipment if any bookings are scheduled today (check the member app for the day's bookings).
 
 ---
 

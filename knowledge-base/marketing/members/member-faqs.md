@@ -105,7 +105,7 @@ Once the basement fit-out is complete — date TBC. We'll let waiting list membe
 Existing memberships will get access to the new spaces at no additional cost. Phase 3 podcast and meeting rooms are hourly bookings on top.
 
 **Will there be a podcast studio?**
-Yes — coming in Phase 3. Bookable by the hour, members and visitors. Same for the boardroom / meeting room.
+Yes — coming in Phase 3. Bookable by the hour, members and visitors. Same for the meeting room.
 
 ---
 

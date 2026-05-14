@@ -23,7 +23,7 @@ Tick through this every evening. Full procedure with reasoning in `../sops/sop-0
 - [ ] Hot desks wiped down
 - [ ] Chairs realigned
 - [ ] Tables back in place
-- [ ] Boardroom / podcast room reset if used today
+- [ ] Meeting room / podcast room reset if used today
 
 ## Refreshments
 

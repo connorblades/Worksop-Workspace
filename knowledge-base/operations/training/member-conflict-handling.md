@@ -105,7 +105,7 @@ What to do:
 
 ### Dispute over a booking
 
-What's happening: someone thinks they booked the boardroom / podcast room (Phase 3) at a time another member shows up for.
+What's happening: someone thinks they booked the meeting room / podcast room (Phase 3) at a time another member shows up for.
 
 What to do:
 

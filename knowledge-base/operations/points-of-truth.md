@@ -63,18 +63,18 @@ Worksop Workspace is being built and opened in phases, floor by floor.
 
 **Phase 1 — Ground Floor:**
 - Hot desks (drop-in, flexible seating)
-- Dedicated desks (reserved, same desk every visit)
-- Private serviced offices (locked, personal space)
+- Private serviced offices (locked, personal space) — may include rooms that double as meeting rooms when not let on a private-office plan; specifics TBC
+- Meeting room (bookable by the hour)
 
 **Phase 2 — Basement Floor:**
-- Extended hot desk and dedicated desk area
+- Dedicated desks (reserved, same desk every visit) — introduced in this phase
+- Extended hot desk area
 - Coffee shop-style environment with background music and televisions
 - Self-catering kitchen
 - Unlimited coffee and refreshments hub
 
 **Phase 3 — Upper/Additional Space:**
 - Podcast recording studio (bookable by the hour)
-- Boardroom / meeting room (bookable by the hour)
 - Member credits system for access to hourly spaces
 
 ---
@@ -97,17 +97,19 @@ Worksop Workspace is being built and opened in phases, floor by floor.
 
 ### Pricing Model
 
-| Access Type | How It Works |
-|---|---|
-| **Private Office** | Weekly rolling subscription — fixed cost, dedicated locked office |
-| **Dedicated Desk** | Weekly rolling subscription — same desk, reserved for the member |
-| **Hot Desk Membership** | Weekly rolling subscription — come and go as needed |
-| **Day Pass (Visitor)** | Pay-as-you-go, single day access |
-| **Hourly Hot Desk** | Pay-as-you-go, e.g. £5/hour |
-| **Podcast Room / Boardroom** | Hourly booking, open to members and visitors |
-| **Member Credits** | Allocated credits for use in hourly spaces (podcast/boardroom) |
+| Access Type | Phase | Price | How It Works |
+|---|---|---|---|
+| **Day Pass (Visitor)** | 1 | £12/day | Pay-as-you-go, single day access |
+| **Hot Desk Weekly** | 1 | £30/week | Rolling weekly subscription — come and go as needed, cancel any time |
+| **Private Office** | 1 | from £125/week | Weekly rolling subscription — locked office |
+| **Meeting Room** | 1 | £30/hour | Hourly booking, open to members and visitors |
+| **Dedicated Desk** | 2 | £50/week | Weekly rolling subscription — same desk, reserved for the member |
+| **Podcast Room** | 3 | £40/hour | Hourly booking, open to members and visitors |
+| **Member Credits** | 3 | TBC | Pre-allocated credits for hourly spaces (podcast) |
 
 Pricing is fixed. Introductory offers will be available at launch. Discounting beyond introductory offers is not standard practice.
+
+**No boardroom.** Earlier drafts mentioned a separate boardroom — that's not part of the offer. The meeting room covers client-facing sessions in Phase 1.
 
 ---
 

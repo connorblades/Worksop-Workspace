@@ -39,7 +39,7 @@ For staff:
    - Who has a private office booking?
    - Who has a dedicated desk and is expected in?
    - Any day passes pre-booked?
-   - Any room bookings (boardroom / podcast, Phase 3)?
+   - Any room bookings (meeting room or podcast room)?
 3. Note any first-time visitors — these need the full tour
 4. Note any cancellations or no-shows from yesterday that might affect today's rota
 
