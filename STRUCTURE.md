@@ -63,18 +63,28 @@ worksop-workspace/
     ├── index.html                  # /blog
     └── <post-slug>/index.html      # /blog/<post-slug>
 │
-├── ── KNOWLEDGE BASE (private — not deployed) ─────────────────
+├── ── KNOWLEDGE BASE (non-sensitive only — repo is public) ────
 └── knowledge-base/
     ├── README.md                   # Index of what's in here
-    ├── points-of-truth.md          # Canonical brand/company facts
+    ├── essentials/
+    │   └── points-of-truth.md      # Canonical brand/company facts
     ├── brand/
     │   └── brand-guidelines.md     # Visual + verbal system, voice rules
     ├── operations/
+    │   ├── operating-manual.md     # How the space runs day to day
     │   ├── email-templates.md      # Customer auto-reply drafts per GHL tag
-    │   └── ghl-webhook-reference.md # Webhook fields, tag map, merge tags
-    ├── legal/                      # Terms drafts, internal policies (empty)
+    │   ├── ghl-webhook-reference.md # Webhook fields, tag map, merge tags
+    │   ├── sops/                   # Numbered standard operating procedures
+    │   ├── checklists/             # Tick-list versions of SOPs
+    │   └── training/               # Staff how-to docs
+    ├── members/                    # Member-facing: house rules, welcome pack, FAQs
+    ├── legal/                      # Sensitive legal docs live in Drive only
     └── strategy/
         └── competitor-analysis.md  # Local Worksop competitor research + gaps
+
+Sensitive operational data (facilities, finance, technology refs, fire-risk
+specifics, GDPR processor details) lives only in the private Google Drive
+at "Worksop Workspace HQ" — not in this public repo.
 │
 └── ── SOCIAL MEDIA (private — not deployed) ───────────────────
     └── social-media/               # Content assets for social channels
