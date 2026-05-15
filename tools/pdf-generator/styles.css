@@ -23,11 +23,9 @@
 
 @page {
   size: A4;
-  margin: 25mm 22mm 25mm 22mm;
-}
-
-@page :first {
-  margin: 0;
+  /* The actual print margin is set by puppeteer's page.pdf() options.
+     Setting a CSS @page :first rule here clashes with that and breaks the
+     first page of body-only renders, so we leave it alone. */
 }
 
 * { box-sizing: border-box; }
@@ -51,9 +49,7 @@ html, body {
 
 /* Puppeteer applies its own 25mm top/bottom + 22mm left/right margins to every
    page, so the cover lives inside that printable area (≈ 247mm × 166mm) rather
-   than the full A4 sheet. Explicit height + margin-top: auto on the bottom
-   block keeps the wordmark anchored to the page footer regardless of how much
-   middle content there is. */
+   than the full A4 sheet. */
 .cover {
   height: 247mm;
   padding: 0;
@@ -61,106 +57,163 @@ html, body {
   page-break-after: always;
   break-after: page;
   position: relative;
-}
-
-.cover .cover-top {
-  margin-bottom: 30mm;
-}
-
-.cover .cover-middle {
-  margin-top: 0;
-}
-
-.cover .cover-bottom {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
   display: flex;
+  flex-direction: column;
+}
+
+/* ----- Cover header — logo lockup + eyebrow + reference ----- */
+
+.cover-header {
+  display: flex;
+  align-items: flex-start;
   justify-content: space-between;
-  align-items: flex-end;
-  border-top: 1px solid var(--c-linen);
-  padding-top: 8mm;
+  padding-bottom: 7mm;
+  border-bottom: 0.4pt solid var(--c-linen);
+}
+
+.cover-logo {
+  height: 14mm;
+  width: auto;
+  display: block;
+}
+
+.cover-header-meta {
+  text-align: right;
+  padding-top: 2mm;
 }
 
 .cover .eyebrow {
   font-weight: 600;
-  font-size: 10pt;
+  font-size: 9pt;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--c-sage);
-  margin-bottom: 16mm;
+  margin: 0 0 2mm 0;
+}
+
+.cover .ref {
+  font-weight: 500;
+  font-size: 8.5pt;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--c-stone);
+}
+
+/* ----- Cover body — title, rule, subtitle, facts ----- */
+
+.cover-body {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6mm 0;
 }
 
 .cover .title {
   font-weight: 700;
-  font-size: 42pt;
-  line-height: 1.05;
+  font-size: 40pt;
+  line-height: 1.04;
   letter-spacing: -0.02em;
   color: var(--c-espresso);
   margin: 0 0 8mm 0;
   max-width: 150mm;
 }
 
-.cover .title-underline {
-  width: 36mm;
-  height: 3pt;
+.cover .title-rule {
+  width: 32mm;
+  height: 2.5pt;
   background: var(--c-clay);
-  margin-bottom: 10mm;
+  margin: 0 0 10mm 0;
 }
 
 .cover .subtitle {
   font-weight: 400;
-  font-size: 14pt;
-  line-height: 1.4;
+  font-size: 13pt;
+  line-height: 1.45;
   color: var(--c-stone);
-  max-width: 140mm;
+  max-width: 145mm;
   margin: 0 0 14mm 0;
 }
 
-.cover .meta {
-  display: flex;
-  flex-direction: column;
-  gap: 4mm;
-  margin-top: 4mm;
+/* The four-up "facts" block — Status / Last updated / Document / Audience.
+   Reads like the title block of a formal document, anchored to a faint linen
+   tint to give the cover visual weight without using heavy borders. */
+.cover-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  margin: 0;
+  padding: 8mm 10mm;
+  background: var(--c-linen);
+  border-left: 2.5pt solid var(--c-clay);
 }
 
-.cover .status {
+.cover-facts .fact {
+  padding: 3mm 0;
+  margin: 0;
+}
+
+.cover-facts .fact:nth-child(odd) {
+  padding-right: 8mm;
+}
+
+.cover-facts dt {
   font-weight: 600;
-  font-size: 11pt;
-  color: var(--c-clay);
-  letter-spacing: 0.01em;
-}
-
-.cover .status.status-approved {
+  font-size: 8pt;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   color: var(--c-sage);
+  margin-bottom: 1.5mm;
 }
 
-.cover .status.status-neutral {
+.cover-facts dd {
+  margin: 0;
+  font-weight: 500;
+  font-size: 11pt;
+  color: var(--c-espresso);
+  line-height: 1.4;
+}
+
+.status-pill {
+  display: inline-block;
+  font-weight: 600;
+  font-size: 10pt;
+  letter-spacing: 0.01em;
+  color: var(--c-clay);
+  padding: 1mm 3mm;
+  background: var(--c-white);
+  border: 0.6pt solid var(--c-clay);
+  border-radius: 2pt;
+}
+
+.status-pill.status-approved {
+  color: var(--c-sage);
+  border-color: var(--c-sage);
+}
+
+.status-pill.status-neutral {
   color: var(--c-stone);
+  border-color: var(--c-stone);
 }
 
-.cover .last-updated {
-  font-weight: 400;
+/* ----- Cover footer — tagline + address ----- */
+
+.cover-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 7mm;
+  border-top: 0.4pt solid var(--c-linen);
+}
+
+.cover-tag {
+  font-weight: 500;
   font-size: 10pt;
   color: var(--c-stone);
+  font-style: italic;
 }
 
-.cover .wordmark {
-  font-weight: 700;
-  font-size: 13pt;
-  letter-spacing: -0.01em;
-  color: var(--c-charcoal);
-}
-
-.cover .wordmark-tag {
-  font-weight: 400;
-  font-size: 9pt;
-  color: var(--c-stone);
-  margin-top: 1mm;
-}
-
-.cover .cover-address {
+.cover-address {
   text-align: right;
   font-size: 9pt;
   color: var(--c-stone);

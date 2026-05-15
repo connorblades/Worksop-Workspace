@@ -3,10 +3,13 @@
  * Render a single Worksop Workspace knowledge-base markdown file to a
  * branded PDF.
  *
+ * Cover and body are rendered as two separate PDFs and merged with pdf-lib,
+ * so the cover sits clean (no running header / footer) while the body pages
+ * carry the per-page status marker, title, mark, and page numbers.
+ *
  * Usage:  node generate.js <path/to/source.md> [--out <path/to/out.pdf>]
  *
  * Brand reference: knowledge-base/marketing/brand/brand-guidelines.md
- * Naming: kebab-case slug derived from source filename.
  */
 
 'use strict';
@@ -16,26 +19,23 @@ const path = require('node:path');
 const { pathToFileURL } = require('node:url');
 const { marked } = require('marked');
 const puppeteer = require('puppeteer');
+const { PDFDocument } = require('pdf-lib');
 
-const REPO_ROOT = path.resolve(__dirname, '..', '..');
+const SCRIPT_DIR = __dirname;
+const REPO_ROOT = path.resolve(SCRIPT_DIR, '..', '..');
 const PDF_DIR = path.join(REPO_ROOT, 'pdfs');
-const TEMPLATE_PATH = path.join(__dirname, 'template.html');
-const STYLES_PATH = path.join(__dirname, 'styles.css');
+const TEMPLATE_PATH = path.join(SCRIPT_DIR, 'template.html');
+const STYLES_PATH = path.join(SCRIPT_DIR, 'styles.css');
+
+const LOGO_LOCKUP_PATH = path.join(REPO_ROOT, 'logo.png');
+const LOGO_MARK_PATH   = path.join(REPO_ROOT, 'icon.png');
 
 marked.setOptions({ gfm: true, breaks: false });
 
-/**
- * Pull cover-page metadata from the top of a knowledge-base markdown file.
- * Conventional shape:
- *   # Title
- *
- *   **Worksop Workspace** · Section · *Phase X reference*
- *
- *   Status: Draft v1 — needs Connor review · Last updated: 14 May 2026
- *
- *   ---
- *   ...body...
- */
+// ---------------------------------------------------------------------------
+// Metadata extraction
+// ---------------------------------------------------------------------------
+
 function extractMetadata(md, sourcePath) {
   const lines = md.split('\n');
   let title = path.basename(sourcePath, '.md');
@@ -44,13 +44,11 @@ function extractMetadata(md, sourcePath) {
   let status = '';
   let lastUpdated = '';
 
-  // Title — first H1
   for (const line of lines) {
     const m = line.match(/^#\s+(.+?)\s*$/);
     if (m) { title = m[1].trim(); break; }
   }
 
-  // Eyebrow — line beginning **Worksop Workspace**
   for (const line of lines) {
     if (/^\*\*Worksop Workspace\*\*/.test(line)) {
       eyebrow = line
@@ -62,17 +60,12 @@ function extractMetadata(md, sourcePath) {
     }
   }
   if (!eyebrow) {
-    // Fall back: derive from path, e.g. operations/sops -> Operations · SOPs
     const rel = path.relative(path.join(REPO_ROOT, 'knowledge-base'), sourcePath);
     const segments = rel.split(path.sep).slice(0, -1);
     eyebrow = 'Worksop Workspace · ' +
       segments.map(s => s.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())).join(' · ');
   }
 
-  // Status — line beginning with "Status:" (possibly inside markdown bold).
-  // Some docs end the status sentence with " Last updated: <date>." inline
-  // (no " · " separator); peel that off so it doesn't bleed into the status
-  // marker or duplicate the last-updated row on the cover.
   for (const line of lines) {
     const stripped = line.replace(/\*\*/g, '').trim();
     if (/^Status:/i.test(stripped)) {
@@ -88,7 +81,6 @@ function extractMetadata(md, sourcePath) {
   }
   if (!status) status = 'Working draft';
 
-  // Last-updated fallback: scan for "Last updated:" anywhere near the top
   if (!lastUpdated) {
     for (const line of lines.slice(0, 30)) {
       const m = line.match(/Last updated:\s*([^·\*]+?)(?:\s*\*?\s*$|·)/i);
@@ -97,7 +89,6 @@ function extractMetadata(md, sourcePath) {
   }
   if (!lastUpdated) lastUpdated = '—';
 
-  // Subtitle — first non-metadata sentence after the first `---`
   const firstRuleIdx = lines.findIndex(l => /^---\s*$/.test(l));
   if (firstRuleIdx !== -1) {
     for (let i = firstRuleIdx + 1; i < Math.min(firstRuleIdx + 12, lines.length); i++) {
@@ -106,28 +97,59 @@ function extractMetadata(md, sourcePath) {
       if (/^---/.test(l)) break;
       if (/^#/.test(l)) break;
       if (/^\*Worksop Workspace/.test(l)) break;
-      // Strip basic markdown emphasis for the subtitle preview
       subtitle = l.replace(/[*_`]/g, '').slice(0, 220);
       break;
     }
   }
 
-  // Categorise status for colour selection
   let statusClass = 'status-neutral';
   if (/draft|tbc|todo|unreviewed|not\s+reviewed|do\s+not\s+publish/i.test(status)) {
-    statusClass = '';  // default = clay
+    statusClass = '';
   } else if (/approved|signed[- ]off|live|published/i.test(status)) {
     statusClass = 'status-approved';
   }
 
-  return { title, eyebrow, subtitle, status, statusClass, lastUpdated };
+  const ref = deriveRef(sourcePath);
+
+  return { title, eyebrow, subtitle, status, statusClass, lastUpdated, ref };
 }
 
 /**
- * Strip the metadata header block (title, eyebrow, status, first ---) and
- * the trailing wordmark/footer block from the markdown body. The cover page
- * and running header/footer carry that information instead.
+ * Document reference code based on source path. Short, predictable, useful
+ * for indexing in Drive / referring to docs by code in conversation.
  */
+function deriveRef(sourcePath) {
+  const base = path.basename(sourcePath, '.md');
+  const rel = path.relative(REPO_ROOT, sourcePath).replace(/\\/g, '/');
+
+  let m = base.match(/^sop-(\d+)/i);
+  if (m) return `SOP-${m[1]}`;
+
+  m = base.match(/^(\d+)-/);
+  if (m && rel.includes('/checklists/')) return `CHK-${m[1]}`;
+
+  if (rel.includes('/legal-and-compliance/')) {
+    // Acronym of the hyphen-separated words — `terms-of-business` → `TOB`.
+    const acronym = base.split('-').map(w => w[0]).join('').toUpperCase();
+    return `LEG-${acronym}`;
+  }
+  if (rel.includes('/training/')) {
+    const tag = base.split('-')[0].toUpperCase().slice(0, 6);
+    return `TRN-${tag}`;
+  }
+  if (rel.includes('/conversion/')) {
+    const tag = base.split('-')[0].toUpperCase().slice(0, 6);
+    return `SAL-${tag}`;
+  }
+  if (base === 'operating-manual') return 'OPS-MAN';
+
+  return base.toUpperCase().slice(0, 24);
+}
+
+// ---------------------------------------------------------------------------
+// Markdown post-processing
+// ---------------------------------------------------------------------------
+
 function stripCoverMetadata(md) {
   const lines = md.split('\n');
   const out = [];
@@ -143,14 +165,14 @@ function stripCoverMetadata(md) {
     }
     out.push(line);
   }
-
-  // Strip trailing footer block (the "*Worksop Workspace · A space to drop...*"
-  // paragraph that every doc ends with). We look for the last `---` and discard
-  // anything after it that mentions the address.
   const joined = out.join('\n');
   const footerRe = /\n---\s*\n\s*\*Worksop Workspace[\s\S]*$/;
   return joined.replace(footerRe, '').trim() + '\n';
 }
+
+// ---------------------------------------------------------------------------
+// Template rendering
+// ---------------------------------------------------------------------------
 
 function escapeHtml(s) {
   return String(s)
@@ -161,9 +183,25 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
-function renderHtml(md, meta) {
-  const template = fs.readFileSync(TEMPLATE_PATH, 'utf8');
-  const inlineCss = fs.readFileSync(STYLES_PATH, 'utf8');
+let _cachedAssets = null;
+function loadAssets() {
+  if (_cachedAssets) return _cachedAssets;
+  _cachedAssets = {
+    css: fs.readFileSync(STYLES_PATH, 'utf8'),
+    template: fs.readFileSync(TEMPLATE_PATH, 'utf8'),
+    logoLockupDataUri: 'data:image/png;base64,' + fs.readFileSync(LOGO_LOCKUP_PATH).toString('base64'),
+    logoMarkDataUri:   'data:image/png;base64,' + fs.readFileSync(LOGO_MARK_PATH).toString('base64'),
+  };
+  return _cachedAssets;
+}
+
+/**
+ * Build the full HTML doc. `mode` is "cover" or "body" — controls which of
+ * the two sections is rendered. Both modes share the same template and CSS,
+ * with the irrelevant section hidden via a body-level class.
+ */
+function renderHtml(md, meta, mode) {
+  const { css, template, logoLockupDataUri } = loadAssets();
   const stripped = stripCoverMetadata(md);
   const bodyHtml = marked.parse(stripped);
 
@@ -171,28 +209,34 @@ function renderHtml(md, meta) {
     ? `<p class="subtitle">${escapeHtml(meta.subtitle)}</p>`
     : '';
 
-  // Use function-form replacement so `$` characters in body or metadata don't
-  // get interpreted as special replacement patterns.
+  const bodyMode = mode === 'body' ? 'ww-mode-body' : 'ww-mode-cover';
+
   return template
     .replace(/\{\{TITLE\}\}/g, () => escapeHtml(meta.title))
     .replace(/\{\{EYEBROW\}\}/g, () => escapeHtml(meta.eyebrow))
+    .replace(/\{\{REF\}\}/g, () => escapeHtml(meta.ref))
     .replace(/\{\{SUBTITLE_BLOCK\}\}/g, () => subtitleBlock)
     .replace(/\{\{STATUS\}\}/g, () => escapeHtml(meta.status))
     .replace(/\{\{STATUS_CLASS\}\}/g, () => meta.statusClass)
     .replace(/\{\{LAST_UPDATED\}\}/g, () => escapeHtml(meta.lastUpdated))
-    .replace(/\{\{INLINE_CSS\}\}/g, () => inlineCss)
+    .replace(/\{\{LOGO_LOCKUP\}\}/g, () => logoLockupDataUri)
+    .replace(/\{\{BODY_CLASS\}\}/g, () => bodyMode)
+    .replace(/\{\{INLINE_CSS\}\}/g, () => css)
     .replace(/\{\{BODY_HTML\}\}/g, () => bodyHtml);
 }
 
+// ---------------------------------------------------------------------------
+// Per-page running header / footer (body pages only)
+// ---------------------------------------------------------------------------
+
 function shortStatus(status) {
-  // Running headers are narrow — keep the first clause only so the badge fits
-  // on one line. The full status still appears on the cover.
   const first = status.split(/[.—:]/)[0].trim();
   if (first.length <= 40) return first;
   return first.slice(0, 38).trim() + '…';
 }
 
 function headerTemplate(meta) {
+  const { logoMarkDataUri } = loadAssets();
   const statusColour =
     meta.statusClass === 'status-approved' ? '#8E9775'
     : meta.statusClass === 'status-neutral' ? '#5C5C58'
@@ -206,17 +250,19 @@ function headerTemplate(meta) {
         width: 100%;
         padding: 0 22mm;
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        justify-content: space-between;
         -webkit-print-color-adjust: exact;
       }
-      .ww-header .left { font-weight: 600; color: #2B2B2B; letter-spacing: -0.01em; flex: 0 0 auto; }
+      .ww-header .left { display: flex; align-items: center; gap: 2.5mm; flex: 0 0 auto; }
+      .ww-header .left img { height: 5mm; width: auto; }
+      .ww-header .left span { font-weight: 600; color: #2B2B2B; letter-spacing: -0.01em; }
       .ww-header .center { color: #5C5C58; flex: 1 1 auto; text-align: center; padding: 0 6mm; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-      .ww-header .right { color: ${statusColour}; font-weight: 600; flex: 0 0 auto; white-space: nowrap; }
+      .ww-header .right { color: ${statusColour}; font-weight: 600; flex: 0 0 auto; white-space: nowrap; letter-spacing: 0.04em; text-transform: uppercase; font-size: 7.5pt; }
     </style>
     <div class="ww-header">
-      <div class="left">Worksop Workspace</div>
-      <div class="center">${escapeHtml(meta.title)}</div>
+      <div class="left"><img src="${logoMarkDataUri}" /><span>Worksop Workspace</span></div>
+      <div class="center">${escapeHtml(meta.title)} · ${escapeHtml(meta.ref)}</div>
       <div class="right">${escapeHtml(shortStatus(meta.status))}</div>
     </div>
   `;
@@ -235,8 +281,9 @@ function footerTemplate() {
         justify-content: space-between;
         align-items: center;
       }
+      .ww-footer .left { width: 60mm; }
       .ww-footer .center { color: #5C5C58; font-weight: 500; }
-      .ww-footer .right { font-size: 7.5pt; }
+      .ww-footer .right { width: 60mm; text-align: right; font-size: 7.5pt; }
     </style>
     <div class="ww-footer">
       <div class="left"></div>
@@ -246,41 +293,97 @@ function footerTemplate() {
   `;
 }
 
+// ---------------------------------------------------------------------------
+// PDF rendering
+// ---------------------------------------------------------------------------
+
+async function renderOnePdf({ html, htmlPath, displayHeaderFooter, headerHtml, footerHtml, browser }) {
+  fs.writeFileSync(htmlPath, html);
+  const page = await browser.newPage();
+  try {
+    await page.goto(pathToFileURL(htmlPath).href, { waitUntil: 'networkidle0' });
+    await page.evaluate(async () => {
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+    });
+    // Body pages need a slightly taller top/bottom margin to leave clean room
+    // for the running header (logo mark + title + status) and footer (page
+    // number + address). The cover has no chrome so 25mm matches the brand
+    // spec exactly.
+    const margin = displayHeaderFooter
+      ? { top: '28mm', bottom: '26mm', left: '22mm', right: '22mm' }
+      : { top: '25mm', bottom: '25mm', left: '22mm', right: '22mm' };
+    const buf = await page.pdf({
+      format: 'A4',
+      printBackground: true,
+      displayHeaderFooter,
+      headerTemplate: headerHtml || '<div></div>',
+      footerTemplate: footerHtml || '<div></div>',
+      margin,
+    });
+    return buf;
+  } finally {
+    await page.close();
+  }
+}
+
 async function renderToPdf(sourcePath, outPath) {
   const md = fs.readFileSync(sourcePath, 'utf8');
   const meta = extractMetadata(md, sourcePath);
-  const html = renderHtml(md, meta);
 
-  const htmlPath = outPath.replace(/\.pdf$/i, '.html');
-  fs.writeFileSync(htmlPath, html);
+  const coverHtmlPath = outPath.replace(/\.pdf$/i, '.cover.html');
+  const bodyHtmlPath  = outPath.replace(/\.pdf$/i, '.body.html');
+  const debugHtmlPath = outPath.replace(/\.pdf$/i, '.html');
+
+  const coverHtml = renderHtml(md, meta, 'cover');
+  const bodyHtml  = renderHtml(md, meta, 'body');
+
+  // For debugging — single HTML that shows both sections.
+  fs.writeFileSync(debugHtmlPath, coverHtml);
 
   const browser = await puppeteer.launch({
     headless: 'new',
     args: ['--no-sandbox', '--disable-setuid-sandbox'],
   });
   try {
-    const page = await browser.newPage();
-    await page.goto(pathToFileURL(htmlPath).href, { waitUntil: 'networkidle0' });
-    // Belt and braces — wait for the Outfit weights to actually load before printing.
-    await page.evaluate(async () => {
-      if (document.fonts && document.fonts.ready) {
-        await document.fonts.ready;
-      }
+    const coverBuf = await renderOnePdf({
+      html: coverHtml,
+      htmlPath: coverHtmlPath,
+      displayHeaderFooter: false,
+      browser,
     });
-    await page.pdf({
-      path: outPath,
-      format: 'A4',
-      printBackground: true,
+    const bodyBuf = await renderOnePdf({
+      html: bodyHtml,
+      htmlPath: bodyHtmlPath,
       displayHeaderFooter: true,
-      headerTemplate: headerTemplate(meta),
-      footerTemplate: footerTemplate(),
-      margin: { top: '25mm', bottom: '25mm', left: '22mm', right: '22mm' },
+      headerHtml: headerTemplate(meta),
+      footerHtml: footerTemplate(),
+      browser,
     });
+
+    // Merge: cover page first, then body pages.
+    const out = await PDFDocument.create();
+    const coverDoc = await PDFDocument.load(coverBuf);
+    const bodyDoc  = await PDFDocument.load(bodyBuf);
+    const coverPages = await out.copyPages(coverDoc, coverDoc.getPageIndices());
+    const bodyPages  = await out.copyPages(bodyDoc,  bodyDoc.getPageIndices());
+    for (const p of coverPages) out.addPage(p);
+    for (const p of bodyPages)  out.addPage(p);
+
+    // PDF metadata — shows in macOS Preview, browser tabs, etc.
+    out.setTitle(meta.title);
+    out.setAuthor('Worksop Workspace');
+    out.setSubject(`${meta.ref} — ${meta.eyebrow}`);
+    out.setKeywords([meta.ref, 'Worksop Workspace', meta.status]);
+    out.setProducer('Worksop Workspace PDF generator');
+    out.setCreator('Worksop Workspace PDF generator');
+
+    const bytes = await out.save();
+    fs.writeFileSync(outPath, bytes);
   } finally {
     await browser.close();
   }
 
-  return { outPath, htmlPath, meta };
+  return { outPath, meta };
 }
 
 function deriveOutPath(sourcePath, override) {
@@ -309,7 +412,6 @@ async function main() {
   console.log(`→ ${path.relative(REPO_ROOT, sourcePath)}`);
   const result = await renderToPdf(sourcePath, outPath);
   console.log(`  PDF: ${path.relative(REPO_ROOT, result.outPath)}`);
-  console.log(`  HTML: ${path.relative(REPO_ROOT, result.htmlPath)}`);
 }
 
 if (require.main === module) {

@@ -11,34 +11,57 @@
         href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" />
 
   <style>{{INLINE_CSS}}</style>
+  <style>
+    /* Hide the inactive section based on the render mode. The same template
+       renders the cover and the body — generate.js calls puppeteer twice and
+       merges the resulting PDFs. */
+    body.ww-mode-cover .body { display: none; }
+    body.ww-mode-body .cover { display: none; }
+  </style>
 </head>
-<body>
+<body class="{{BODY_CLASS}}">
 
   <section class="cover">
-    <div class="cover-top">
-      <div class="eyebrow">{{EYEBROW}}</div>
-    </div>
+    <header class="cover-header">
+      <img class="cover-logo" src="{{LOGO_LOCKUP}}" alt="Worksop Workspace" />
+      <div class="cover-header-meta">
+        <div class="eyebrow">{{EYEBROW}}</div>
+        <div class="ref">Ref. {{REF}}</div>
+      </div>
+    </header>
 
-    <div class="cover-middle">
+    <div class="cover-body">
       <h1 class="title">{{TITLE}}</h1>
-      <div class="title-underline"></div>
+      <div class="title-rule"></div>
       {{SUBTITLE_BLOCK}}
-      <div class="meta">
-        <div class="status {{STATUS_CLASS}}">{{STATUS}}</div>
-        <div class="last-updated">Last updated: {{LAST_UPDATED}}</div>
-      </div>
+
+      <dl class="cover-facts">
+        <div class="fact">
+          <dt>Status</dt>
+          <dd><span class="status-pill {{STATUS_CLASS}}">{{STATUS}}</span></dd>
+        </div>
+        <div class="fact">
+          <dt>Last updated</dt>
+          <dd>{{LAST_UPDATED}}</dd>
+        </div>
+        <div class="fact">
+          <dt>Document</dt>
+          <dd>{{REF}}</dd>
+        </div>
+        <div class="fact">
+          <dt>Audience</dt>
+          <dd>Internal — staff use only</dd>
+        </div>
+      </dl>
     </div>
 
-    <div class="cover-bottom">
-      <div>
-        <div class="wordmark">Worksop Workspace</div>
-        <div class="wordmark-tag">A space to drop your shoulders.</div>
-      </div>
+    <footer class="cover-footer">
+      <div class="cover-tag">A space to drop your shoulders.</div>
       <div class="cover-address">
         30 Carlton Road, Worksop S80 1PH<br />
         hello@worksopworkspace.co.uk · worksopworkspace.com
       </div>
-    </div>
+    </footer>
   </section>
 
   <main class="body">
