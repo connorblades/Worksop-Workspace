@@ -128,11 +128,13 @@ function deriveRef(sourcePath) {
   m = base.match(/^(\d+)-/);
   if (m && rel.includes('/checklists/')) return `CHK-${m[1]}`;
 
-  if (rel.includes('/legal-and-compliance/')) {
-    // Acronym of the hyphen-separated words — `terms-of-business` → `TOB`.
-    const acronym = base.split('-').map(w => w[0]).join('').toUpperCase();
-    return `LEG-${acronym}`;
-  }
+  // Acronym helper: `terms-of-business` → `TOB`, `data-protection-and-gdpr` → `DPAG`.
+  const acronym = s => s.split('-').map(w => w[0]).join('').toUpperCase();
+
+  if (rel.includes('/legal-and-compliance/')) return `LEG-${acronym(base)}`;
+  if (rel.includes('/health-and-safety/'))    return `HS-${acronym(base)}`;
+  if (rel.includes('/hr/'))                   return `HR-${acronym(base)}`;
+  if (rel.includes('/facilities/'))           return `FAC-${acronym(base)}`;
   if (rel.includes('/training/')) {
     const tag = base.split('-')[0].toUpperCase().slice(0, 6);
     return `TRN-${tag}`;
