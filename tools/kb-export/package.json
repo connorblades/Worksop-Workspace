@@ -1,0 +1,14 @@
+{
+  "name": "ww-kb-export",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Point-in-time local backup of the Worksop Workspace HQ knowledge base in Google Drive.",
+  "scripts": {
+    "export": "node export.js"
+  },
+  "dependencies": {
+    "@google-cloud/local-auth": "^3.0.1",
+    "archiver": "^7.0.1",
+    "googleapis": "^171.4.0"
+  }
+}
