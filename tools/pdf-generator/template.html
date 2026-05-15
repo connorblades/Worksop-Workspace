@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <title>{{TITLE}}</title>
+
+  <!-- Outfit, the brand typeface. See knowledge-base/marketing/brand/brand-guidelines.md §04. -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" />
+
+  <style>{{INLINE_CSS}}</style>
+</head>
+<body>
+
+  <section class="cover">
+    <div class="cover-top">
+      <div class="eyebrow">{{EYEBROW}}</div>
+    </div>
+
+    <div class="cover-middle">
+      <h1 class="title">{{TITLE}}</h1>
+      <div class="title-underline"></div>
+      {{SUBTITLE_BLOCK}}
+      <div class="meta">
+        <div class="status {{STATUS_CLASS}}">{{STATUS}}</div>
+        <div class="last-updated">Last updated: {{LAST_UPDATED}}</div>
+      </div>
+    </div>
+
+    <div class="cover-bottom">
+      <div>
+        <div class="wordmark">Worksop Workspace</div>
+        <div class="wordmark-tag">A space to drop your shoulders.</div>
+      </div>
+      <div class="cover-address">
+        30 Carlton Road, Worksop S80 1PH<br />
+        hello@worksopworkspace.co.uk · worksopworkspace.com
+      </div>
+    </div>
+  </section>
+
+  <main class="body">
+    {{BODY_HTML}}
+  </main>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+# Local PDF renders — derivative artefacts, canonical copies live in Drive
+/pdfs/
+
+# Local Drive backups — point-in-time exports of the knowledge base
+/kb-exports/
+
+# Node tooling
+/tools/**/node_modules/
+/tools/**/package-lock.json
+
+# OAuth secrets for the Drive uploader / KB export script
+/tools/**/credentials.json
+/tools/**/token.json
+
+# macOS
+.DS_Store

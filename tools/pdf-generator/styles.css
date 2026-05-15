@@ -1,0 +1,387 @@
+/* ============================================================
+   Worksop Workspace — branded PDF stylesheet
+   See knowledge-base/marketing/brand/brand-guidelines.md
+   ============================================================ */
+
+/* Outfit is loaded via the Google Fonts stylesheet linked in template.html.
+   If that fails to load, the system stack below takes over — never falls back
+   to a serif face. */
+
+:root {
+  --c-white:     #FFFFFF;
+  --c-linen:     #F5F1EA;
+  --c-oak:       #C9A57B;
+  --c-espresso:  #1A1714;
+  --c-stone:     #5C5C58;
+  --c-sage:      #8E9775;
+  --c-clay:      #C57B57;
+  --c-charcoal:  #2B2B2B;
+  --c-muted:     #8a8a86;
+
+  --body-stack: "Outfit", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@page {
+  size: A4;
+  margin: 25mm 22mm 25mm 22mm;
+}
+
+@page :first {
+  margin: 0;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--c-white);
+  color: var(--c-espresso);
+  font-family: var(--body-stack);
+  font-weight: 400;
+  font-size: 11pt;
+  line-height: 1.6;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ----------------------------------------------------------
+   Cover page
+   ---------------------------------------------------------- */
+
+/* Puppeteer applies its own 25mm top/bottom + 22mm left/right margins to every
+   page, so the cover lives inside that printable area (≈ 247mm × 166mm) rather
+   than the full A4 sheet. Explicit height + margin-top: auto on the bottom
+   block keeps the wordmark anchored to the page footer regardless of how much
+   middle content there is. */
+.cover {
+  height: 247mm;
+  padding: 0;
+  background: var(--c-white);
+  page-break-after: always;
+  break-after: page;
+  position: relative;
+}
+
+.cover .cover-top {
+  margin-bottom: 30mm;
+}
+
+.cover .cover-middle {
+  margin-top: 0;
+}
+
+.cover .cover-bottom {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid var(--c-linen);
+  padding-top: 8mm;
+}
+
+.cover .eyebrow {
+  font-weight: 600;
+  font-size: 10pt;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-sage);
+  margin-bottom: 16mm;
+}
+
+.cover .title {
+  font-weight: 700;
+  font-size: 42pt;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--c-espresso);
+  margin: 0 0 8mm 0;
+  max-width: 150mm;
+}
+
+.cover .title-underline {
+  width: 36mm;
+  height: 3pt;
+  background: var(--c-clay);
+  margin-bottom: 10mm;
+}
+
+.cover .subtitle {
+  font-weight: 400;
+  font-size: 14pt;
+  line-height: 1.4;
+  color: var(--c-stone);
+  max-width: 140mm;
+  margin: 0 0 14mm 0;
+}
+
+.cover .meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4mm;
+  margin-top: 4mm;
+}
+
+.cover .status {
+  font-weight: 600;
+  font-size: 11pt;
+  color: var(--c-clay);
+  letter-spacing: 0.01em;
+}
+
+.cover .status.status-approved {
+  color: var(--c-sage);
+}
+
+.cover .status.status-neutral {
+  color: var(--c-stone);
+}
+
+.cover .last-updated {
+  font-weight: 400;
+  font-size: 10pt;
+  color: var(--c-stone);
+}
+
+.cover .wordmark {
+  font-weight: 700;
+  font-size: 13pt;
+  letter-spacing: -0.01em;
+  color: var(--c-charcoal);
+}
+
+.cover .wordmark-tag {
+  font-weight: 400;
+  font-size: 9pt;
+  color: var(--c-stone);
+  margin-top: 1mm;
+}
+
+.cover .cover-address {
+  text-align: right;
+  font-size: 9pt;
+  color: var(--c-stone);
+  line-height: 1.5;
+}
+
+/* ----------------------------------------------------------
+   Body
+   ---------------------------------------------------------- */
+
+.body {
+  max-width: 140mm;
+  margin: 0 auto;
+}
+
+.body h1,
+.body h2,
+.body h3,
+.body h4 {
+  color: var(--c-espresso);
+  font-weight: 600;
+  page-break-after: avoid;
+  break-after: avoid;
+}
+
+.body h1 {
+  font-weight: 700;
+  font-size: 24pt;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 12mm 0 6mm 0;
+}
+
+/* First H1 in the body is the doc title — hidden because the cover page already shows it */
+.body > h1:first-child {
+  display: none;
+}
+
+.body h2 {
+  font-size: 17pt;
+  line-height: 1.2;
+  margin: 10mm 0 4mm 0;
+}
+
+.body h3 {
+  font-size: 13pt;
+  line-height: 1.3;
+  margin: 7mm 0 3mm 0;
+}
+
+.body h4 {
+  font-size: 11pt;
+  margin: 5mm 0 2mm 0;
+}
+
+.body p {
+  margin: 0 0 4mm 0;
+}
+
+.body strong {
+  font-weight: 600;
+  color: var(--c-espresso);
+}
+
+.body em {
+  font-style: italic;
+  color: var(--c-stone);
+}
+
+.body a {
+  color: var(--c-espresso);
+  text-decoration: underline;
+  text-decoration-color: var(--c-oak);
+  text-underline-offset: 2pt;
+}
+
+.body code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 9.5pt;
+  background: var(--c-linen);
+  padding: 1pt 4pt;
+  border-radius: 2pt;
+  color: var(--c-espresso);
+}
+
+.body pre {
+  background: var(--c-linen);
+  padding: 4mm 5mm;
+  border-radius: 2pt;
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 9.5pt;
+  line-height: 1.5;
+  overflow-x: auto;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.body pre code {
+  background: transparent;
+  padding: 0;
+}
+
+.body blockquote {
+  margin: 5mm 0;
+  padding: 3mm 6mm;
+  border-left: 2pt solid var(--c-sage);
+  color: var(--c-stone);
+  font-style: italic;
+}
+
+.body hr {
+  border: none;
+  border-top: 1px solid var(--c-linen);
+  margin: 8mm 0;
+}
+
+.body ul,
+.body ol {
+  padding-left: 6mm;
+  margin: 0 0 4mm 0;
+}
+
+.body ul li,
+.body ol li {
+  margin-bottom: 1.5mm;
+}
+
+.body ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.body ul li {
+  position: relative;
+  padding-left: 6mm;
+}
+
+.body ul li::before {
+  content: "";
+  position: absolute;
+  left: 1mm;
+  top: 2.4mm;
+  width: 1.6mm;
+  height: 1.6mm;
+  border-radius: 50%;
+  background: var(--c-sage);
+}
+
+/* Checklists — square hollow markers feel right for tick-as-you-go docs. */
+.body ul li input[type="checkbox"] {
+  position: absolute;
+  left: 0;
+  top: 1.5mm;
+  width: 3mm;
+  height: 3mm;
+  margin: 0;
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1pt solid var(--c-stone);
+  border-radius: 1pt;
+  background: var(--c-white);
+}
+
+.body ul li input[type="checkbox"] + * {
+  /* keep paragraph alignment when a checkbox is present */
+}
+
+.body ul:has(li input[type="checkbox"]) li::before {
+  display: none;
+}
+
+.body ul:has(li input[type="checkbox"]) li {
+  padding-left: 7mm;
+}
+
+/* Tables — no full borders, header bottom border only. */
+.body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4mm 0 6mm 0;
+  font-size: 10pt;
+  page-break-inside: avoid;
+  break-inside: avoid;
+}
+
+.body table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--c-espresso);
+  padding: 2.5mm 3mm 2.5mm 0;
+  border-bottom: 1pt solid var(--c-stone);
+}
+
+.body table td {
+  padding: 2.5mm 3mm 2.5mm 0;
+  border-bottom: 1px solid var(--c-linen);
+  vertical-align: top;
+  color: var(--c-espresso);
+}
+
+.body table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Callout — used sparingly, max one per doc. */
+.body .callout {
+  background: var(--c-linen);
+  border-left: 2pt solid var(--c-clay);
+  padding: 4mm 6mm;
+  margin: 6mm 0;
+  font-size: 10.5pt;
+}
+
+/* Body-page running status pill — printed inside the body container in addition
+   to the running header so the status is impossible to miss on every page. */
+.body .status-strip {
+  display: none; /* the puppeteer headerTemplate carries the status; this is a fallback */
+}
+
+/* Page-break helpers */
+.body h2 + p,
+.body h3 + p {
+  page-break-before: avoid;
+}
