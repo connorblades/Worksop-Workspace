@@ -231,32 +231,26 @@ p:last-child { margin-bottom: 0; }
   transition: width 0.2s;
 }
 
-.nav-links a:hover { color: var(--espresso); }
-.nav-links a:hover::after { width: 100%; }
-.nav-links a.active { color: var(--espresso); font-weight: 600; }
-.nav-links a.active::after { width: 100%; }
+.nav-links a:hover { color: var(--clay); }
+.nav-links a:hover::after { width: 100%; background: var(--clay); }
+.nav-links a.active { color: var(--clay); font-weight: 600; }
+.nav-links a.active::after { width: 100%; background: var(--clay); }
 
 /* ---- Header dropdowns -------------------------------------- */
 .nav-links li.has-dropdown {
   position: relative;
 }
 
-.nav-links li.has-dropdown > a,
-.nav-links li.has-dropdown > .dropdown-trigger {
-  cursor: pointer;
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  color: inherit;
-  letter-spacing: inherit;
+/* Dropdown triggers should look identical to the regular nav links —
+   same font, same colour, same hover behaviour. Only difference is the
+   little chevron and the dropdown that appears on hover/focus. */
+.nav-links li.has-dropdown > a {
   display: inline-flex;
   align-items: center;
   gap: 4px;
 }
 
-.nav-links li.has-dropdown > a::after,
-.nav-links li.has-dropdown > .dropdown-trigger::after {
+.nav-links li.has-dropdown > a::after {
   content: '';
   display: inline-block;
   width: 6px;
@@ -264,12 +258,14 @@ p:last-child { margin-bottom: 0; }
   margin-left: 4px;
   position: static;
   background: none;
-  border-right: 1.4px solid currentColor;
-  border-bottom: 1.4px solid currentColor;
+  border-right: 1.4px solid var(--clay);
+  border-bottom: 1.4px solid var(--clay);
   transform: rotate(45deg) translateY(-1px);
   transition: transform 0.2s;
-  opacity: 0.55;
+  opacity: 0.75;
 }
+
+.nav-links li.has-dropdown:hover > a::after { opacity: 1; }
 
 .nav-dropdown {
   position: absolute;
@@ -324,7 +320,7 @@ p:last-child { margin-bottom: 0; }
 .nav-dropdown a:hover,
 .nav-dropdown a:focus {
   background: var(--linen);
-  color: var(--espresso);
+  color: var(--clay);
 }
 
 /* Mobile dropdown — accordion behaviour */
@@ -351,9 +347,8 @@ p:last-child { margin-bottom: 0; }
     border-left: 2px solid var(--linen);
     margin-left: 4px;
   }
-  .nav-dropdown a:hover { background: transparent; color: var(--espresso); }
-  .nav-links li.has-dropdown > a::after,
-  .nav-links li.has-dropdown > .dropdown-trigger::after { display: none; }
+  .nav-dropdown a:hover { background: transparent; color: var(--clay); }
+  .nav-links li.has-dropdown > a::after { display: none; }
 }
 
 .nav-toggle {
