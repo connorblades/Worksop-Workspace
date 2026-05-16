@@ -27,8 +27,8 @@ const PDF_DIR = path.join(REPO_ROOT, 'pdfs');
 const TEMPLATE_PATH = path.join(SCRIPT_DIR, 'template.html');
 const STYLES_PATH = path.join(SCRIPT_DIR, 'styles.css');
 
-const LOGO_LOCKUP_PATH = path.join(REPO_ROOT, 'logo.png');
-const LOGO_MARK_PATH   = path.join(REPO_ROOT, 'icon.png');
+const LOGO_LOCKUP_PATH = path.join(REPO_ROOT, 'website', 'logo.png');
+const LOGO_MARK_PATH   = path.join(REPO_ROOT, 'website', 'icon.png');
 
 marked.setOptions({ gfm: true, breaks: false });
 
