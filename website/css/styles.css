@@ -737,6 +737,93 @@ p:last-child { margin-bottom: 0; }
   line-height: 1.6;
 }
 
+/* ---- Persona grid (community + audience entry points) ----- */
+.persona-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.persona-card {
+  display: block;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 28px 26px;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.3s;
+}
+
+.persona-card:hover {
+  border-color: var(--oak);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.persona-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--linen);
+  color: var(--sage);
+  margin-bottom: 14px;
+}
+
+.persona-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin: 0 0 8px 0;
+  color: var(--espresso);
+}
+
+.persona-card p {
+  font-size: 14.5px;
+  line-height: 1.6;
+  color: var(--stone);
+  margin: 0;
+}
+
+/* ---- Situation chips (homepage "Why people come in") ------ */
+.situation-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-top: 32px;
+}
+
+.situation-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 20px;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  text-decoration: none;
+  color: var(--espresso);
+  font-size: 14.5px;
+  font-weight: 500;
+  transition: border-color 0.25s, background 0.25s, transform 0.2s;
+}
+
+.situation-chip:hover {
+  border-color: var(--oak);
+  background: var(--linen);
+  transform: translateY(-1px);
+}
+
+.situation-chip .chip-icon {
+  display: inline-flex;
+  color: var(--sage);
+}
+
 /* ---- Pricing cards ---------------------------------------- */
 .pricing-grid {
   display: grid;
@@ -1652,6 +1739,7 @@ article.blog-post h1 {
   .gym-pillars { grid-template-columns: repeat(2, 1fr); }
   .blog-grid { grid-template-columns: repeat(2, 1fr); }
   .find-us-grid { grid-template-columns: 1fr; gap: 48px; }
+  .persona-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (max-width: 768px) {
@@ -1698,6 +1786,7 @@ article.blog-post h1 {
 
   .space-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
+  .persona-grid { grid-template-columns: 1fr; }
 
   .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
   .stat-item { border-right: none; }
