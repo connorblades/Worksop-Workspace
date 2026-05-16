@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=66" />
+  <link rel="stylesheet" href="../css/styles.css?v=67" />
   <style>
     .legal-body { max-width: 760px; margin: 0 auto; padding: 80px 20px 100px; }
     .legal-body h2 { font-size: 1.3rem; font-weight: 700; color: var(--navy); margin: 40px 0 12px; }
@@ -48,10 +48,30 @@
       </a>
       <nav aria-label="Main navigation">
         <ul class="nav-links">
-          <li><a href="/space">The Space</a></li>
-          <li><a href="/membership">Membership</a></li>
-          <li><a href="/meeting-room">Meeting Room</a></li>
-          <li><a href="/blog">Journal</a></li>
+          <li class="has-dropdown">
+            <a href="/space">The Space</a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/space">Overview</a>
+              <a href="/space#hot-desks">Hot Desks</a>
+              <a href="/space#dedicated-desks">Dedicated Desks</a>
+              <a href="/space#private-offices">Private Offices</a>
+              <a href="/meeting-room">Meeting Room</a>
+              <a href="/podcast-studio">Podcast Studio</a>
+            </div>
+          </li>
+          <li><a href="/membership">Pricing</a></li>
+          <li class="has-dropdown">
+            <a href="/community">Who We Help</a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/for-tradespeople">Tradespeople</a>
+              <a href="/for-parents">Parents</a>
+              <a href="/for-freelancers">Freelancers</a>
+              <a href="/for-remote-workers">Remote workers</a>
+              <a href="/working-from-home-alternative">Working from home today</a>
+              <a href="/private-room-for-1-to-1s">Confidential 1-to-1 room</a>
+            </div>
+          </li>
+          <li><a href="/blog">Blog</a></li>
           <li><a href="/contact">Contact</a></li>
         </ul>
       </nav>
@@ -66,10 +86,26 @@
 
   <!-- Mobile nav -->
   <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
-    <a href="/space">The Space</a>
-    <a href="/membership">Membership</a>
-    <a href="/meeting-room">Meeting Room</a>
-    <a href="/blog">Journal</a>
+    <div class="mobile-nav-group">
+      <span class="mobile-nav-heading">The Space</span>
+      <a href="/space">Overview</a>
+      <a href="/space#hot-desks">Hot Desks</a>
+      <a href="/space#dedicated-desks">Dedicated Desks</a>
+      <a href="/space#private-offices">Private Offices</a>
+      <a href="/meeting-room">Meeting Room</a>
+      <a href="/podcast-studio">Podcast Studio</a>
+    </div>
+    <a href="/membership">Pricing</a>
+    <div class="mobile-nav-group">
+      <span class="mobile-nav-heading">Who We Help</span>
+      <a href="/for-tradespeople">Tradespeople</a>
+      <a href="/for-parents">Parents</a>
+      <a href="/for-freelancers">Freelancers</a>
+      <a href="/for-remote-workers">Remote workers</a>
+      <a href="/working-from-home-alternative">Working from home today</a>
+      <a href="/private-room-for-1-to-1s">Confidential 1-to-1 room</a>
+    </div>
+    <a href="/blog">Blog</a>
     <a href="/contact">Contact</a>
     <a href="#" class="btn open-modal">Join the waiting list</a>
   </nav>

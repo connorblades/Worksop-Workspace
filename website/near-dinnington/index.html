@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=66" />
+  <link rel="stylesheet" href="../css/styles.css?v=67" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Worksop Workspace" />
@@ -40,8 +40,57 @@
 </head>
 <body>
   <div class="scroll-progress"></div>
-  <header class="site-header" id="site-header"><div class="header-inner"><a href="/" class="logo" aria-label="Worksop Workspace home"><img src="../logo.png" alt="Worksop Workspace" height="34" /></a><nav aria-label="Main navigation"><ul class="nav-links"><li><a href="/space">The Space</a></li><li><a href="/membership">Membership</a></li><li><a href="/meeting-room">Meeting Room</a></li><li><a href="/blog">Journal</a></li><li><a href="/contact">Contact</a></li></ul></nav><a href="#" class="btn btn-sm nav-cta open-modal"><span class="nav-cta-full">Join the Waiting List</span><span class="nav-cta-short">Join Waitlist</span></a><button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button></div></header>
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation"><a href="/space">The Space</a><a href="/membership">Membership</a><a href="/meeting-room">Meeting Room</a><a href="/blog">Journal</a><a href="/contact">Contact</a><a href="#" class="btn open-modal">Join the waiting list</a></nav>
+  <header class="site-header" id="site-header"><div class="header-inner"><a href="/" class="logo" aria-label="Worksop Workspace home"><img src="../logo.png" alt="Worksop Workspace" height="34" /></a><nav aria-label="Main navigation"><ul class="nav-links">
+          <li class="has-dropdown">
+            <a href="/space">The Space</a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/space">Overview</a>
+              <a href="/space#hot-desks">Hot Desks</a>
+              <a href="/space#dedicated-desks">Dedicated Desks</a>
+              <a href="/space#private-offices">Private Offices</a>
+              <a href="/meeting-room">Meeting Room</a>
+              <a href="/podcast-studio">Podcast Studio</a>
+            </div>
+          </li>
+          <li><a href="/membership">Pricing</a></li>
+          <li class="has-dropdown">
+            <a href="/community">Who We Help</a>
+            <div class="nav-dropdown" role="menu">
+              <a href="/for-tradespeople">Tradespeople</a>
+              <a href="/for-parents">Parents</a>
+              <a href="/for-freelancers">Freelancers</a>
+              <a href="/for-remote-workers">Remote workers</a>
+              <a href="/working-from-home-alternative">Working from home today</a>
+              <a href="/private-room-for-1-to-1s">Confidential 1-to-1 room</a>
+            </div>
+          </li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/contact">Contact</a></li>
+        </ul></nav><a href="#" class="btn btn-sm nav-cta open-modal"><span class="nav-cta-full">Join the Waiting List</span><span class="nav-cta-short">Join Waitlist</span></a><button class="nav-toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false"><span class="bar"></span><span class="bar"></span><span class="bar"></span></button></div></header>
+  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation">
+    <div class="mobile-nav-group">
+      <span class="mobile-nav-heading">The Space</span>
+      <a href="/space">Overview</a>
+      <a href="/space#hot-desks">Hot Desks</a>
+      <a href="/space#dedicated-desks">Dedicated Desks</a>
+      <a href="/space#private-offices">Private Offices</a>
+      <a href="/meeting-room">Meeting Room</a>
+      <a href="/podcast-studio">Podcast Studio</a>
+    </div>
+    <a href="/membership">Pricing</a>
+    <div class="mobile-nav-group">
+      <span class="mobile-nav-heading">Who We Help</span>
+      <a href="/for-tradespeople">Tradespeople</a>
+      <a href="/for-parents">Parents</a>
+      <a href="/for-freelancers">Freelancers</a>
+      <a href="/for-remote-workers">Remote workers</a>
+      <a href="/working-from-home-alternative">Working from home today</a>
+      <a href="/private-room-for-1-to-1s">Confidential 1-to-1 room</a>
+    </div>
+    <a href="/blog">Blog</a>
+    <a href="/contact">Contact</a>
+    <a href="#" class="btn open-modal">Join the waiting list</a>
+  </nav>
 
   <section class="page-banner" aria-labelledby="page-h1"><div class="inner-container"><span class="hero-kicker animate-fade d1">20 minutes from Dinnington · A57 east</span><h1 id="page-h1" class="animate-fade delay-2">Coworking near Dinnington.</h1><p class="animate-fade delay-3">The closest dedicated workspace to Dinnington. Free parking, 900 Mbps fibre, £12 a day.</p></div></section>
 
