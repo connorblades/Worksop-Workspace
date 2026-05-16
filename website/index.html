@@ -12,7 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=68" />
+  <link rel="stylesheet" href="css/styles.css?v=69" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -134,7 +134,7 @@
       50%      { letter-spacing: -0.025em; }
     }
 
-    /* Video panel — opacity 0 until metadata loads (kills first-load
+    /* Video panel. opacity 0 until metadata loads (kills first-load
        flicker) and translated 72px right so the swoosh-in animates
        the PARENT, leaving the video free for JS-driven scroll zoom. */
     .scroll-right {
@@ -154,7 +154,7 @@
       to   { opacity: 1; transform: translateX(0); }
     }
 
-    /* Video itself — JS sets transform on scroll for zoom + drift.
+    /* Video itself. JS sets transform on scroll for zoom + drift.
        Initial scale(0.82) matches the JS scrub starting point so
        there's no jump when the loop takes over. */
     .scroll-right #scroll-video {
@@ -186,7 +186,7 @@
       transition: opacity 0.32s ease, transform 0.32s ease !important;
     }
 
-    /* Subtitle hint — fades out once scrolling begins */
+    /* Subtitle hint. fades out once scrolling begins */
     .scroll-subtitle {
       font-size: 15px;
       color: rgba(26,23,20,0.42);
@@ -222,7 +222,7 @@
     .scroll-cta .cta-phone-note { color: rgba(26,23,20,0.45); }
     .scroll-cta .cta-phone-note a { color: var(--clay); }
 
-    /* Scroll prompt — bottom-centre of hero, fades on scroll */
+    /* Scroll prompt. bottom-centre of hero, fades on scroll */
     .scroll-prompt {
       position: absolute;
       bottom: 32px;
@@ -323,7 +323,7 @@
       .scroll-prompt { bottom: 16px; }
     }
 
-    /* Hero nav — transparent over white hero */
+    /* Hero nav. transparent over white hero */
     .site-header.hero-nav { background: transparent; border-bottom-color: transparent !important; box-shadow: none !important; }
     .site-header.hero-nav .nav-links a { color: var(--espresso); }
     .site-header.hero-nav .nav-links a:hover { color: var(--clay); }
@@ -766,7 +766,7 @@
           </a>
         </div>
         <p style="text-align:center;margin-top:36px;color:var(--stone);font-size:14px;">
-          More situations like yours — see <a href="/community" style="color:var(--clay);font-weight:600;">the community</a>.
+          More situations like yours. See <a href="/community" style="color:var(--clay);font-weight:600;">the community</a>.
         </p>
       </div>
     </section>
@@ -1202,7 +1202,7 @@
       });
     }
 
-    /* Video scrub loop — runs every RAF so iOS decoder stays flushed.
+    /* Video scrub loop. runs every RAF so iOS decoder stays flushed.
        Only seeks when time differs by > one frame (~0.04s at 24fps).
        Video stays paused; continuous currentTime writes force frame decode.
        Guarded by videoReady flag so we never seek before metadata is loaded

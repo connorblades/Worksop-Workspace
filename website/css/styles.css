@@ -1304,7 +1304,7 @@ p:last-child { margin-bottom: 0; }
 .page-banner .section-subtitle {
   color: rgba(255,255,255,0.55);
   margin-top: 12px;
-  max-width: 600px;
+  max-width: 820px;
 }
 
 .page-banner .eyebrow { color: var(--oak); }
@@ -1320,9 +1320,10 @@ p:last-child { margin-bottom: 0; }
 
 .page-banner h1 {
   color: var(--white);
-  font-size: clamp(28px, 3.6vw, 44px);
+  font-size: clamp(32px, 4.2vw, 56px);
   margin-top: 12px;
   letter-spacing: -0.02em;
+  max-width: 980px;
 }
 
 /* Eyebrow kicker on page banners (Worksop Workspace text above h1).
@@ -1340,7 +1341,7 @@ p:last-child { margin-bottom: 0; }
 .page-banner p.lead {
   color: rgba(255,255,255,0.55);
   margin-top: 16px;
-  max-width: 560px;
+  max-width: 820px;
 }
 
 .section-title { font-size: clamp(28px, 4vw, 52px); line-height: 1.1; }
