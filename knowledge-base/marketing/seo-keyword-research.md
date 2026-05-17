@@ -59,9 +59,9 @@ This file is research only. The action plan based on it is
 
 5. **UK coworking pricing context:** Q1 2026 median monthly
    membership is **£180/month**. UK day-pass median is **£25**.
-   UK meeting-room median is **£30/hour**, Nottingham specifically
+   UK meeting-room median is **£20/hour**, Nottingham specifically
    £16/hour. Our £30/week (≈£130/month) hot desk is **clearly
-   under-market**, and our £30/hour meeting room is **on UK median
+   under-market**, and our £20/hour meeting room is **on UK median
    but high for Notts**. This is worth making explicit on
    `/membership` and the audience pages — under-market pricing
    is a story.
@@ -211,7 +211,7 @@ When I ran the SERP checks, several things stood out:
   opening soon on Carlton Road…"). This is the cleanest signal
   yet that LLMs are already crawling our content for AEO.
 - **"coworking Worksop"** AI overview lists 3 spaces with our
-  pricing structure quoted: "private offices from £125/week,
+  pricing structure quoted: "private offices from £79/week,
   hot desks from £12/day". Pricing accuracy in our content is
   visibly driving citations.
 - **"private therapy room hire Worksop"** — no AI overview because
@@ -237,7 +237,7 @@ When I ran the SERP checks, several things stood out:
      their admin day"* (audience-led, hard to contest)
 2. **Pricing comparison to "the city"** — already accurate;
    reinforce with the UK 2026 medians (£180/mo membership, £25
-   day pass, £30/hr meeting room). We're under-market on
+   day pass, £20/hr meeting room). We're under-market on
    memberships and on-market on the meeting room.
 
 ### Expand these areas

@@ -101,8 +101,8 @@ Worksop Workspace is being built and opened in phases, floor by floor.
 |---|---|---|---|
 | **Day Pass (Visitor)** | 1 | £12/day | Pay-as-you-go, single day access |
 | **Hot Desk Weekly** | 1 | £30/week | Rolling weekly subscription — come and go as needed, cancel any time |
-| **Private Office** | 1 | from £125/week | Weekly rolling subscription — locked office |
-| **Meeting Room** | 1 | £30/hour | Hourly booking, open to members and visitors |
+| **Private Office** | 1 | from £79/week | Weekly rolling subscription — locked office |
+| **Meeting Room** | 1 | £20/hour | Hourly booking, open to members and visitors |
 | **Dedicated Desk** | 2 | £50/week | Weekly rolling subscription — same desk, reserved for the member |
 | **Podcast Room** | 3 | £40/hour | Hourly booking, open to members and visitors |
 | **Member Credits** | 3 | TBC | Pre-allocated credits for hourly spaces (podcast) |

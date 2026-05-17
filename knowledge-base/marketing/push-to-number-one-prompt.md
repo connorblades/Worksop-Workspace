@@ -40,6 +40,7 @@ The on-page work is done. Five phases have shipped:
 | 4 | Top 10 SEO/AEO action items. soften claims, AEO leads, schema, UK pricing context, Bassetlaw, comparison blog, school holidays | Done |
 | 5 | Bonus items 11-15. llms.txt, robots.txt expansion, FAQ schema retrofit, internal-link sweep, A1 blog, virtual-office decision (skip) | Done |
 | 5.5 | **Meeting room reprice £30 → £20/hr (May 2026).** Sitewide sweep across 57 HTML files, JSON-LD Service+Offer schema, internal sales/legal docs, planning records. Repositioned to Notts regional median (£16) rather than UK national (£30). | Done |
+| 5.6 | **Private offices repriced to per-sqft tiered structure (May 2026).** Headline moved from "from £125/week" to "from £79/week". Five offices, four tiers: 10 m² (108 sqft) £79/wk, 12 m² (129 sqft) £89/wk, 14 m² (151 sqft) £99/wk (2 available), 20 m² (215 sqft) £125/wk. Anchored at ~£34/sqft/year all-in midpoint. Below the local serviced-office market (BizSpace Doncaster £26/sqft; Sheffield central £40-60/sqft). /private-offices restructured with "Choose your office" grid showing per-office cards. Service+Offer schema split into four Offer entries by tier. | Done |
 
 Read these knowledge-base files **before doing anything else** so you have context. They are the source of truth:
 
@@ -179,7 +180,7 @@ Keep summaries under 300 words. Use the markdown link pattern `[filename.ext](pa
 | Day Pass | £12/day |
 | Hot Desk Weekly | £30/week |
 | Dedicated Desk Weekly | £50/week (Phase 2) |
-| Private Office | from £125/week, all-inclusive |
+| Private Office | from £79/week (10 m² solo) to £125/week (20 m² team), all-inclusive. 5 offices, 4 tiers. See /private-offices for the per-office grid |
 | Meeting Room | £20/hour |
 | Studio | £40/hour (Phase 3) |
 | Catchment radius | 15 miles |

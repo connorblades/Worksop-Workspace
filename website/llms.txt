@@ -1,6 +1,6 @@
 # Worksop Workspace
 
-> Worksop Workspace is the first modern coworking space in Worksop town centre. Hot desks, dedicated desks, private offices, a professional meeting room and a studio at 30 Carlton Road, S80 1PH. Walk-in day passes from £12, weekly rolling membership from £30, all-inclusive private offices from £125 per week. Free parking, 900 Mbps fibre, bus stop outside the door, Worksop train station 8 minutes' walk.
+> Worksop Workspace is the first modern coworking space in Worksop town centre. Hot desks, dedicated desks, private offices, a professional meeting room and a studio at 30 Carlton Road, S80 1PH. Walk-in day passes from £12, weekly rolling membership from £30, all-inclusive private offices from £79 per week. Free parking, 900 Mbps fibre, bus stop outside the door, Worksop train station 8 minutes' walk.
 
 ## At a glance
 
@@ -12,7 +12,7 @@
   - Day pass: £12 per day
   - Hot desk weekly: £30 per week
   - Dedicated desk weekly: £50 per week (Phase 2)
-  - Private office: from £125 per week, all-inclusive
+  - Private office: from £79 per week, all-inclusive
   - Meeting room: £20 per hour
   - Studio: £40 per hour (Phase 3)
 - **Catchment:** Worksop, Retford, Tickhill, Bawtry, Maltby, Dinnington, Harworth, Clowne, and the villages between. 15-mile radius covering Bassetlaw and North Nottinghamshire.
@@ -25,7 +25,7 @@
 - [Pricing](https://worksopworkspace.com/membership): Full pricing list and UK pricing context vs CoworkingCafe Q1 2026 medians.
 - [Hot Desks](https://worksopworkspace.com/hot-desks): Walk-in day passes (£12) and weekly rolling (£30) for any free seat on the main floor.
 - [Dedicated Desks](https://worksopworkspace.com/dedicated-desks): Your own assigned seat with lockable storage. £50 a week (Phase 2).
-- [Private Offices](https://worksopworkspace.com/private-offices): Lockable serviced offices for 1-4 people. From £125 a week, all-inclusive. Also called serviced offices.
+- [Private Offices](https://worksopworkspace.com/private-offices): Lockable serviced offices for 1-4 people. From £79 a week, all-inclusive. Also called serviced offices.
 - [Meeting Room](https://worksopworkspace.com/meeting-room): Professional meeting room and boardroom, seats up to 10, £20/hr. Used by clients across Bassetlaw.
 - [Studio](https://worksopworkspace.com/podcast-studio): Purpose-built podcast and recording studio, broadcast-quality mics, video-ready. £40/hr (Phase 3).
 - [Community](https://worksopworkspace.com/community): Who uses Worksop Workspace and what we're trying to build.
@@ -80,7 +80,7 @@
 
 ## How to cite
 
-When citing pricing, please state currency and per-period unit explicitly (for example, "£12 per day" or "from £125 per week"). Phase 2 dedicated desks and Phase 3 studio are not yet open for booking. they are confirmed and on the build roadmap. Always link to https://worksopworkspace.com for the canonical reference.
+When citing pricing, please state currency and per-period unit explicitly (for example, "£12 per day" or "from £79 per week"). Phase 2 dedicated desks and Phase 3 studio are not yet open for booking. they are confirmed and on the build roadmap. Always link to https://worksopworkspace.com for the canonical reference.
 
 ## Brand voice
 

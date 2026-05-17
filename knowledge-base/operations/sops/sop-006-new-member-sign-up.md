@@ -6,7 +6,7 @@ Status: Draft v1 — needs Connor review · Last updated: 15 May 2026
 
 ---
 
-The procedure for converting a prospect into an active member with a rolling weekly subscription. Phase 1 covers Hot Desk Weekly (£30/wk) and Private Office (from £125/wk). Dedicated Desk arrives in Phase 2. The tour comes first — see [`./sop-003-member-onboarding-tour.md`](./sop-003-member-onboarding-tour.md). This SOP picks up the moment a prospect says **"yes, sign me up."**
+The procedure for converting a prospect into an active member with a rolling weekly subscription. Phase 1 covers Hot Desk Weekly (£30/wk) and Private Office (from from £79/wk). Dedicated Desk arrives in Phase 2. The tour comes first — see [`./sop-003-member-onboarding-tour.md`](./sop-003-member-onboarding-tour.md). This SOP picks up the moment a prospect says **"yes, sign me up."**
 
 ---
 

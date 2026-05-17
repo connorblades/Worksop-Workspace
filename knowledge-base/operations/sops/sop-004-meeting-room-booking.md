@@ -8,7 +8,7 @@ Status: Draft v1 — needs Connor review · Last updated: 15 May 2026
 
 The procedure for handling meeting room bookings from enquiry through to changeover. The meeting room is the only bookable enclosed space in Phase 1, so its presentation and reliability matter more than almost anything else we do.
 
-**Price:** £30/hour. **Capacity:** see room spec sheet in Drive's `07-facilities/`. **Bookable by:** members via the app, visitors via phone or in person.
+**Price:** £20/hour. **Capacity:** see room spec sheet in Drive's `07-facilities/`. **Bookable by:** members via the app, visitors via phone or in person.
 
 ---
 
@@ -17,7 +17,7 @@ The procedure for handling meeting room bookings from enquiry through to changeo
 1. Member-app bookings appear automatically on the day's schedule.
 2. Phone or walk-in enquiries — capture name, company, date, start time, finish time, headcount, any AV or refreshment requests. Use the script in [`../training/phone-and-enquiry-handling.md`](../../sales/conversion/phone-and-enquiry-handling.md).
 3. Check the day's schedule for clashes — open the member app's admin view.
-4. Quote the rate. £30/hour, billed in whole hours. Half hours round up.
+4. Quote the rate. £20/hour, billed in whole hours. Half hours round up.
 5. Take the booking on the app on their behalf and process payment by card link.
 6. Confirm by email using the meeting-room confirmation template in [`../../sales/communications/email-templates.md`](../../sales/communications/email-templates.md).
 

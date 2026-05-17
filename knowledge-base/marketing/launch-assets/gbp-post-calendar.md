@@ -19,7 +19,7 @@ Brand voice: plain, warm, no urgency tactics, no banned phrases. No em or en das
 **Title:** Worksop Workspace is open.
 
 **Body:**
-> The doors are open on Carlton Road. Worksop Workspace is the first modern coworking space in Worksop town centre. Walk in any weekday between 8am and 5pm. A day pass is £12, a hot desk by the week is £30, a private office starts at £125 a week all inclusive. Free parking outside. The bus stops at the door. Worksop railway station is eight minutes on foot. Tea and coffee on the house. 900 megabits of fibre in the walls. Come and have a look around.
+> The doors are open on Carlton Road. Worksop Workspace is the first modern coworking space in Worksop town centre. Walk in any weekday between 8am and 5pm. A day pass is £12, a hot desk by the week is £30, a private office starts at £79 a week all inclusive. Free parking outside. The bus stops at the door. Worksop railway station is eight minutes on foot. Tea and coffee on the house. 900 megabits of fibre in the walls. Come and have a look around.
 
 **Image:** Wide exterior shot of 30 Carlton Road, daylight, brand signage visible.
 
@@ -63,10 +63,10 @@ Brand voice: plain, warm, no urgency tactics, no banned phrases. No em or en das
 
 ### Post 2.2. Offer. Friday 12 June
 
-**Title:** Founding member rate. Private offices from £125 a week.
+**Title:** Founding member rate. Private offices from £79 a week.
 
 **Body:**
-> Our first private offices on Carlton Road are open and a handful are still available. £125 a week all inclusive covers the desk, the chair, the fibre, the heat, the light, the cleaning, the coffee, and the meeting room when you need it. Rolling weekly, no long contract, no setup fee. If you have been weighing up a serviced office in Worksop or thinking about ending the kitchen table chapter, book a viewing this week.
+> Our first private offices on Carlton Road are open and a handful are still available. £79 a week (for the smallest 10 m² office) all inclusive covers the desk, the chair, the fibre, the heat, the light, the cleaning, the coffee, and the meeting room when you need it. Rolling weekly, no long contract, no setup fee. If you have been weighing up a serviced office in Worksop or thinking about ending the kitchen table chapter, book a viewing this week.
 
 **Image:** Private office interior, door open, lit, monitor on the desk.
 

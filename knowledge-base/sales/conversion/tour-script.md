@@ -92,7 +92,7 @@ Why this works: you've explained the upgrade trigger without selling it.
 
 ### Stop 4: Private offices
 
-> "Private offices through here — for people who want a lockable door. Used by small teams of two, three, four. Starts at £125 a week. We've got [n] of them; have a peek through the glass."
+> "Private offices through here — for people who want a lockable door. Used by small teams of two, three, four. Starts at £79 a week. We've got [n] of them; have a peek through the glass."
 
 If empty, walk in briefly. If occupied, keep walking.
 

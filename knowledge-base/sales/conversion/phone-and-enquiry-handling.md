@@ -26,7 +26,7 @@ Three things: business name first, your name, open question. Don't say "What's t
 
 Quick, transparent answer. Don't deflect to a website.
 
-> "Day pass is £12, weekly pass is £30, private office starts from £125 a week. No contracts on any of it — cancel any time. Want me to talk you through any of those in more detail?"
+> "Day pass is £12, weekly pass is £30, private office starts from £79 a week. No contracts on any of it — cancel any time. Want me to talk you through any of those in more detail?"
 
 If they want detail, use plain language. Don't read out a price sheet.
 
