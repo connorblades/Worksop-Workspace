@@ -12,8 +12,10 @@
   <link rel="manifest" href="../site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.pexels.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=81" />
+  <link rel="stylesheet" href="../css/styles.css?v=82" />
 
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Worksop Workspace" />
@@ -64,7 +66,7 @@
   }
   </script>
 
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 <body>
   <a href="#site-main" class="skip-to-main">Skip to main content</a>
@@ -296,7 +298,7 @@
   </div>
 
   <script src="../js/animations.js?v=16"></script>
-  <script>lucide.createIcons();</script>
+  <script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();});</script>
   <script>
   (function(){'use strict';var header=document.getElementById('site-header');window.addEventListener('scroll',function(){header.classList.toggle('scrolled',window.scrollY>20);},{passive:true});var nt=document.getElementById('nav-toggle'),mn=document.getElementById('mobile-nav');if(nt&&mn){nt.addEventListener('click',function(){var o=mn.classList.toggle('open');nt.classList.toggle('active',o);nt.setAttribute('aria-expanded',o?'true':'false');document.body.style.overflow=o?'hidden':'';});}var m=document.getElementById('modal'),cb=document.getElementById('modal-close');function om(){m.classList.add('open');document.body.style.overflow='hidden';var f=m.querySelector('input');if(f)f.focus();}function cm(){m.classList.remove('open');document.body.style.overflow='';}document.querySelectorAll('.open-modal').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();om();});});if(cb)cb.addEventListener('click',cm);m.addEventListener('click',function(e){if(e.target===m)cm();});document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))cm();});var f=document.getElementById('waitlist-form');if(f){f.addEventListener('submit',function(e){e.preventDefault();var b=f.querySelector('.form-submit');b.textContent="You're on the list!";b.disabled=true;b.style.background='var(--sage)';b.style.borderColor='var(--sage)';setTimeout(cm,2000);});}}());
   </script>

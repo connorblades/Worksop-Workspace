@@ -11,8 +11,10 @@
   <link rel="manifest" href="../site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.pexels.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=81" />
+  <link rel="stylesheet" href="../css/styles.css?v=82" />
 
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website" />
@@ -25,7 +27,7 @@
   <meta name="twitter:title" content="The Space | Worksop Workspace, Coworking & Offices, Carlton Road, Worksop S80" />
   <meta name="twitter:description" content="Tour Worksop Workspace on Carlton Road, Worksop S80. Communal hot desks, private offices, and bookable rooms in one building. Free parking. Opening soon." />
   <meta name="twitter:image" content="https://images.pexels.com/photos/7651639/pexels-photo-7651639.jpeg?auto=compress&cs=tinysrgb&w=1200&h=630&fit=crop" />
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 <body>
   <a href="#site-main" class="skip-to-main">Skip to main content</a>
@@ -363,7 +365,7 @@
 
   <!-- Scripts -->
   <script src="../js/animations.js?v=16"></script>
-  <script>lucide.createIcons();</script>
+  <script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();});</script>
   <script>
   (function () {
     'use strict';

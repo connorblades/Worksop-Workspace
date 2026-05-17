@@ -11,8 +11,10 @@
   <link rel="manifest" href="../site.webmanifest" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.pexels.com" crossorigin>
+  <link rel="preconnect" href="https://res.cloudinary.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/styles.css?v=81" />
+  <link rel="stylesheet" href="../css/styles.css?v=82" />
 
   <!-- Open Graph / Social sharing -->
   <meta property="og:type" content="website" />
@@ -25,7 +27,7 @@
   <meta name="twitter:title" content="Coworking in Bassetlaw | Worksop Workspace" />
   <meta name="twitter:description" content="The only flexible coworking space in Bassetlaw. Hot desks, dedicated desks, private offices, podcast studio and meeting room. Worksop, Nottinghamshire. Free parking." />
   <meta name="twitter:image" content="https://res.cloudinary.com/dvecjaoho/image/upload/v1766155735/Modern_open-plan_office_with_desks_copy_hggm64.png" />
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js" defer></script>
 </head>
 <body>
   <a href="#site-main" class="skip-to-main">Skip to main content</a>
@@ -377,7 +379,7 @@
 
   <!-- Scripts -->
   <script src="../js/animations.js?v=16"></script>
-  <script>lucide.createIcons();</script>
+  <script>document.addEventListener("DOMContentLoaded",function(){if(window.lucide)lucide.createIcons();});</script>
   <script>
   (function () {
     'use strict';
