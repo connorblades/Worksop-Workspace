@@ -39,6 +39,7 @@ The on-page work is done. Five phases have shipped:
 | 3 | `seo-keyword-research.md`, `seo-gap-analysis.md`, `seo-action-plan.md` | Done |
 | 4 | Top 10 SEO/AEO action items. soften claims, AEO leads, schema, UK pricing context, Bassetlaw, comparison blog, school holidays | Done |
 | 5 | Bonus items 11-15. llms.txt, robots.txt expansion, FAQ schema retrofit, internal-link sweep, A1 blog, virtual-office decision (skip) | Done |
+| 5.5 | **Meeting room reprice £30 → £20/hr (May 2026).** Sitewide sweep across 57 HTML files, JSON-LD Service+Offer schema, internal sales/legal docs, planning records. Repositioned to Notts regional median (£16) rather than UK national (£30). | Done |
 
 Read these knowledge-base files **before doing anything else** so you have context. They are the source of truth:
 
@@ -68,7 +69,7 @@ The website is the floor. The next 80% of the ranking gains live off-site and in
 6. **Don't overclaim.** "First modern coworking space in Worksop town centre" is the approved framing. **Never** revert to "only" or "Worksop's first dedicated" or any superlative that competitors (Worksop Turbine, Middletons Yard, Enterprise Business Centre) can falsify.
 7. **Hours.** Phase 1 manned hours are 8am to 5pm Monday to Friday. From Phase 2, member-app access extends outside those hours. Never imply 24/7 in Phase 1.
 8. **Sensitive ops stay in the private Drive.** Anything covering facilities, finance, tech credentials or legal beyond what's already public lives in the private Drive at Worksop Workspace HQ. The repo's `knowledge-base/` is public.
-9. **Cache-bust pattern.** Next bump from current state would be `?v=74` on `styles.css`. Apply sitewide on any CSS-touching change.
+9. **Cache-bust pattern.** Current is `?v=74` on `styles.css`. Next bump would be `?v=75`. Apply sitewide on any CSS-touching change.
 10. **Geography honesty.** Worksop Workspace sits roughly 7 minutes off the A1 at Blyth via the A57. Worksop station is on the Sheffield-Lincoln line and the Robin Hood Line. Don't make up numbers; verify before publishing.
 11. **No destructive git.** Never `--no-verify`, `--force`, `reset --hard` or delete branches without explicit user authorisation. Always commit cleanly, push to `main`.
 12. **GHL is the backend.** Waiting-list forms post to GoHighLevel. Don't replace or restyle the form unless asked.
@@ -179,7 +180,7 @@ Keep summaries under 300 words. Use the markdown link pattern `[filename.ext](pa
 | Hot Desk Weekly | £30/week |
 | Dedicated Desk Weekly | £50/week (Phase 2) |
 | Private Office | from £125/week, all-inclusive |
-| Meeting Room | £30/hour |
+| Meeting Room | £20/hour |
 | Studio | £40/hour (Phase 3) |
 | Catchment radius | 15 miles |
 | A1 nearest junction | Blyth, ~7 min via A57 |
