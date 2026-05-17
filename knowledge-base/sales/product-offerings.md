@@ -18,7 +18,7 @@ For the legal terms governing these products, see `../operations/legal-and-compl
 |---|---|---|---|---|
 | **Day Pass** | 1 | £12 / day | Walk in or via app | Trying it out, occasional users, visiting clients |
 | **Hot Desk Weekly** | 1 | £30 / week (rolling) | Sign up via app or in person | The most common plan — anyone here a couple of days a week+ |
-| **Private Office** | 1 | from £59 / week | Enquire | Small teams (1–4 people) or anyone needing lockable, private space |
+| **Private Office** | 1 | from £79 / week | Enquire | Small teams (1–4 people) or anyone needing lockable, private space |
 | **Meeting Room** | 1 | £20 / hour | Book via app | Client-facing sessions, interviews, larger conversations than a hot desk allows |
 | **Dedicated Desk** | 2 | £50 / week (rolling) | Sign up via app | Anyone who wants the same seat every day and leaves a setup |
 | **Podcast Room** | 3 | £40 / hour | Book via app | Recording podcasts, video content, voice work |
@@ -77,7 +77,7 @@ There is **no boardroom**. The meeting room covers client-facing sessions.
 
 ---
 
-### Private Office — from £59 / week (rolling)
+### Private Office — from £79 / week (rolling)
 
 **What it is.** A lockable, private office for 1–4 people, on a rolling weekly subscription.
 
@@ -89,11 +89,11 @@ There is **no boardroom**. The meeting room covers client-facing sessions.
 - Anyone needing privacy for confidential calls or work
 - A professional who client-meets often and needs the polish of a private room
 
-**How they buy.** Enquire (phone or email), have a viewing, sign up via Stripe. The £59 is "from" — actual price depends on the specific room and may be bespoke for longer commitments.
+**How they buy.** Enquire (phone or email), have a viewing, sign up via Stripe. The £79 is "from" — actual price depends on the specific room and may be bespoke for longer commitments.
 
 **Sales talk track.**
 
-> "Private office starts at £59 a week — that's all-in. Lockable door, your space, your team. Have a look at the available rooms and we'll find one that fits."
+> "Private office starts at £79 a week — that's all-in. Lockable door, your space, your team. Have a look at the available rooms and we'll find one that fits."
 
 **Open question** (per Connor): Phase 1 may include rooms that double as **meeting rooms when not let on a private-office plan**. Specifics TBC — the layout decision is open. Sales should describe the offer as "private office, weekly" and check current availability with Connor before committing a specific room.
 

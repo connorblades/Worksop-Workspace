@@ -29,7 +29,7 @@ For hot desks: no, just turn up. For dedicated desks: yours every day, no bookin
 ## Pricing and plans
 
 **How much is it?**
-See the live pricing on worksopworkspace.com/membership. Headline: Day Pass £12, Weekly Pass £30, Private Office from £59/week. Pay-as-you-go hourly options too.
+See the live pricing on worksopworkspace.com/membership. Headline: Day Pass £12, Weekly Pass £30, Private Office from £79/week. Pay-as-you-go hourly options too.
 
 **Is there a contract?**
 No long contracts. Weekly passes are rolling — cancel any time. No notice period.

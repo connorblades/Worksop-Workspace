@@ -25,7 +25,7 @@ The Member is buying access to Worksop Workspace under the plan they select at s
 - **Day pass** — one day of access. £12.
 - **Week pass (one-off)** — seven consecutive days of access. £50.
 - **Weekly recurring** — rolling weekly access, cancellable any time. £30/wk.
-- **Private office** — a named office, from from £59/wk on bespoke terms.
+- **Private office** — a named office, from from £79/wk on bespoke terms.
 
 The current Terms of Business (held at worksopworkspace.co.uk/terms) set out what is included with each plan. The Member confirms they have read the Terms of Business and accept them by signing this agreement.
 

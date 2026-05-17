@@ -34,7 +34,7 @@ The pricing model is built around **no contracts, cancel any time** for the recu
 - If we close the space for more than 2 consecutive days within a paid week, the member is entitled to a credit pro-rata.
 - If a member ends up with a **failed payment** on the recurring plan, the access pauses immediately. The member has 14 days to update the card before the membership is automatically closed.
 
-## 5. Private office — from from £59/wk
+## 5. Private office — from from £79/wk
 
 - Governed by the individual office agreement. Default terms in the agreement: one-month rolling notice (either side), no refund for time used, security deposit returned within 14 days of vacating subject to inspection.
 

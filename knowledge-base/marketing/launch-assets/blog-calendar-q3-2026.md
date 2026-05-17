@@ -136,11 +136,11 @@ Standing rules:
 ### Post 5.2. Friday 3 July
 
 - **Slug:** `/blog/private-office-vs-high-street-lease-worksop`
-- **Title:** Private office from £59 a week vs a high street lease in Worksop. The maths.
+- **Title:** Private office from £79 a week vs a high street lease in Worksop. The maths.
 - **Primary keyword:** `private office Worksop lease`
 - **Audience:** Small business owners (1 to 4 people).
 - **Hook:** A high street lease in Worksop town centre comes with a five year commitment, a service charge, a business rates bill and roughly six months of fit out. A private office at Worksop Workspace comes with a key on the day. Here are the numbers compared.
-- **Outline:** Average high street rent in Worksop town centre. Business rates math. Service charge. Fit out cost. Utilities, internet, cleaning. The all-in private office from £59 a week. The break even point.
+- **Outline:** Average high street rent in Worksop town centre. Business rates math. Service charge. Fit out cost. Utilities, internet, cleaning. The all-in private office from £79 a week. The break even point.
 - **CTA:** Book a viewing.
 - **Link destinations:** `/private-offices`, `/blog/coworking-vs-office-lease`, `/membership`.
 
@@ -240,7 +240,7 @@ Standing rules:
 ### Post 9.2. Friday 31 July
 
 - **Slug:** `/blog/private-office-1-to-4-people`
-- **Title:** Private office in Worksop for one to four people. What £59 a week buys.
+- **Title:** Private office in Worksop for one to four people. What £79 a week buys.
 - **Primary keyword:** `small private office Worksop`
 - **Audience:** Solo business owners scaling to a small team.
 - **Hook:** A private office for one to four people in Worksop town centre, all inclusive, rolling weekly, with the key on the day. Here is what is in the room and what is not.
