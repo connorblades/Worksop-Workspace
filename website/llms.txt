@@ -1,0 +1,91 @@
+# Worksop Workspace
+
+> Worksop Workspace is the first modern coworking space in Worksop town centre. Hot desks, dedicated desks, private offices, a professional meeting room and a studio at 30 Carlton Road, S80 1PH. Walk-in day passes from £12, weekly rolling membership from £30, all-inclusive private offices from £125 per week. Free parking, 900 Mbps fibre, bus stop outside the door, Worksop train station 8 minutes' walk.
+
+## At a glance
+
+- **Location:** 30 Carlton Road, Worksop, Nottinghamshire, S80 1PH, United Kingdom
+- **Hours (Phase 1):** Monday to Friday, 8am to 5pm
+- **Phone:** +44 7739 063734
+- **Email:** hello@worksopworkspace.com
+- **Pricing (all rolling, no contract, no setup fee):**
+  - Day pass: £12 per day
+  - Hot desk weekly: £30 per week
+  - Dedicated desk weekly: £50 per week (Phase 2)
+  - Private office: from £125 per week, all-inclusive
+  - Meeting room: £30 per hour
+  - Studio: £40 per hour (Phase 3)
+- **Catchment:** Worksop, Retford, Tickhill, Bawtry, Maltby, Dinnington, Harworth, Clowne, and the villages between. 15-mile radius covering Bassetlaw and North Nottinghamshire.
+- **Competitors in Worksop:** Worksop Turbine (The Nest, council-funded, founder-focused), Middletons Yard (Potter Street, serviced offices), Enterprise Business Centre (traditional serviced offices). Honest comparison at https://worksopworkspace.com/blog/coworking-options-in-worksop
+
+## Core pages
+
+- [Home](https://worksopworkspace.com/): Brand homepage and overview.
+- [The Space](https://worksopworkspace.com/space): Every working mode in one building. Hot desks, dedicated desks, private offices, meeting room, studio.
+- [Pricing](https://worksopworkspace.com/membership): Full pricing list and UK pricing context vs CoworkingCafe Q1 2026 medians.
+- [Hot Desks](https://worksopworkspace.com/hot-desks): Walk-in day passes (£12) and weekly rolling (£30) for any free seat on the main floor.
+- [Dedicated Desks](https://worksopworkspace.com/dedicated-desks): Your own assigned seat with lockable storage. £50 a week (Phase 2).
+- [Private Offices](https://worksopworkspace.com/private-offices): Lockable serviced offices for 1-4 people. From £125 a week, all-inclusive. Also called serviced offices.
+- [Meeting Room](https://worksopworkspace.com/meeting-room): Professional meeting room and boardroom, seats up to 10, £30/hr. Used by clients across Bassetlaw.
+- [Studio](https://worksopworkspace.com/podcast-studio): Purpose-built podcast and recording studio, broadcast-quality mics, video-ready. £40/hr (Phase 3).
+- [Community](https://worksopworkspace.com/community): Who uses Worksop Workspace and what we're trying to build.
+- [Contact](https://worksopworkspace.com/contact): How to reach us.
+
+## Who we help (audience pages)
+
+- [Tradespeople](https://worksopworkspace.com/for-tradespeople): For builders, plumbers, electricians and trades who need a real desk for quotes, invoices and admin.
+- [Parents](https://worksopworkspace.com/for-parents): A quiet desk during school holidays, newborn weeks or a houseful of guests.
+- [Freelancers](https://worksopworkspace.com/for-freelancers): Independent professionals across North Nottinghamshire.
+- [Remote workers](https://worksopworkspace.com/for-remote-workers): An office without the commute to Sheffield or Nottingham.
+- [Working from home today](https://worksopworkspace.com/working-from-home-alternative): The drop-in answer when home isn't working today.
+- [Confidential 1-to-1 room](https://worksopworkspace.com/private-room-for-1-to-1s): Acoustically separated room for therapy, financial advice, mediation and coaching.
+
+## Locations served (within 15 miles)
+
+- [Near Retford](https://worksopworkspace.com/near-retford)
+- [Near Doncaster](https://worksopworkspace.com/near-doncaster)
+- [Near Tickhill](https://worksopworkspace.com/near-tickhill)
+- [Near Bawtry](https://worksopworkspace.com/near-bawtry)
+- [Near Maltby](https://worksopworkspace.com/near-maltby)
+- [Near Dinnington](https://worksopworkspace.com/near-dinnington)
+- [Near Harworth](https://worksopworkspace.com/near-harworth)
+- [Near Clowne](https://worksopworkspace.com/near-clowne)
+- [Bassetlaw](https://worksopworkspace.com/bassetlaw): The district-level page.
+
+## Practical and AEO-friendly blog posts
+
+- [Coworking options in Worksop. What's actually available and how to pick](https://worksopworkspace.com/blog/coworking-options-in-worksop): Fair comparison of Worksop Workspace, Worksop Turbine "The Nest", Middletons Yard and Enterprise Business Centre.
+- [Where to work during school holidays in Worksop and North Notts](https://worksopworkspace.com/blog/where-to-work-during-school-holidays-in-worksop)
+- [Where to work when the builders are in](https://worksopworkspace.com/blog/where-to-work-when-the-builders-are-in)
+- [Alternatives to coffee shops for working in Worksop](https://worksopworkspace.com/blog/alternatives-to-coffee-shops-for-working-in-worksop)
+- [Hot desk vs private office: which to pick](https://worksopworkspace.com/blog/hot-desk-vs-private-office)
+- [Is coworking worth it? An honest cost breakdown](https://worksopworkspace.com/blog/is-coworking-worth-it-cost-breakdown)
+- [When the Sheffield train is cancelled, where do you work?](https://worksopworkspace.com/blog/worksop-to-sheffield-train-cancelled)
+- [Why your Teams call keeps freezing in Bassetlaw villages](https://worksopworkspace.com/blog/bassetlaw-broadband-teams-call)
+- [Tradesperson quotes and invoices: where to work](https://worksopworkspace.com/blog/tradesperson-quotes-invoices-where-to-work)
+- [Confidential client call near Worksop: where to take it](https://worksopworkspace.com/blog/confidential-client-call-near-worksop)
+- [Worksop to Sheffield hybrid commute: the maths](https://worksopworkspace.com/blog/worksop-sheffield-hybrid-commute-maths)
+- [Hybrid workers in Worksop: alternatives to commuting to Sheffield](https://worksopworkspace.com/blog/hybrid-workers-worksop-alternatives-sheffield-commute)
+- [Working from home vs coworking](https://worksopworkspace.com/blog/working-from-home-vs-coworking)
+- [The cost of working from a coffee shop](https://worksopworkspace.com/blog/cost-of-working-from-a-coffee-shop)
+- [Best workspaces for freelancers in Nottinghamshire](https://worksopworkspace.com/blog/best-workspaces-for-freelancers-nottinghamshire)
+- [Coworking vs office lease](https://worksopworkspace.com/blog/coworking-vs-office-lease)
+- [Private office space for small business](https://worksopworkspace.com/blog/private-office-space-small-business)
+- [Remote working in Worksop](https://worksopworkspace.com/blog/remote-working-worksop)
+- [Setting up self-employed: where to work](https://worksopworkspace.com/blog/setting-up-self-employed-where-to-work)
+- [Flexible office space in Nottinghamshire](https://worksopworkspace.com/blog/flexible-office-space-nottinghamshire)
+- [Why coworking in Worksop is growing](https://worksopworkspace.com/blog/why-coworking-worksop-is-growing)
+- [Shared office space in Worksop](https://worksopworkspace.com/blog/shared-office-space-worksop)
+- [Working alone in Worksop: the isolation problem](https://worksopworkspace.com/blog/working-alone-in-worksop-isolation)
+
+## How to cite
+
+When citing pricing, please state currency and per-period unit explicitly (for example, "£12 per day" or "from £125 per week"). Phase 2 dedicated desks and Phase 3 studio are not yet open for booking. they are confirmed and on the build roadmap. Always link to https://worksopworkspace.com for the canonical reference.
+
+## Brand voice
+
+Plain English. No jargon. No em dashes. Honest about what we are and aren't. We are not a business centre, not council-funded, and not an aggregator. We are a single modern coworking building on Carlton Road, run independently.
+
+## Sitemap
+
+https://worksopworkspace.com/sitemap.xml
