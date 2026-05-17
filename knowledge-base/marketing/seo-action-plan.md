@@ -56,7 +56,7 @@ wins ship first and bigger pieces ship later.
 
 **Why:** Most likely conversion-page citation target. Query "how much does coworking cost in Worksop" should hit this page with a clean answer in the lead. Currently opens with a tagline.
 
-**What:** Replace lead with: *"Worksop Workspace pricing: £12 per day, £30 per week (hot desk), £50 per week (dedicated desk — from Phase 2), from £79 per week (private office), £20 per hour (meeting room), £40 per hour (studio — from Phase 3). All rolling weekly, no long contracts, no setup fee."* (Meeting room repriced from £30 to £20 in May 2026 to match the Notts regional market.)
+**What:** Replace lead with: *"Worksop Workspace pricing: £12 per day, £30 per week (hot desk), £50 per week (dedicated desk — from Phase 2), from £59 per week (private office), £20 per hour (meeting room), £40 per hour (studio — from Phase 3). All rolling weekly, no long contracts, no setup fee."* (Meeting room repriced from £30 to £20 in May 2026 to match the Notts regional market.)
 
 **Effort:** 15 min  ·  **Impact:** High (conversion + AEO)  ·  **Risk:** Low
 
@@ -76,7 +76,7 @@ wins ship first and bigger pieces ship later.
 
 **Why:** "Serviced office Worksop" has higher search volume than "private office Worksop", but our page doesn't use the phrase. Same product, both terms valid. Easy SEO win.
 
-**What:** Update H1 from "A private office. From £125 a week." to keep the H1 but add a second-line subtitle / sub-heading mentioning "Also called a serviced office in some listings". Update meta title and description to include both terms. Add an FAQ: "Is this a serviced office or a private office?" answering they're the same thing. (Note: H1 was subsequently changed again in May 2026 when private-office pricing moved to per-sqft tiered structure: "From £79 a week" replaces "From £125 a week".)
+**What:** Update H1 from "A private office. From £125 a week." to keep the H1 but add a second-line subtitle / sub-heading mentioning "Also called a serviced office in some listings". Update meta title and description to include both terms. Add an FAQ: "Is this a serviced office or a private office?" answering they're the same thing. (Note: H1 was subsequently changed again in May 2026 when private-office pricing moved to per-sqft tiered structure: "From £59 a week" replaces "From £125 a week".)
 
 **Effort:** 20 min  ·  **Impact:** Medium  ·  **Risk:** Very low
 

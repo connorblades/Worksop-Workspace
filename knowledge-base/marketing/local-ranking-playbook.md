@@ -50,9 +50,9 @@ Fill in every field, even the optional ones. Each filled field is a small rankin
 | Phone | `07739 063734` (must match website footer) |
 | Website | `https://worksopworkspace.com` |
 | Appointment / booking link | Add the membership/waiting list URL: `https://worksopworkspace.com/membership` |
-| Short description (750 char) | "Worksop Workspace is the first modern coworking space in Worksop town centre. Hot desks from £12 per day or £30 per week, dedicated desks £50 per week (Phase 2), private offices from £79 per week all-inclusive, a professional meeting room at £20 per hour and a recording studio at £40 per hour (Phase 3). Free parking, 900 Mbps fibre, free tea and coffee. Bus stop outside, 8 minutes' walk from Worksop railway station. Used by remote workers, freelancers, tradespeople, parents, therapists and small business owners across Worksop, Retford, Tickhill, Bawtry, Maltby, Dinnington, Harworth, Clowne and Bassetlaw." |
+| Short description (750 char) | "Worksop Workspace is the first modern coworking space in Worksop town centre. Hot desks from £12 per day or £30 per week, dedicated desks £50 per week (Phase 2), private offices from £59 per week all-inclusive, a professional meeting room at £20 per hour and a recording studio at £40 per hour (Phase 3). Free parking, 900 Mbps fibre, free tea and coffee. Bus stop outside, 8 minutes' walk from Worksop railway station. Used by remote workers, freelancers, tradespeople, parents, therapists and small business owners across Worksop, Retford, Tickhill, Bawtry, Maltby, Dinnington, Harworth, Clowne and Bassetlaw." |
 | Attributes | Tick every relevant attribute: free Wi-Fi, free parking, wheelchair accessible (if true), gender-neutral toilets, identifies as women-owned (if applicable), credit cards, contactless payment, etc. |
-| Services list | Add each priced product as a service line: Day Pass £12, Hot Desk Weekly £30, Dedicated Desk Weekly £50, Private Office from £79/week, Meeting Room £20/hour, Studio £40/hour. Each service can have its own description. |
+| Services list | Add each priced product as a service line: Day Pass £12, Hot Desk Weekly £30, Dedicated Desk Weekly £50, Private Office from £59/week, Meeting Room £20/hour, Studio £40/hour. Each service can have its own description. |
 
 ### 1.3. Photos
 

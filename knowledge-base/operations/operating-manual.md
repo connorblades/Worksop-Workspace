@@ -71,7 +71,7 @@ Fixed, transparent, gym-style. No long contracts. Cancel any time. No commitment
 |---|---|---|---|
 | **Day Pass** | 1 | £12/day | Pay-as-you-go, single day access |
 | **Hot Desk Weekly** | 1 | £30/week | Rolling weekly subscription, any available seat |
-| **Private Office** | 1 | from £79/week | Weekly rolling subscription, locked office |
+| **Private Office** | 1 | from £59/week | Weekly rolling subscription, locked office |
 | **Meeting Room** | 1 | £20/hour | Hourly booking, members and visitors |
 | **Dedicated Desk** | 2 | £50/week | Weekly rolling subscription, same desk reserved |
 | **Podcast Room** | 3 | £40/hour | Hourly booking, members and visitors |

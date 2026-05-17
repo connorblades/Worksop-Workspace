@@ -211,7 +211,7 @@ When I ran the SERP checks, several things stood out:
   opening soon on Carlton Road…"). This is the cleanest signal
   yet that LLMs are already crawling our content for AEO.
 - **"coworking Worksop"** AI overview lists 3 spaces with our
-  pricing structure quoted: "private offices from £79/week,
+  pricing structure quoted: "private offices from £59/week,
   hot desks from £12/day". Pricing accuracy in our content is
   visibly driving citations.
 - **"private therapy room hire Worksop"** — no AI overview because

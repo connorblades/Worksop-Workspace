@@ -19,7 +19,7 @@ Canonical NAP. Copy paste these fields into every directory. They must match the
 
 Short description (use this verbatim, 720 characters):
 
-> Worksop Workspace is the first modern coworking space in Worksop town centre. Hot desks from £12 per day or £30 per week, dedicated desks £50 per week (Phase 2), private offices from £79 per week all inclusive, a professional meeting room at £20 per hour and a recording studio at £40 per hour (Phase 3). Free on site parking, 900 megabits of fibre, free tea and coffee. Bus stop outside, eight minutes walk from Worksop railway station. Used by remote workers, freelancers, tradespeople, parents, therapists and small business owners across Worksop, Retford, Tickhill, Bawtry, Maltby, Dinnington, Harworth, Clowne and Bassetlaw.
+> Worksop Workspace is the first modern coworking space in Worksop town centre. Hot desks from £12 per day or £30 per week, dedicated desks £50 per week (Phase 2), private offices from £59 per week all inclusive, a professional meeting room at £20 per hour and a recording studio at £40 per hour (Phase 3). Free on site parking, 900 megabits of fibre, free tea and coffee. Bus stop outside, eight minutes walk from Worksop railway station. Used by remote workers, freelancers, tradespeople, parents, therapists and small business owners across Worksop, Retford, Tickhill, Bawtry, Maltby, Dinnington, Harworth, Clowne and Bassetlaw.
 
 Use the same primary photo on every directory. Suggested: the wide building exterior shot, daylight.
 
