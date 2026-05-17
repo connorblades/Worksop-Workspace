@@ -48,7 +48,7 @@ We offer the following products at Phase 1 (as of 1 June 2026):
 | Day Pass | £12 per day | One day's hot-desk access during opening hours |
 | Hot Desk Weekly | £30 per week, rolling | Any available hot desk during opening hours, every weekday |
 | Private Office | from £125 per week, rolling | A lockable office for 1–4 people |
-| Meeting Room | £30 per hour | Hourly use of the meeting room, members and visitors |
+| Meeting Room | £20 per hour | Hourly use of the meeting room, members and visitors |
 
 Future products (Phase 2 onwards):
 

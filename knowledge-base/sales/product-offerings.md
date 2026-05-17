@@ -19,7 +19,7 @@ For the legal terms governing these products, see `../operations/legal-and-compl
 | **Day Pass** | 1 | £12 / day | Walk in or via app | Trying it out, occasional users, visiting clients |
 | **Hot Desk Weekly** | 1 | £30 / week (rolling) | Sign up via app or in person | The most common plan — anyone here a couple of days a week+ |
 | **Private Office** | 1 | from £125 / week | Enquire | Small teams (1–4 people) or anyone needing lockable, private space |
-| **Meeting Room** | 1 | £30 / hour | Book via app | Client-facing sessions, interviews, larger conversations than a hot desk allows |
+| **Meeting Room** | 1 | £20 / hour | Book via app | Client-facing sessions, interviews, larger conversations than a hot desk allows |
 | **Dedicated Desk** | 2 | £50 / week (rolling) | Sign up via app | Anyone who wants the same seat every day and leaves a setup |
 | **Podcast Room** | 3 | £40 / hour | Book via app | Recording podcasts, video content, voice work |
 
@@ -99,7 +99,7 @@ There is **no boardroom**. The meeting room covers client-facing sessions.
 
 ---
 
-### Meeting Room — £30 / hour
+### Meeting Room — £20 / hour
 
 **What it is.** Hourly use of the meeting room for client-facing sessions, interviews, or any conversation that needs more than a hot desk.
 
@@ -115,7 +115,7 @@ There is **no boardroom**. The meeting room covers client-facing sessions.
 
 **Sales talk track.**
 
-> "Meeting room is £30 an hour, book by the hour via the app. We're one of the only places in town doing meeting rooms outside standard office hours — including weekends. So if you've got a Saturday morning client call, we've got you."
+> "Meeting room is £20 an hour, book by the hour via the app. We're one of the only places in town doing meeting rooms outside standard office hours — including weekends. So if you've got a Saturday morning client call, we've got you."
 
 **Important context.** The local-market gap on meeting rooms is huge — The Turbine cuts at 4:30pm, Middletons doesn't open weekends. Lean into this without naming competitors. See `../marketing/competitor-analysis.md`.
 

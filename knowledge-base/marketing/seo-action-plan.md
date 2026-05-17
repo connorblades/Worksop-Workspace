@@ -56,7 +56,7 @@ wins ship first and bigger pieces ship later.
 
 **Why:** Most likely conversion-page citation target. Query "how much does coworking cost in Worksop" should hit this page with a clean answer in the lead. Currently opens with a tagline.
 
-**What:** Replace lead with: *"Worksop Workspace pricing: £12 per day, £30 per week (hot desk), £50 per week (dedicated desk — from Phase 2), from £125 per week (private office), £30 per hour (meeting room), £40 per hour (studio — from Phase 3). All rolling weekly, no long contracts, no setup fee."*
+**What:** Replace lead with: *"Worksop Workspace pricing: £12 per day, £30 per week (hot desk), £50 per week (dedicated desk — from Phase 2), from £125 per week (private office), £20 per hour (meeting room), £40 per hour (studio — from Phase 3). All rolling weekly, no long contracts, no setup fee."* (Meeting room repriced from £30 to £20 in May 2026 to match the Notts regional market.)
 
 **Effort:** 15 min  ·  **Impact:** High (conversion + AEO)  ·  **Risk:** Low
 
@@ -64,7 +64,7 @@ wins ship first and bigger pieces ship later.
 
 ### 5. Add a UK-pricing-context block to `/membership`
 
-**Why:** The UK Q1 2026 coworking report median is £180/mo, day pass £25, meeting room £30/hr (Notts specifically £16/hr). Our equivalent is £130/mo. Contextualising under-market pricing is a story. Also picks up the "how much does coworking cost UK" query.
+**Why:** The UK Q1 2026 coworking report median is £180/mo, day pass £25, meeting room £20/hr (Notts specifically £16/hr). Our equivalent is £130/mo. Contextualising under-market pricing is a story. Also picks up the "how much does coworking cost UK" query.
 
 **What:** New section on `/membership` titled "How this compares to the UK average" with the three median data points cited. Link to the CoworkingCafe Q1 2026 report.
 
